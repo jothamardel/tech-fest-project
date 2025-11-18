@@ -36,7 +36,7 @@ export default function Agenda() {
         >
           Agenda
         </motion.h2>
-        <p className="mt-3 text-center text-amber-500 font-semibold">
+        <p className="mt-3 text-center text-amber-400 font-semibold">
           2 days of innovation, collaboration, and unforgettable experiences.
         </p>
 
@@ -57,7 +57,7 @@ export default function Agenda() {
                 {day.events.map((event, i) => (
                   <div key={i} className="flex items-start space-x-3">
                     {/* Timeline dot */}
-                    <div className="w-2 h-2 mt-2 rounded-full bg-amber-500"></div>
+                    <div className="w-2 h-2 mt-2 rounded-full bg-amber-400"></div>
                     <div>
                       <p className="text-sm font-medium text-gray-900">
                         {event.time}

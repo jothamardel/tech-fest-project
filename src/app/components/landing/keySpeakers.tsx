@@ -15,12 +15,12 @@ interface Speaker {
 const keynoteSpeakers: Speaker[] = [
   {
     name: "Prof. Goselle Obed Nanjul",
-    role: "Keynote Speaker",
+    role: "Speaker",
     image: "/images/Gosale.jpg",
   },
   {
     name: "Oluwafunmilayo Para Mallam",
-    role: "AI & Future of Work",
+    role: "Speaker",
     image: "/images/Funmi.jpg",
   },
   {
@@ -56,7 +56,7 @@ export default function KeynoteSpeakers() {
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="text-amber-500 mb-12 font-semibold"
+          className="text-amber-400 mb-12 font-semibold"
         >
           Visionary leaders sharing ideas that will shape the future of technology
         </motion.h5>
@@ -78,10 +78,10 @@ export default function KeynoteSpeakers() {
               >
                 {/* Overlay with name + role */}
                 <div className="absolute top-0 left-0 w-full p-4 z-10 text-left">
-                  <h3 className="text-lg font-semibold text-amber-500">
+                  <h3 className="text-sm font-bold text-amber-400">
                     {speaker.name}
                   </h3>
-                  <p className="text-sm text-amber-500">{speaker.role}</p>
+                  <p className="text-xs text-amber-400">{speaker.role}</p>
                 </div>
 
                 {/* Speaker Image */}

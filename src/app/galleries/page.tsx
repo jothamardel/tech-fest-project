@@ -43,7 +43,7 @@ export default function Galleries() {
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="text-amber-500 mb-12 font-semibold"
+          className="text-amber-400 mb-12 font-semibold"
         >
           A collection of our past events
         </motion.h5>
