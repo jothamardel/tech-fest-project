@@ -75,7 +75,7 @@ export default function Host() {
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 10, opacity: 1 }}
           transition={{ delay: 0.1, duration: 0.5 }}
-          className="text-amber-500 mb-20 font-semibold"
+          className="text-amber-400 mb-20 font-semibold"
         >
           Guiding the flow of TechFest with energy, insight, and passion
         </motion.h5>

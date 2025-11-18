@@ -89,7 +89,7 @@ const CommunityPage: React.FC = () => {
         <h1 className="text-center text-green-900 font-bold text-xl sm:text-2xl md:text-3xl md:mt-8">
           Our Community
         </h1>
-        <p className="text-center text-gray-600 text-sm sm:text-base md:text-lg px-4 sm:px-8 md:px-16 lg:px-25 font-semibold md:mt-4">
+        <p className="text-center text-amber-400 text-sm sm:text-base md:text-lg px-4 sm:px-8 md:px-16 lg:px-25 font-semibold md:mt-4">
           Jos Tech Fest is more than a gathering—it&rsquo;s a dedicated community
           working to strengthen Plateau State&rsquo;s tech ecosystem.
         </p>

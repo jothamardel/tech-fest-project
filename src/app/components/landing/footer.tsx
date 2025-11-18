@@ -30,7 +30,7 @@ export default function Footer() {
 
         {/* Quick Links */}
         <div className="flex flex-col items-start">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-amber-600">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-amber-400">
             Quick Links
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
@@ -44,7 +44,7 @@ export default function Footer() {
 
         {/* Resources */}
         <div className="flex flex-col items-start">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-amber-600">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-amber-400">
             Resources
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
@@ -57,7 +57,7 @@ export default function Footer() {
 
         {/* Newsletter */}
         <div className="flex flex-col items-start w-full">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-amber-600">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-amber-400">
             Stay Updated
           </h3>
           <p className="mt-4 text-sm text-gray-600">

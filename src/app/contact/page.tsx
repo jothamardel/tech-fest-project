@@ -256,7 +256,7 @@ const ContactPage = () => {
                 </div>
 
            
-                <div className="text-center">
+                <div className="text-center mt-4">
                   <p className="text-xs text-slate-600">
                     By continuing, you agree to our{' '}
                     <a href="#" className="text-blue-600 hover:text-blue-700 font-medium underline underline-offset-2 transition-colors duration-200">

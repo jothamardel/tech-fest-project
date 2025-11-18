@@ -46,7 +46,7 @@ export default function KeynoteSpeakers() {
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="text-amber-500 mb-12 font-semibold"
+          className="text-amber-400 mb-12 font-semibold"
         >
           Visionary leaders sharing ideas that will shape the future of technology
         </motion.h5>

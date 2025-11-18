@@ -24,19 +24,19 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-white-700 h-10">
-          <Link href="/" className="hover:text-amber-500">
+          <Link href="/" className="hover:text-amber-400">
             Home
           </Link>
-          <Link href="/about" className="hover:text-amber-500">
+          <Link href="/about" className="hover:text-amber-400">
             About
           </Link>
-          <Link href="/community" className="hover:text-amber-500">
+          <Link href="/community" className="hover:text-amber-400">
             Community
           </Link>
-          <Link href="/speakers" className="hover:text-amber-500">
+          <Link href="/speakers" className="hover:text-amber-400">
             Speakers
           </Link>
-          <Link href="/contact" className="hover:text-amber-500">
+          <Link href="/contact" className="hover:text-amber-400">
             Contact
           </Link>
         </nav>
