@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Send, Mail, User, MessageSquare, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -115,7 +116,7 @@ const ContactPage = () => {
             Contact us
           </h1>
           <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
-            Have a project in mind or want to learn more about our services? We're here to help.
+            Have a project in mind or want to learn more about our services? We&rsquo;re here to help.
           </p>
         </div>
 
@@ -135,10 +136,13 @@ const ContactPage = () => {
                         : 'opacity-0 scale-105'
                     }`}
                   >
-                    <img
+                    <Image
                       src={image.src}
                       alt={image.alt}
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                      priority={index === 0}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                     <div className="absolute bottom-6 left-6 text-white">

@@ -39,7 +39,7 @@ export default function Partners() {
           Our Partners
         </motion.h2>
 
-        <p className="mt-3 text-center text-gray-600 font-semibold">
+        <p className="mt-3 text-center text-amber-500 font-semibold">
           We’re proud to be supported by forward-thinking organizations and innovators.
         </p>
 

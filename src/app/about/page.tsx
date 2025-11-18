@@ -429,12 +429,7 @@ const AboutPage: React.FC = () => {
     "/images/jtf-18.jpg",
     "/images/jtf-43.jpg",
     "/images/jtf-28.jpg",
-   
   ];
-
-  function setOpen(arg0: boolean): void {
-    throw new Error("Function not implemented.");
-  }
 
   return (
     <div className="min-h-screen bg-white">

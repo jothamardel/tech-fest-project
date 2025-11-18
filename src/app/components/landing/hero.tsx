@@ -263,7 +263,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 1 }}
-          className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-amber-400 font-semibold max-w-3xl"
+          className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-amber-500 font-semibold max-w-3xl"
         >
           Slide into a world of creativity — discover speakers, community
           projects, and hands-on sessions designed to inspire the next

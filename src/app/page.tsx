@@ -1,6 +1,5 @@
 'use client'
 
-import {motion} from "framer-motion";
 import Hero from "./components/landing/hero"; 
 import Agenda from "./components/landing/agenda-review";
 import Partners from "./components/landing/partners";
@@ -8,7 +7,6 @@ import Partners from "./components/landing/partners";
 import Host from "./components/landing/host";
 import Keyspeaker from "./components/landing/keySpeakers";
 import Venue from "./components/landing/venue";
-import Body from "./components/landing/body";
 import Gallery from "./components/landing/gallery";
 
 export default function LandingPage() {

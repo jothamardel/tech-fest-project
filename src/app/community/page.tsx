@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Navigation } from "swiper/modules";
+import type { Swiper as SwiperInstance } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -73,7 +74,7 @@ const members: Member[] = [
 
 const CommunityPage: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperInstance | null>(null);
 
   useEffect(() => {
     if (swiperRef.current) {
@@ -89,8 +90,8 @@ const CommunityPage: React.FC = () => {
           Our Community
         </h1>
         <p className="text-center text-gray-600 text-sm sm:text-base md:text-lg px-4 sm:px-8 md:px-16 lg:px-25 font-semibold md:mt-4">
-          Jos Tech Fest is more than a gathering—it's a dedicated community
-          working to strengthen Plateau State's tech ecosystem.
+          Jos Tech Fest is more than a gathering—it&rsquo;s a dedicated community
+          working to strengthen Plateau State&rsquo;s tech ecosystem.
         </p>
 
         <div className="w-full mt-8 sm:mt-12 md:mt-16 mb-6 sm:mb-8 md:mb-10 lg:mb-16 relative px-4 sm:px-8 md:px-16 lg:px-24">

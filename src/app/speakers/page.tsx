@@ -35,7 +35,7 @@ export default function Speakers() {
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="text-gray-600 mb-12 font-semibold"
+          className="text-amber-500 mb-12 font-semibold"
         >
           Visionaries, innovators, and leaders shaping the future of technology.
         </motion.h5>

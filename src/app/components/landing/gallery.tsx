@@ -11,19 +11,19 @@ interface Speaker {
 
 const keynoteSpeakers: Speaker[] = [
   {
-    name: "Dr. Ayo Omotayo",
-    role: "Keynote Speaker",
-    image: "/images/pic7.jpg",
+    name: "",
+    role: "",
+    image: "/images/jtf-18.jpg",
   },
   {
-    name: "Prof. Jane Doe",
-    role: "AI & Future of Work",
-    image: "/images/pic2.jpg",
+    name: "",
+    role: "",
+    image: "/images/jtf-4.jpg",
   },
   {
-    name: "Engr. Musa Bello",
-    role: "Tech Policy & Innovation",
-    image: "/images/pic6.jpg",
+    name: "",
+    role: "",
+    image: "/images/jtf-2.jpg",
   },
 ];
 
@@ -46,7 +46,7 @@ export default function KeynoteSpeakers() {
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="text-gray-600 mb-12 font-semibold"
+          className="text-amber-500 mb-12 font-semibold"
         >
           Visionary leaders sharing ideas that will shape the future of technology
         </motion.h5>
@@ -55,7 +55,7 @@ export default function KeynoteSpeakers() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center w-full">
           {keynoteSpeakers.map((speaker, index) => (
             <motion.div
-              key={speaker.name}
+              key={speaker.name || speaker.image || `speaker-${index}`}
               initial={{ y: 60, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: index * 0.15 }}
