@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const agenda = [
   {
     day: "Day 1 ",
-    date: "December 5, 2025",
+    date: "December 4, 2025",
     events: [
       { time: "00:00 AM", title: "Registration" },
       { time: "00:00 AM", title: "Introduction & Networking" },
@@ -36,7 +36,7 @@ export default function Agenda() {
         >
           Agenda
         </motion.h2>
-        <p className="mt-3 text-center text-gray-600 font-semibold">
+        <p className="mt-3 text-center text-amber-500 font-semibold">
           2 days of innovation, collaboration, and unforgettable experiences.
         </p>
 
@@ -72,5 +72,5 @@ export default function Agenda() {
         </div>
       </div>
     </section>
-  );
+  )
 }

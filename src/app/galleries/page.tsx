@@ -18,11 +18,11 @@ const eventGallery: Speaker[] = [
   { name: "", role: "", image: "/images/jtf-4.jpg" },
   { name: "", role: "", image: "/images/jtf-8.jpg" },
   { name: "", role: "", image: "/images/jtf-26.jpg" },
-  { name: "", role: "", image: "/images/jtf-4.jpg" },
-  { name: "", role: "", image: "/images/jtf-8.jpg" },
+  { name: "", role: "", image: "/images/jtf-28.jpg" },
+  { name: "", role: "", image: "/images/jtf-56.jpg" },
   { name: "", role: "", image: "/images/jtf-21.jpg" },
-  { name: "", role: "", image: "/images/jtf-4.jpg" },
-  { name: "", role: "", image: "/images/jtf-8.jpg" },
+  { name: "", role: "", image: "/images/jtf-31.jpg" },
+  { name: "", role: "", image: "/images/jtf-40.jpg" },
 ];
 
 export default function Galleries() {
@@ -43,7 +43,7 @@ export default function Galleries() {
           initial={{ y: 40, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9, delay: 0.1 }}
-          className="text-gray-600 mb-12 font-semibold"
+          className="text-amber-500 mb-12 font-semibold"
         >
           A collection of our past events
         </motion.h5>

@@ -120,11 +120,17 @@ export default function Header() {
 ].map((item, index) => (
   <div key={index} className="flex items-center gap-2">
     <p>{item}</p>
-    <img
-      src="https://cdn.prod.website-files.com/6846d69fbd3193edd44b53d5/6870b99aff049e59a56aa432_Star%204.svg"
-      alt="star"
-      className="w-4 h-4"
-    />
+    <svg
+      className="w-4 h-4 text-amber-400"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        fill="currentColor"
+        d="M12 2.5l2.9 6.18 6.83.59-5.18 4.53 1.55 6.7L12 16.84 5.9 20.5l1.55-6.7L2.27 9.27l6.83-.59L12 2.5z"
+      />
+    </svg>
   </div>
 ))}
 
