@@ -1,8 +1,3 @@
-
-
-
-
-
 // components/Host.tsx
 "use client";
 
@@ -27,7 +22,7 @@ const hosts: Host[] = [
     image: "/images/ancor1.jpg",
   },
   {
-    name: "Juith Nyioris",
+    name: "Judith Nyior",
     role: "",
     image: "/images/ancor6.jpg",
   },
