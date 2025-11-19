@@ -1,4 +1,4 @@
-// // components/Speakers.tsx
+
 "use client";
 
 import Image from "next/image";
@@ -10,18 +10,69 @@ interface Speaker {
   image: string;
 }
 
-// Generate 15 speakers
-const speakers: Speaker[] = Array.from({ length: 15 }, (_, i) => ({
-  name: `Speaker ${i + 1}`,
-  role: "Innovation Leader",
-  image: "/images/pic4.jpg", // replace with real images later
-}));
+const speakerImages = [
+  "/images/jtf-56.jpg",
+  "/images/pic1.jpg",
+  "/images/pic2.jpg",
+  "/images/jtf-7.jpg",
+  "/images/jtf-8.jpg",
+  "/images/jtf-15.jpg",
+  "/images/jtf-18.jpg",
+  "/images/jtf-21.jpg",
+  "/images/jtf-26.jpg",
+  "/images/jtf-27.jpg",
+  "/images/jtf-28.jpg",
+  "/images/jtf-30.jpg",
+  "/images/jtf-31.jpg",
+  "/images/jtf-36.jpg",
+  "/images/jtf-40.jpg",
+  "/images/jtf-43.jpg",
+  "/images/pic1.jpg",
+  "/images/pic2.jpg",
+  "/images/pic3.jpg",
+  "/images/pic4.jpg",
+  "/images/pic5.jpg",
+  "/images/pic6.jpg",
+  "/images/pic7.jpg",
+  "/images/pic8.jpg",
+  "/images/pic10.jpg",
+  "/images/pic12.jpg",
+  "/images/pic13.jpg",
+  "/images/pic10.webp",
+  "/images/pic11.webp",
+  "/images/pic9.webp",
+  "/images/Chriatie.jpg",
+  "/images/Daser.jpg",
+  "/images/Funmi.jpg",
+  "/images/Gosale.jpg",
+  "/images/Rimg.jpg",
+  "/images/shola.jpg",
+  "/images/mbi.jpg",
+];
+
+// Explicit list of 15 speakers with names, roles and images
+const speakers: Speaker[] = [
+  { name: "Timothy Dake", role: "Speaker", image: speakerImages[0] },
+  { name: "Tunde Adebayo", role: "Speaker", image: speakerImages[1] },
+  { name: "Chidera Nwosu", role: "Speaker", image: speakerImages[2] },
+  { name: "Kofi Mensah", role: "Cloud Architect", image: speakerImages[3] },
+  { name: "Amina Suleiman", role: "Data Scientist", image: speakerImages[4] },
+  { name: "Bala Ibrahim", role: "Robotics Engineer", image: speakerImages[5] },
+  { name: "Funke Olatunji", role: "Frontend Lead", image: speakerImages[6] },
+  { name: "Samuel Okorie", role: "CTO", image: speakerImages[7] },
+  { name: "Ifeanyi Chukwu", role: "DevOps Engineer", image: speakerImages[8] },
+  { name: "Grace Eze", role: "UX Researcher", image: speakerImages[9] },
+  { name: "Emeka Obi", role: "NLP Engineer", image: speakerImages[10] },
+  { name: "Rukayat Bello", role: "Community Manager", image: speakerImages[11] },
+  { name: "Daniel Akpan", role: "Security Specialist", image: speakerImages[12] },
+  { name: "Zainab Abdullahi", role: "AI Ethics Researcher", image: speakerImages[13] },
+  { name: "Michael Ade", role: "Growth Lead", image: speakerImages[14] },
+];
 
 export default function Speakers() {
   return (
     <section className="py-20 bg-[#f9faf9] font-poppins">
       <div className="max-w-7xl mx-auto px-6 text-center">
-        {/* Section Title */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,7 +91,6 @@ export default function Speakers() {
           Visionaries, innovators, and leaders shaping the future of technology.
         </motion.h5>
 
-        {/* Speaker Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center w-full">
           {speakers.map((speaker, index) => (
             <motion.div
@@ -52,18 +102,14 @@ export default function Speakers() {
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                transition={{ duration: 1.5, ease: "easeInOut" }} // 👈 smooth hover
-                className="relative w-full h-96 rounded-md overflow-hidden shadow-2xl"
+                transition={{ duration: 1.5, ease: "easeInOut" }}
+                className="relative w-full h-96 rounded-md overflow-hidden shadow-2xl bg-black"
               >
-                {/* Overlay with name + role */}
                 <div className="absolute top-0 left-0 w-full p-4 z-10 text-left">
-                  <h3 className="text-lg font-semibold text-white">
-                    {speaker.name}
-                  </h3>
-                  <p className="text-sm text-gray-300">{speaker.role}</p>
+                  <h3 className="text-sm font-semibold text-amber-400">{speaker.name}</h3>
+                  <p className="text-xs text-amber-400">{speaker.role}</p>
                 </div>
 
-                {/* Speaker Image */}
                 <Image
                   src={speaker.image}
                   alt={speaker.name}

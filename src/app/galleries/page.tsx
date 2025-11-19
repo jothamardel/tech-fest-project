@@ -1,7 +1,3 @@
-
-
-
-
 "use client";
 
 import Image from "next/image";
@@ -23,6 +19,16 @@ const eventGallery: Speaker[] = [
   { name: "", role: "", image: "/images/jtf-21.jpg" },
   { name: "", role: "", image: "/images/jtf-31.jpg" },
   { name: "", role: "", image: "/images/jtf-40.jpg" },
+  { name: "", role: "", image: "/images/jtf-3.jpg" },
+  { name: "", role: "", image: "/images/jtf-4.jpg" },
+  { name: "", role: "", image: "/images/jtf-7.jpg" },
+  { name: "", role: "", image: "/images/jtf-27.jpg" },
+  { name: "", role: "", image: "/images/jtf-43.jpg" },
+  { name: "", role: "", image: "/images/jtf-30.jpg" },
+
+  { name: "", role: "", image: "/images/pic8.jpg" },
+
+
 ];
 
 export default function Galleries() {

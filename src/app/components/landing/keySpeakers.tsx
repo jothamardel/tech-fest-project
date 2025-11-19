@@ -24,16 +24,31 @@ const keynoteSpeakers: Speaker[] = [
     image: "/images/Funmi.jpg",
   },
   {
+    name: "Mr. David Daser",
+    role: "Speaker",
+    image: "/images/Daser.jpg",
+  },
+  {
     name: "Engr. Christie Dasaro",
     role: "Speaker",
     image: "/images/Chriatie.jpg",
   },
 
    {
-    name: "Mr. David Daser",
+    name: "Ardel Mbiplang",
     role: "Speaker",
-    image: "/images/Daser.jpg",
+    image: "/images/mbi.jpg",
   },
+
+   
+   {
+    name: "Uduma Glory",
+    role: "Speaker",
+    image: "/images/speaker.jpg",
+  },
+
+ 
+   
    
 ];
 
@@ -105,7 +120,7 @@ export default function KeynoteSpeakers() {
             className="group relative inline-flex items-center overflow-hidden rounded-full bg-gradient-to-tl from-green-300 to-green-900 px-10 py-2 cursor-pointer shadow-md"
             onClick={() => (window.location.href = "/speakers")}
           >
-            <p className="text-white">Meet our speakers</p>
+            <p className="text-white">View more speakers</p>
             <span className="inline-block ml-2 rounded-full bg-white/20 px-3 py-1 text-xs font-medium">
               →
             </span>
