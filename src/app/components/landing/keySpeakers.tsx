@@ -13,21 +13,24 @@ interface Speaker {
 }
 
 const keynoteSpeakers: Speaker[] = [
-  {
-    name: "Prof. Goselle Obed Nanjul",
-    role: "Speaker",
-    image: "/images/Gosale.jpg",
-  },
-  {
-    name: "Oluwafunmilayo Para Mallam",
-    role: "Speaker",
-    image: "/images/Funmi.jpg",
-  },
+
   {
     name: "Mr. David Daser",
     role: "Speaker",
     image: "/images/Daser.jpg",
   },
+   {
+    name: "Oluwafunmilayo Para Mallam",
+    role: "Speaker",
+    image: "/images/Funmi.jpg",
+  },
+  {
+    name: "Prof. Goselle Obed Nanjul",
+    role: "Speaker",
+    image: "/images/Gosale.jpg",
+  },
+ 
+  
   {
     name: "Engr. Christie Dasaro",
     role: "Speaker",
