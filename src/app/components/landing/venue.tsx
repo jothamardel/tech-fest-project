@@ -27,14 +27,18 @@ export default function Venue() {
               >
                 View on Google Maps
               </a>
-              <a href={directionsUrl} target="_blank" rel="noopener noreferrer">
-                {/* <Button size="sm" className="bg-green-700 text-white hover:bg-green-800">
-                  Get Directions
-                </Button> */}
+              <a
+                href={directionsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-green-700 underline hover:no-underline"
+              >
+                Get directions
               </a>
             </div>
           </div>
         </div>
+
         <div className="relative w-full overflow-hidden rounded-lg border" style={{ paddingBottom: "56.25%" }}>
           <iframe
             title="Sarau Event Center, Jos - Map"
@@ -57,17 +61,43 @@ export default function Venue() {
                 <span className="absolute inline-flex h-6 w-6 rounded-full bg-red-500 opacity-75 animate-ping" />
                 <span className="relative inline-flex h-3 w-3 rounded-full bg-red-600 border-2 border-white shadow" />
               </span>
-              {/* <div className="mt-2 ml-3 w-max rounded-md bg-white/95 backdrop-blur px-2 py-1 text-[11px] leading-tight text-gray-700 shadow pointer-events-auto">
-                Sarau Event Center (blink marks exact spot)
-              </div> */}
             </div>
           </div>
         </div>
 
         {/* Venue description */}
-        <div className="mt-4 text-sm text-gray-600">
-          {/* Sarau Event Center, Jos — a central venue easily accessible from major routes in Jos.
-          The blinking dot indicates the exact location on the map. */}
+        <div className="mt-6 text-gray-700 space-y-3">
+          <p className="text-sm">
+            Sarau Event Center is a modern, centrally-located events venue in Jos suitable for conferences,
+            exhibitions and community gatherings. The facility offers a main hall with flexible seating for up
+            to 800 attendees, on-site parking and fast Wi‑Fi — ideal for hybrid sessions and live demos.
+          </p>
+
+          <ul className="list-disc ml-5 text-sm text-gray-600 space-y-1">
+            <li>Capacity: up to 800 people (configurable seating)</li>
+            <li>Amenities: AV setup, stage lighting, high-speed internet, breakout rooms</li>
+            <li>Accessibility: ramp access and ground-level entrances</li>
+            <li>Nearby: hotels, restaurants and public transport options within 10–15 minutes</li>
+          </ul>
+
+          <div className="mt-2 flex flex-wrap gap-3">
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-green-700 underline hover:no-underline"
+            >
+              Open in Google Maps
+            </a>
+            <a
+              href={directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-green-700 underline hover:no-underline"
+            >
+              Get driving directions
+            </a>
+          </div>
         </div>
       </div>
     </section>
