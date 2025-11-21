@@ -53,7 +53,7 @@ export default function Partners() {
             {[...partners, ...partners].map((logo, index) => (
               <div
                 key={index}
-                className="bg-white min-w-[150px] md:min-w-[180px] rounded-2xl shadow-md flex items-center justify-center h-28 hover:shadow-lg transition"
+                className="bg-white min-w-[150px] md:min-w-[180px] rounded-sm flex items-center justify-center h-28 hover:shadow-lg transition"
               >
                 <Image
                   src={logo}
