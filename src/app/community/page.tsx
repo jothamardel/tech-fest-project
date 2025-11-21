@@ -38,7 +38,7 @@ const members: Member[] = [
   {
     id: 3,
     name: "Peter Gyang Sha",
-    role: "Software Engineer",
+    role: "Software Engineer/Frontend Lead",
     description: "Passionate about building user-friendly web apps.",
     image: "/images/piro.png",
   },
@@ -150,7 +150,7 @@ const CommunityPage: React.FC = () => {
                       <h2 className="text-base sm:text-lg font-semibold mb-1">
                         {member.name}
                       </h2>
-                      <p className="text-green-700 font-medium text-sm mb-1">
+                      <p className="text-green-900 font-medium text-sm mb-1">
                         {member.role}
                       </p>
                       <p className="text-xs sm:text-sm text-gray-600">
