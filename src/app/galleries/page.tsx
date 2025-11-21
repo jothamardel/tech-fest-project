@@ -25,7 +25,7 @@ const eventGallery: Speaker[] = [
   { name: "", role: "", image: "/images/jtf-27.jpg" },
   { name: "", role: "", image: "/images/jtf-43.jpg" },
   { name: "", role: "", image: "/images/jtf-30.jpg" },
-
+  { name: "", role: "", image: "/images/pic11.webp" },
   { name: "", role: "", image: "/images/pic8.jpg" },
 
 
