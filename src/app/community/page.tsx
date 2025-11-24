@@ -46,14 +46,16 @@ const members: Member[] = [
     id: 4,
     name: "Othniel John",
     role: "Community Manager/Prompt Engineer",
-    description: "A versatile Community Manager and Prompt Engineer who builds active communities, crafts effective AI prompts.",
+    description:
+      "A versatile Community Manager and Prompt Engineer who builds active communities, crafts effective AI prompts.",
     image: "/images/oth.jpg",
   },
   {
     id: 5,
     name: "Samuel Sean",
     role: "Software Engineer",
-    description: "A skilled professional who designs, develops, test and maintain scalable  client and server side applications.",
+    description:
+      "A skilled professional who designs, develops, test and maintain scalable  client and server side applications.",
     image: "/images/sean.jpg",
   },
   {
@@ -66,7 +68,7 @@ const members: Member[] = [
   {
     id: 7,
     name: "Christopher Dawen",
-    role: "Heade of Partnership",
+    role: "Head of Partnership",
     description: "Building modern cross-platform mobile apps.",
     image: "/images/chris.jpg",
   },
@@ -90,8 +92,8 @@ const CommunityPage: React.FC = () => {
           Our Community
         </h1>
         <p className="text-center text-amber-400 text-sm sm:text-base md:text-lg px-4 sm:px-8 md:px-16 lg:px-25 font-semibold md:mt-4">
-          Jos Tech Fest is more than a gathering—it&rsquo;s a dedicated community
-          working to strengthen Plateau State&rsquo;s tech ecosystem.
+          Jos Tech Fest is more than a gathering—it&rsquo;s a dedicated
+          community working to strengthen Plateau State&rsquo;s tech ecosystem.
         </p>
 
         <div className="w-full mt-8 sm:mt-12 md:mt-16 mb-6 sm:mb-8 md:mb-10 lg:mb-16 relative px-4 sm:px-8 md:px-16 lg:px-24">
@@ -128,10 +130,11 @@ const CommunityPage: React.FC = () => {
                   className="flex justify-center items-center h-fit p-4"
                 >
                   <div
-                    className={`transition-all duration-4000 ease-in-out bg-white shadow-lg rounded-lg text-center border h-72 sm:h-80 md:h-84 w-full max-w-xs sm:max-w-sm overflow-hidden ${index === activeIndex
+                    className={`transition-all duration-4000 ease-in-out bg-white shadow-lg rounded-lg text-center border h-72 sm:h-80 md:h-84 w-full max-w-xs sm:max-w-sm overflow-hidden ${
+                      index === activeIndex
                         ? "scale-105 border-green-500 shadow-xl"
                         : "scale-90 opacity-80"
-                      }`}
+                    }`}
                   >
                     {/* ✅ Avatar Image Section */}
                     <div className="flex justify-center mt-4">
@@ -174,35 +177,34 @@ const CommunityPage: React.FC = () => {
           {/* ✅ Custom Pagination */}
           <div className="custom-pagination flex justify-center mt-3  space-x-2 sm:space-x-3" />
           <style jsx global>{`
-  /* Base bullet style */
-  .custom-pagination .swiper-pagination-bullet {
-    background-color: #22c55e !important; /* Tailwind green-500 */
-    opacity: 0.6;
-    transition: all 0.4s ease-in-out;
-    transform: scale(0.9);
-  }
+            /* Base bullet style */
+            .custom-pagination .swiper-pagination-bullet {
+              background-color: #22c55e !important; /* Tailwind green-500 */
+              opacity: 0.6;
+              transition: all 0.4s ease-in-out;
+              transform: scale(0.9);
+            }
 
-  /* Active bullet animation */
-  .custom-pagination .swiper-pagination-bullet-active {
-    background-color: #16a34a !important; /* Tailwind green-600 */
-    opacity: 1;
-    transform: scale(1.3);
-    box-shadow: 0 0 10px rgba(22, 163, 74, 0.6); /* green glow */
-  }
+            /* Active bullet animation */
+            .custom-pagination .swiper-pagination-bullet-active {
+              background-color: #16a34a !important; /* Tailwind green-600 */
+              opacity: 1;
+              transform: scale(1.3);
+              box-shadow: 0 0 10px rgba(22, 163, 74, 0.6); /* green glow */
+            }
 
-  /* Optional: smooth position shift for the moving bullet indicator */
-  .custom-pagination .swiper-pagination-bullet-active-prev,
-  .custom-pagination .swiper-pagination-bullet-active-next {
-    transform: scale(1.1);
-    opacity: 0.8;
-  }
+            /* Optional: smooth position shift for the moving bullet indicator */
+            .custom-pagination .swiper-pagination-bullet-active-prev,
+            .custom-pagination .swiper-pagination-bullet-active-next {
+              transform: scale(1.1);
+              opacity: 0.8;
+            }
 
-  /* Extra smooth transition when swiper slides */
-  .swiper-pagination {
-    transition: transform 0.4s ease-in-out;
-  }
-`}</style>
-
+            /* Extra smooth transition when swiper slides */
+            .swiper-pagination {
+              transition: transform 0.4s ease-in-out;
+            }
+          `}</style>
         </div>
       </div>
     </div>
