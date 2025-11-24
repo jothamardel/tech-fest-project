@@ -105,9 +105,9 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images, aspectRatio = "4/3" }
 
 const StatsSection: React.FC = () => {
   const stats = [
-    { number: "500+", label: "Attendees" },
+    { number: "1,500+", label: "Attendees" },
     { number: "50+", label: "Speakers" },
-    { number: "25+", label: "Partners" },
+    { number: "100+", label: "Partners" },
   ];
 
   return (
@@ -168,7 +168,7 @@ const AboutPage: React.FC = () => {
 
               <div className="prose prose-lg text-slate-600 max-w-none">
                 <p className="text-lg leading-relaxed">
-                  At JosTechFest, we are dedicated to empowering the tech
+                  At the TechFest, we are dedicated to empowering the tech
                   community in Northern Nigeria and the Middle Belt by fostering
                   innovation and collaboration.
                 </p>
@@ -227,7 +227,7 @@ const AboutPage: React.FC = () => {
 
               <div className="space-y-6 text-slate-600">
                 <p className="text-lg leading-relaxed">
-                  JosTechFest is Northern Nigeria’s premier technology
+                  The TechFest is Northern Nigeria’s premier technology
                   conference and innovation hub.
                 </p>
                 <p className="text-lg leading-relaxed">

@@ -45,7 +45,7 @@ const keynoteSpeakers: Speaker[] = [
 
    
    {
-    name: "Uduma Glory",
+    name: "Glory Ezinne Dickson-Oleka",
     role: "Speaker",
     image: "/images/speaker.jpg",
   },
