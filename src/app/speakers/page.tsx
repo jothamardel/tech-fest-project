@@ -22,33 +22,9 @@ const speakerImages = [
   "/images/jtf-36.jpg",
   "/images/dav.jpg",
   "/images/shols.jpg",
-  "/images/jtf-28.jpg",
-  "/images/jtf-30.jpg",
-  "/images/jtf-31.jpg",
+  "/images/chris.jpg",
  
-  "/images/jtf-40.jpg",
-  "/images/jtf-43.jpg",
-  "/images/pic1.jpg",
-  "/images/pic2.jpg",
-  "/images/pic3.jpg",
-  "/images/pic4.jpg",
-  "/images/pic5.jpg",
-  "/images/pic6.jpg",
-  "/images/pic7.jpg",
-  "/images/pic8.jpg",
-  "/images/pic10.jpg",
-  "/images/pic12.jpg",
-  "/images/pic13.jpg",
-  "/images/pic10.webp",
-  "/images/pic11.webp",
-  "/images/pic9.webp",
-  "/images/Chriatie.jpg",
-  "/images/Daser.jpg",
-  "/images/Funmi.jpg",
-  "/images/Gosale.jpg",
-  "/images/Rimg.jpg",
-  "/images/shola.jpg",
-  "/images/mbi.jpg",
+ 
 ];
 
 // Explicit list of 15 speakers with names, roles and images
@@ -64,10 +40,10 @@ const speakers: Speaker[] = [
   { name: "Dr. Adamu Usman", role: "Speaker", image: speakerImages[8] },
   { name: "David Eyi", role: "Speaker", image: speakerImages[9] },
   { name: "Shola Akambi", role: "Speaker", image: speakerImages[10] },
-  { name: "Rukayat Bello", role: "Community Manager", image: speakerImages[11] },
-  { name: "Daniel Akpan", role: "Security Specialist", image: speakerImages[12] },
-  { name: "Zainab Abdullahi", role: "AI Ethics Researcher", image: speakerImages[13] },
-  { name: "Michael Ade", role: "Growth Lead", image: speakerImages[14] },
+  { name: "Chris Dawen", role: "Speaker", image: speakerImages[11] },
+  // { name: "Daniel Akpan", role: "Security Specialist", image: speakerImages[12] },
+  // { name: "Zainab Abdullahi", role: "AI Ethics Researcher", image: speakerImages[13] },
+  // { name: "Michael Ade", role: "Growth Lead", image: speakerImages[14] },
 ];
 
 export default function Speakers() {

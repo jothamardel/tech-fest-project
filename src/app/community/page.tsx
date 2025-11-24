@@ -65,10 +65,10 @@ const members: Member[] = [
   },
   {
     id: 7,
-    name: "Angela Brown",
-    role: "Mobile Developer",
+    name: "Christopher Dawen",
+    role: "Heade of Partnership",
     description: "Building modern cross-platform mobile apps.",
-    image: "/images/member6.jpg",
+    image: "/images/chris.jpg",
   },
 ];
 
