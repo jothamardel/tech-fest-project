@@ -34,7 +34,7 @@ const speakers: Speaker[] = [
   { name: "Prof. Goselle Obed Nanjul", role: "Speaker", image: speakerImages[2] },
   { name: "Engr. Christie Dasaro", role: "Speaker", image: speakerImages[3] },
   { name: "Ardel Mbiplang", role: "Speaker", image: speakerImages[4] },
-  { name: "Uduma Glory", role: "Speaker", image: speakerImages[5] },
+  { name: "Glory Ezinne Dickson-Oleka", role: "Speaker", image: speakerImages[5] },
   { name: "Timithy Dake", role: "Speaker", image: speakerImages[6] },
   { name: "Nnamdi Ibe", role: "Speaker", image: speakerImages[7] },
   { name: "Dr. Adamu Usman", role: "Speaker", image: speakerImages[8] },
