@@ -16,7 +16,7 @@ const keynoteSpeakers: Speaker[] = [
   {
     name: "Nentawe Yilwatda",
     role: "Speaker",
-    image: "/images/nen.jpg",
+    image: "/images/nent.jpg",
   },
 
   {
@@ -24,37 +24,37 @@ const keynoteSpeakers: Speaker[] = [
     role: "Speaker",
     image: "/images/Daser.jpg",
   },
-  
+
   {
     name: "Prof. Goselle Obed Nanjul",
     role: "Speaker",
     image: "/images/Gosale.jpg",
   },
- 
-  
+
+
   {
     name: "Engr. Christie Dasaro",
     role: "Speaker",
     image: "/images/Chriatie.jpg",
   },
-   {
-    name: "Oluwafunmilayo Para Mallam",
+  {
+    name: "Ardel Mbiplang",
     role: "Speaker",
-    image: "/images/Funmi.jpg",
+    image: "/images/mbi.jpg",
   },
 
-   
 
-   
-   {
+
+
+  {
     name: "Glory Ezinne Dickson-Oleka",
     role: "Speaker",
     image: "/images/speaker.jpg",
   },
 
- 
-   
-   
+
+
+
 ];
 
 export default function KeynoteSpeakers() {

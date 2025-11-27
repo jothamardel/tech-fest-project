@@ -11,30 +11,31 @@ interface Speaker {
 }
 
 const speakerImages = [
-  "/images/nen.jpg",
+  "/images/nent.jpg",
   "/images/daser.jpg",
   "/images/Gosale.jpg",
   "/images/Chriatie.jpg",
-  "/images/funmi.jpg",
+  "/images/mbi.jpg",
   "/images/speaker.jpg",
   "/images/jtf-56.jpg",
   "/images/mbi.jpg",
-  "/images/jtf-36.jpg",     
+  "/images/jtf-36.jpg",
   "/images/nnamdi.jpg",
   "/images/shols.jpg",
   "/images/chris.jpg",
-   "/images/peter.jpg",
-    "/images/ret.jpg",
-     "/images/longs.jpg",
-      "/images/lint.jpg",
-       "/images/mo.jpg",
-        "/images/dav.jpg",
-         "/images/sati.jpg",
+  "/images/peter.jpg",
+
+  "/images/longs.jpg",
+  "/images/ret.jpg",
+  "/images/lint.jpg",
+  "/images/mo.jpg",
+  "/images/dav.jpg",
+  "/images/sati.jpg",
   "/images/sam.jpg",
   "/images/kunle.jpg",
 
   //  "/images/nnamdi.jpg",
- 
+
 ];
 
 // Explicit list of 15 speakers with names, roles and images
@@ -43,25 +44,25 @@ const speakers: Speaker[] = [
   { name: "Mr. David Daser", role: "Speaker", image: speakerImages[1] },
   { name: "Prof. Goselle Obed Nanjul", role: "Speaker", image: speakerImages[2] },
   { name: "Engr. Christie Dasaro", role: "Speaker", image: speakerImages[3] },
-  { name: "Oluwafunmilayo Para Mallm", role: "Speaker", image: speakerImages[4] },
+  { name: "Ardel Mbiplang", role: "Speaker", image: speakerImages[4] },
   { name: "Glory Ezinne Dickson-Oleka", role: "Speaker", image: speakerImages[5] },
   { name: "Timithy Dake", role: "Speaker", image: speakerImages[6] },
-  { name: "Ardel Mbiplnag", role: "Speaker", image: speakerImages[7] },
+  // { name: "Ardel Mbiplnag", role: "Speaker", image: speakerImages[7] },
   { name: "Dr. Adamu Usman", role: "Speaker", image: speakerImages[8] },
   { name: "Nnamdi Ibe", role: "Speaker", image: speakerImages[9] },
   { name: "Shola Akambi", role: "Speaker", image: speakerImages[10] },
   { name: "Chris Dawen", role: "Speaker", image: speakerImages[11] },
-   { name: "Peter Adaaku", role: "Speaker", image: speakerImages[12] },
-  { name: " Ribetnan Dami", role: "Speaker", image: speakerImages[13] },
-  { name: "Longs Pemun Gotar", role: "Speaker", image: speakerImages[14] },
-  { name: "Wapnen Gwok", role: "Speakder", image: speakerImages[15] },
+  { name: "Peter Adaaku", role: "Speaker", image: speakerImages[12] },
+  { name: "Longs Pemun Gotar", role: "Speaker", image: speakerImages[13] },
+  { name: "Ribetnan Dami", role: "Speaker", image: speakerImages[14] },
+  { name: "Wapnen Gwok", role: "Speaker", image: speakerImages[15] },
   { name: "Moses Amama", role: "Speakder", image: speakerImages[16] },
   { name: "David Eyi", role: "Speakder", image: speakerImages[17] },
-  { name: "Jatau Shedrack Sati", role: "Speakder", image: speakerImages[18] },
-  { name: "Sam Semako", role: "Speakder", image: speakerImages[19] },
-  { name: "Kunle Princewill", role: "Speakder", image: speakerImages[20] },
+  { name: "Jatau Shedrack Sati", role: "Speaker", image: speakerImages[18] },
+  { name: "Sam Semako", role: "Speaker", image: speakerImages[19] },
+  { name: "Kunle Princewill", role: "Speaker", image: speakerImages[20] },
   // { name: "", role: "Speakder", image: speakerImages[21] },
-  
+
 ];
 
 export default function Speakers() {
