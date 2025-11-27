@@ -11,7 +11,7 @@ const partners = [
   "/images/partners2.png",
   "/images/partners3.png",
   "/images/koenig.jpeg",
-  "/images/partners5.png",
+  "/images/moni.webp",
   "/images/openai.png",
   "/images/partners11..png",
   "/images/Rimg.jpg",
@@ -24,6 +24,7 @@ const partners = [
      "/images/partners11.png",
       "/images/axiahub.png",
      "/images/partners8.png",
+      "/images/moni.webp",
 ];
 
 export default function Partners() {

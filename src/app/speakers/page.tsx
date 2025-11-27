@@ -33,14 +33,15 @@ const speakerImages = [
   "/images/sati.jpg",
   "/images/sam.jpg",
   "/images/kunle.jpg",
+"/images/new.png",
 
-  //  "/images/nnamdi.jpg",
+   
 
 ];
 
 // Explicit list of 15 speakers with names, roles and images
 const speakers: Speaker[] = [
-  { name: "Mr. Nentawe Yilwatda", role: "Speaker", image: speakerImages[0] },
+  // { name: "Mr. Nentawe Yilwatda", role: "Speaker", image: speakerImages[0] },
   { name: "Mr. David Daser", role: "Speaker", image: speakerImages[1] },
   { name: "Prof. Goselle Obed Nanjul", role: "Speaker", image: speakerImages[2] },
   { name: "Engr. Christie Dasaro", role: "Speaker", image: speakerImages[3] },
@@ -61,9 +62,11 @@ const speakers: Speaker[] = [
   { name: "Jatau Shedrack Sati", role: "Speaker", image: speakerImages[18] },
   { name: "Sam Semako", role: "Speaker", image: speakerImages[19] },
   { name: "Kunle Princewill", role: "Speaker", image: speakerImages[20] },
-  // { name: "", role: "Speakder", image: speakerImages[21] },
+  // { name: " Emmanuel Olarewaju David", role: "Speakder", image: speakerImages[21] },
 
+  { name: "Emmanuel Olarewaju David", role: "Speaker", image: speakerImages[21] },
 ];
+
 
 export default function Speakers() {
   return (
