@@ -1,9 +1,39 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Send, Mail, User, MessageSquare, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Send, Mail, User, MessageSquare, CheckCircle, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+
+const toUrl = (id: string) => `https://lh3.googleusercontent.com/d/${id}`;
+
+const sliderImages = [
+  {
+    src: toUrl("1if6gfmrQEsYpiA90QDa5pFqMH64lVt83"),
+    alt: "Creative Solutions",
+    title: "Creative Solutions"
+  },
+  {
+    src: toUrl("1mndH6ojfkHJZolTvdzdI_20Oi33ZtRp6"), 
+    alt: "Expert Team",
+    title: "Expert Team"
+  },
+  {
+    src: toUrl("1npVKerOBEisOwcSZoIDVc9UN47BbOTWn"),
+    alt: "Innovation First",
+    title: "Innovation First"
+  },
+  {
+    src: toUrl("1siONYfOystUjaAGV4FBx9ph0tssMSzLb"),
+    alt: "Proven Results",
+    title: "Proven Results"
+  },
+  {
+    src: toUrl("1tPuiLRAazHWrWNEYbHaVi9DNwUgCqqS_"),
+    alt: "Tech Excellence",
+    title: "Tech Excellence"
+  }
+];
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -28,40 +58,8 @@ const ContactPage = () => {
     agreeToPrivacy: false
   });
 
-  
-  const sliderImages = [
-    {
-      src: "/images/pic8.jpg",
-      alt: "Modern office workspace",
-      title: "Creative Solutions"
-    },
-    {
-      src: "/images/pic9.webp", 
-      alt: "Team collaboration",
-      title: "Expert Team"
-    },
-    {
-      src: "/images/jtf-3.jpg",
-      alt: "Digital innovation",
-      title: "Innovation First"
-    },
-    {
-      src: "/images/pic11.webp",
-      alt: "Success stories",
-      title: "Proven Results"
-    },
-    {
-      src: "/images/pic12.jpg",
-      alt: "Technology solutions",
-      title: "Tech Excellence"
-    }
-  ];
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleRegistrationChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -81,59 +79,53 @@ const ContactPage = () => {
   const handleRegistrationSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('Registration Data:', registrationData);
-  
     alert('Registration submitted successfully!');
+    setShowRegistrationForm(false);
   };
 
- 
   useEffect(() => {
     const slideInterval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
     }, 4000);
     return () => clearInterval(slideInterval);
-  }, [sliderImages.length]);
+  }, []);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
-  };
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 p-6 pt-20">
+    <div className="min-h-screen bg-slate-950 p-6 pt-32 pb-24 relative overflow-hidden">
       
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-green-200/30 to-emerald-200/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-teal-200/30 to-green-200/30 rounded-full blur-3xl animate-pulse"></div>
+      {/* Ambient glow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto">
-       
+      <div className="relative max-w-7xl mx-auto z-10">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-green-700 via-emerald-600 to-teal-700 bg-clip-text text-transparent mb-4">
+          <span className="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4">
+            Get in Touch
+          </span>
+          <h1 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight">
             Contact us
           </h1>
-          <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-lg text-slate-400 leading-relaxed max-w-2xl mx-auto">
             Have a project in mind or want to learn more about our services? We&rsquo;re here to help.
           </p>
         </div>
-
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
           
+          {/* Slider */}
           <div className="relative">
-            <div className="relative h-96 lg:h-full rounded-3xl overflow-hidden shadow-2xl">
-             
+            <div className="relative h-96 lg:h-full rounded-3xl overflow-hidden shadow-2xl border border-slate-800 bg-slate-900">
               <div className="relative w-full h-full">
                 {sliderImages.map((image, index) => (
                   <div
                     key={index}
                     className={`absolute inset-0 transition-all duration-700 ease-in-out ${
-                      index === currentSlide 
-                        ? 'opacity-100 scale-100' 
-                        : 'opacity-0 scale-105'
+                      index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
                     }`}
                   >
                     <Image
@@ -144,38 +136,34 @@ const ContactPage = () => {
                       className="object-cover"
                       priority={index === 0}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                    <div className="absolute bottom-6 left-6 text-white">
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                    <div className="absolute bottom-8 left-8 text-white">
                       <h3 className="text-2xl font-bold">{image.title}</h3>
                     </div>
                   </div>
                 ))}
               </div>
 
-              
               <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-slate-900/60 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 p-2 rounded-full transition-all duration-300 shadow-lg"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-slate-900/60 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 p-2 rounded-full transition-all duration-300 shadow-lg"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-5 h-5" />
               </button>
 
-             
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+              <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
                 {sliderImages.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === currentSlide 
-                        ? 'bg-white w-8' 
-                        : 'bg-white/50 hover:bg-white/80'
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      index === currentSlide ? 'bg-blue-500 w-8' : 'bg-slate-700 hover:bg-slate-500 w-2'
                     }`}
                   />
                 ))}
@@ -183,20 +171,18 @@ const ContactPage = () => {
             </div>
           </div>
 
-       
+          {/* Form */}
           <div className="relative">
-            <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-8 border border-white/20 transform transition-all duration-700 hover:shadow-3xl h-full flex flex-col">
-              <div className="space-y-6 flex-1 flex flex-col">
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-               
+            <div className="bg-slate-900 rounded-3xl shadow-2xl p-8 border border-slate-800 h-full flex flex-col relative overflow-hidden">
+              <div className="space-y-6 flex-1 flex flex-col relative z-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="relative group">
-                    <label className="block text-sm font-semibold text-slate-700 mb-2 transition-colors duration-300 group-focus-within:text-blue-600">
+                    <label className="block text-sm font-semibold text-slate-400 mb-2 transition-colors duration-300 group-focus-within:text-blue-400">
                       Name
                     </label>
                     <div className="relative">
                       <User className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-all duration-300 ${
-                        focusedField === 'name' ? 'text-blue-500 scale-110' : 'text-slate-400'
+                        focusedField === 'name' ? 'text-blue-500' : 'text-slate-500'
                       }`} />
                       <input
                         type="text"
@@ -206,19 +192,18 @@ const ContactPage = () => {
                         onFocus={() => setFocusedField('name')}
                         onBlur={() => setFocusedField(null)}
                         placeholder="Your name"
-                        className="w-full pl-10 pr-4 py-3 bg-white border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 placeholder-slate-400 text-slate-800 shadow-sm hover:border-slate-300 hover:shadow-md text-sm"
+                        className="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-slate-600 text-slate-300 text-sm outline-none"
                       />
                     </div>
                   </div>
 
-                  
                   <div className="relative group">
-                    <label className="block text-sm font-semibold text-slate-700 mb-2 transition-colors duration-300 group-focus-within:text-blue-600">
+                    <label className="block text-sm font-semibold text-slate-400 mb-2 transition-colors duration-300 group-focus-within:text-blue-400">
                       Email
                     </label>
                     <div className="relative">
                       <Mail className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-all duration-300 ${
-                        focusedField === 'email' ? 'text-blue-500 scale-110' : 'text-slate-400'
+                        focusedField === 'email' ? 'text-blue-500' : 'text-slate-500'
                       }`} />
                       <input
                         type="email"
@@ -227,20 +212,20 @@ const ContactPage = () => {
                         onChange={handleInputChange}
                         onFocus={() => setFocusedField('email')}
                         onBlur={() => setFocusedField(null)}
-                        placeholder="example@gmail.com"
-                        className="w-full pl-10 pr-4 py-3 bg-white border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 placeholder-slate-400 text-slate-800 shadow-sm hover:border-slate-300 hover:shadow-md text-sm"
+                        placeholder="example@email.com"
+                        className="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-slate-600 text-slate-300 text-sm outline-none"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="relative group flex-1">
-                  <label className="block text-sm font-semibold text-slate-700 mb-2 transition-colors duration-300 group-focus-within:text-blue-600">
+                  <label className="block text-sm font-semibold text-slate-400 mb-2 transition-colors duration-300 group-focus-within:text-blue-400">
                     Description
                   </label>
-                  <div className="relative h-full">
+                  <div className="relative h-full min-h-[150px]">
                     <MessageSquare className={`absolute left-3 top-4 w-4 h-4 transition-all duration-300 ${
-                      focusedField === 'description' ? 'text-blue-500 scale-110' : 'text-slate-400'
+                      focusedField === 'description' ? 'text-blue-500' : 'text-slate-500'
                     }`} />
                     <textarea
                       name="description"
@@ -248,167 +233,138 @@ const ContactPage = () => {
                       onChange={handleInputChange}
                       onFocus={() => setFocusedField('description')}
                       onBlur={() => setFocusedField(null)}
-                      rows={6}
                       placeholder="Include as much details as you can"
-                      className="w-full h-full pl-10 pr-4 py-3 bg-white border-2 border-slate-200 rounded-xl focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 placeholder-slate-400 text-slate-800 resize-none shadow-sm hover:border-slate-300 hover:shadow-md text-sm"
+                      className="w-full h-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-slate-600 text-slate-300 text-sm outline-none resize-none"
                     />
                   </div>
                 </div>
 
-           
-                <div className="text-center mt-4">
-                  <p className="text-xs text-slate-600">
+                <div className="text-center mt-2">
+                  <p className="text-xs text-slate-500">
                     By continuing, you agree to our{' '}
-                    <a href="#" className="text-blue-600 hover:text-blue-700 font-medium underline underline-offset-2 transition-colors duration-200">
+                    <a href="#" className="text-blue-400 hover:text-blue-300 underline transition-colors">
                       Terms of Use
                     </a>{' '}
                     and{' '}
-                    <a href="#" className="text-blue-600 hover:text-blue-700 font-medium underline underline-offset-2 transition-colors duration-200">
+                    <a href="#" className="text-blue-400 hover:text-blue-300 underline transition-colors">
                       Privacy policy
                     </a>
                   </p>
                 </div>
 
-         
                 <form onSubmit={handleSubmit}>
-                  <div className="relative">
-                    <button
-                      type="submit"
-                      disabled={isSubmitted}
-                      className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 transform hover:scale-[1.02] focus:scale-[1.02] shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-200 ${
-                        isSubmitted
-                          ? 'bg-green-600 text-white cursor-not-allowed'
-                          : 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white active:scale-[0.98]'
-                      }`}
-                    >
-                      <div className="flex items-center justify-center space-x-2">
-                        {isSubmitted ? (
-                          <>
-                            <CheckCircle className="w-5 h-5 animate-pulse" />
-                            <span>Message Sent!</span>
-                          </>
-                        ) : (
-                          <>
-                            <span>Send message</span>
-                            <Send className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                          </>
-                        )}
-                      </div>
-                    </button>
-                  </div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitted}
+                    className={`w-full py-3.5 px-6 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      isSubmitted
+                        ? 'bg-emerald-600/20 text-emerald-400 cursor-not-allowed border border-emerald-500/30'
+                        : 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-900/20 active:scale-[0.98]'
+                    }`}
+                  >
+                    <div className="flex items-center justify-center gap-2">
+                      {isSubmitted ? (
+                        <>
+                          <CheckCircle className="w-5 h-5" />
+                          <span>Message Sent!</span>
+                        </>
+                      ) : (
+                        <>
+                          <span>Send message</span>
+                          <Send className="w-4 h-4" />
+                        </>
+                      )}
+                    </div>
+                  </button>
                 </form>
               </div>
             </div>
-
-          
-            <div className="absolute -top-4 -right-4 w-8 h-8 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full opacity-70 animate-bounce"></div>
-            <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full opacity-60 animate-pulse"></div>
           </div>
-
-         
-          <div className="col-span-1 lg:col-span-2 mt-8 flex justify-center">
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-  <Link
-    href="https://smartinvites.xyz/forms/68e930bf881d91001bd67f19/6903335d256533001abab3b9/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-block bg-green-700 hover:bg-emerald-700 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg"
-  >
-    Register Now
-  </Link>
-
-  
-</div>
+          
+          <div className="col-span-1 lg:col-span-2 mt-4 flex justify-center">
+            <Link
+              href="https://smartinvites.xyz/forms/68e930bf881d91001bd67f19/6903335d256533001abab3b9/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-lg shadow-blue-900/20"
+            >
+              Register Now
+            </Link>
           </div>
         </div>
 
-       
+        {/* Modal form */}
         {showRegistrationForm && (
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-             
-              <div className="bg-gradient-to-r from-slate-100 to-green-50 p-8 rounded-t-3xl text-center relative">
-                <h2 className="text-3xl font-bold text-slate-800 mb-2">Register for JosTechFest 2024</h2>
-                <p className="text-slate-600">Join us at JosTechFest. Complete the form to secure your spot.</p>
+          <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 z-50">
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+              <div className="bg-slate-800/50 p-8 rounded-t-3xl text-center relative border-b border-slate-800">
+                <h2 className="text-2xl font-bold text-white mb-2">Register for JosTechFest 2026</h2>
+                <p className="text-slate-400 text-sm">Complete the form to secure your spot.</p>
                 <button
                   onClick={() => setShowRegistrationForm(false)}
-                  className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 text-2xl"
+                  className="absolute top-6 right-6 text-slate-500 hover:text-white transition-colors"
                 >
-                  ×
+                  <X className="w-6 h-6" />
                 </button>
               </div>
 
-   
               <div className="p-8 space-y-6">
-          
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      First name
-                    </label>
+                    <label className="block text-sm font-medium text-slate-400 mb-2">First name</label>
                     <input
                       type="text"
                       name="firstName"
                       value={registrationData.firstName}
                       onChange={handleRegistrationChange}
                       placeholder="First name"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                      className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300 placeholder-slate-600"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      Last name
-                    </label>
+                    <label className="block text-sm font-medium text-slate-400 mb-2">Last name</label>
                     <input
                       type="text"
                       name="lastName"
                       value={registrationData.lastName}
                       onChange={handleRegistrationChange}
                       placeholder="Your surname"
-                      className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                      className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300 placeholder-slate-600"
                     />
                   </div>
                 </div>
 
-              
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Email <span className="text-red-500">*</span>
-                  </label>
+                  <label className="block text-sm font-medium text-slate-400 mb-2">Email <span className="text-red-400">*</span></label>
                   <input
                     type="email"
                     name="email"
                     value={registrationData.email}
                     onChange={handleRegistrationChange}
                     placeholder="you@company.com"
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300 placeholder-slate-600"
                   />
                 </div>
 
-           
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Phone number <span className="text-red-500">*</span>
-                  </label>
+                  <label className="block text-sm font-medium text-slate-400 mb-2">Phone number <span className="text-red-400">*</span></label>
                   <input
                     type="tel"
                     name="phoneNumber"
                     value={registrationData.phoneNumber}
                     onChange={handleRegistrationChange}
-                    placeholder="NGN+234 (900) 000-0000"
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    placeholder="+234 (900) 000-0000"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300 placeholder-slate-600"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    State <span className="text-red-500">*</span>
-                  </label>
+                  <label className="block text-sm font-medium text-slate-400 mb-2">State <span className="text-red-400">*</span></label>
                   <select
                     name="state"
                     value={registrationData.state}
                     onChange={handleRegistrationChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors bg-white"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300"
                   >
                     <option value="">Enter your State</option>
                     <option value="plateau">Plateau</option>
@@ -420,16 +376,13 @@ const ContactPage = () => {
                   </select>
                 </div>
 
-                
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Are you into Tech? <span className="text-red-500">*</span>
-                  </label>
+                  <label className="block text-sm font-medium text-slate-400 mb-2">Are you into Tech? <span className="text-red-400">*</span></label>
                   <select
                     name="intoTech"
                     value={registrationData.intoTech}
                     onChange={handleRegistrationChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors bg-white"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300"
                   >
                     <option value="">Select an option</option>
                     <option value="yes">Yes</option>
@@ -438,16 +391,13 @@ const ContactPage = () => {
                   </select>
                 </div>
 
-             
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Field of Interest <span className="text-red-500">*</span>
-                  </label>
+                  <label className="block text-sm font-medium text-slate-400 mb-2">Field of Interest <span className="text-red-400">*</span></label>
                   <select
                     name="fieldOfInterest"
                     value={registrationData.fieldOfInterest}
                     onChange={handleRegistrationChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors bg-white"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300"
                   >
                     <option value="">Select a Tech field of interest</option>
                     <option value="web-development">Web Development</option>
@@ -461,16 +411,13 @@ const ContactPage = () => {
                   </select>
                 </div>
 
-                
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    Gender <span className="text-red-500">*</span>
-                  </label>
+                  <label className="block text-sm font-medium text-slate-400 mb-2">Gender <span className="text-red-400">*</span></label>
                   <select
                     name="gender"
                     value={registrationData.gender}
                     onChange={handleRegistrationChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors bg-white"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300"
                   >
                     <option value="">Select your gender</option>
                     <option value="male">Male</option>
@@ -479,16 +426,13 @@ const ContactPage = () => {
                   </select>
                 </div>
 
-      
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">
-                    How did you hear about JosTechFest? <span className="text-red-500">*</span>
-                  </label>
+                  <label className="block text-sm font-medium text-slate-400 mb-2">How did you hear about us? <span className="text-red-400">*</span></label>
                   <select
                     name="howDidYouHear"
                     value={registrationData.howDidYouHear}
                     onChange={handleRegistrationChange}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors bg-white"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300"
                   >
                     <option value="">Select an option</option>
                     <option value="social-media">Social Media</option>
@@ -500,31 +444,25 @@ const ContactPage = () => {
                   </select>
                 </div>
 
-           
-                <div className="flex items-start space-x-3">
+                <div className="flex items-start space-x-3 pt-2">
                   <input
                     type="checkbox"
                     name="agreeToPrivacy"
                     checked={registrationData.agreeToPrivacy}
                     onChange={handleRegistrationChange}
-                    className="mt-1 w-4 h-4 text-green-600 border-slate-300 rounded focus:ring-green-500"
+                    className="mt-1 w-4 h-4 text-blue-600 bg-slate-950 border-slate-800 rounded focus:ring-blue-500 focus:ring-offset-slate-900"
                   />
-                  <label className="text-sm text-slate-600">
-                    You agree to our friendly{' '}
-                    <a href="#" className="text-green-600 hover:text-green-700 underline">
-                      privacy policy
-                    </a>
-                    .
+                  <label className="text-sm text-slate-400">
+                    You agree to our friendly <a href="#" className="text-blue-400 hover:text-blue-300 underline">privacy policy</a>.
                   </label>
                 </div>
 
-             
                 <form onSubmit={handleRegistrationSubmit}>
                   <button
                     type="submit"
-                    className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 shadow-lg hover:shadow-xl"
+                    className="w-full mt-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3.5 px-6 rounded-xl transition-colors duration-300 shadow-lg shadow-blue-900/20"
                   >
-                    Submit
+                    Submit Registration
                   </button>
                 </form>
               </div>

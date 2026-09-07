@@ -20,6 +20,12 @@ const eslintConfig = [
       "next-env.d.ts",
     ],
   },
+  {
+    rules: {
+      // Gallery and Bento Grid use native <img loading="lazy"> per design spec
+      "@next/next/no-img-element": "off",
+    },
+  },
 ];
 
 export default eslintConfig;

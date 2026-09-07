@@ -1,35 +1,179 @@
 @import "tailwindcss";
 
+/* ============================================================
+   TECHFEST 2026 — DESIGN TOKENS (Tailwind v4 @theme)
+   Cruip dark-mode aesthetic + Electric blue / Emerald / Indigo
+   ============================================================ */
+@theme {
+  /* Fonts */
+  --font-inter: "Inter", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+
+  /* Base palette — Slate canvas */
+  --color-slate-50:  #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+
+  /* Accent — Electric Blue */
+  --color-blue-400: #60a5fa;
+  --color-blue-500: #3b82f6;
+  --color-blue-600: #2563eb;
+  --color-blue-700: #1d4ed8;
+  --color-blue-900: #1e3a8a;
+
+  /* Accent — Emerald */
+  --color-emerald-400: #34d399;
+  --color-emerald-500: #10b981;
+  --color-emerald-600: #059669;
+
+  /* Accent — Indigo */
+  --color-indigo-400: #818cf8;
+  --color-indigo-500: #6366f1;
+  --color-indigo-600: #4f46e5;
+
+  /* Amber (kept for partner/sponsor hover) */
+  --color-amber-400: #fbbf24;
+
+  /* Keyframes */
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 30s linear infinite;
+  --animate-pulse-glow: pulse-glow 4s ease-in-out infinite;
+  --animate-blob: blob 10s infinite ease-in-out;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+/* ============================================================
+   GLOBAL BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  /* #f8f9fa  */
-  background-color:#f5f5f4;
+  background-color: #020617; /* slate-950 */
+  color: #94a3b8;            /* slate-400 */
+  font-family: var(--font-inter), var(--font-poppins), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* globals.css */
-
-.animation-delay-4000 {
-  animation-delay: 4s;
+/* Selection colour */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #ffffff;
 }
 
-
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   CSS CUSTOM PROPERTIES — GLOW COLOURS
+   ============================================================ */
+:root {
+  --glow-blue:    rgba(59, 130, 246, 0.15);
+  --glow-emerald: rgba(16, 185, 129, 0.10);
+  --glow-indigo:  rgba(99, 102, 241, 0.12);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
+@keyframes marquee-reverse {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
 
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%       { opacity: 0.7; transform: scale(1.05); }
+}
 
+@keyframes blob {
+  0%   { transform: translate(0px, 0px) scale(1); }
+  33%  { transform: translate(30px, -50px) scale(1.1); }
+  66%  { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+/* Cruip-style radial glow background */
+.glow-bg-blue {
+  background: radial-gradient(ellipse at 50% 0%, var(--glow-blue) 0%, transparent 70%);
+}
+
+.glow-bg-emerald {
+  background: radial-gradient(ellipse at 80% 20%, var(--glow-emerald) 0%, transparent 60%);
+}
+
+/* Marquee utilities */
+.animate-marquee          { animation: marquee 30s linear infinite; }
+.animate-marquee-slow     { animation: marquee 50s linear infinite; }
+.animate-marquee-reverse  { animation: marquee-reverse 30s linear infinite; }
+
+/* Bento glassmorphism card */
+.bento-card {
+  background: rgba(15, 23, 42, 0.6);      /* slate-900/60 */
+  border: 1px solid rgba(30, 41, 59, 1);  /* slate-800 */
+  backdrop-filter: blur(12px);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bento-card:hover {
+  border-color: rgba(51, 65, 85, 1);      /* slate-700 */
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.08), 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* Frosted pill badge */
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(51, 65, 85, 1);
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(8px);
+  font-size: 0.8125rem;
+  color: #cbd5e1;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Animation delay helpers */
+.animation-delay-150  { animation-delay: 150ms; }
+.animation-delay-300  { animation-delay: 300ms; }
+.animation-delay-4000 { animation-delay: 4000ms; }
+
+/* Sponsor logo monochrome */
+.logo-mono {
+  filter: grayscale(100%) brightness(2);
+  transition: filter 0.3s ease;
+}
+.logo-mono:hover {
+  filter: grayscale(0%) brightness(1);
+}
