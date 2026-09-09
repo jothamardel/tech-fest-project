@@ -9,18 +9,18 @@
   --font-inter: "Inter", sans-serif;
   --font-poppins: "Poppins", sans-serif;
 
-  /* Base palette — Slate canvas */
-  --color-slate-50:  #f8fafc;
-  --color-slate-100: #f1f5f9;
-  --color-slate-200: #e2e8f0;
-  --color-slate-300: #cbd5e1;
-  --color-slate-400: #94a3b8;
-  --color-slate-500: #64748b;
-  --color-slate-600: #475569;
-  --color-slate-700: #334155;
-  --color-slate-800: #1e293b;
-  --color-slate-900: #0f172a;
-  --color-slate-950: #020617;
+  /* Base palette — Dark Green canvas (replaces Slate) */
+  --color-slate-50:  #ecfdf5; /* emerald-50 */
+  --color-slate-100: #d1fae5; /* emerald-100 */
+  --color-slate-200: #a7f3d0; /* emerald-200 */
+  --color-slate-300: #6ee7b7; /* emerald-300 */
+  --color-slate-400: #34d399; /* emerald-400 */
+  --color-slate-500: #10b981; /* emerald-500 */
+  --color-slate-600: #059669; /* emerald-600 */
+  --color-slate-700: #047857; /* emerald-700 */
+  --color-slate-800: #065f46; /* emerald-800 */
+  --color-slate-900: #064e3b; /* emerald-900 */
+  --color-slate-950: #022c22; /* emerald-950 */
 
   /* Accent — Primary Green (Emerald) */
   --color-emerald-300: #6ee7b7;
@@ -53,8 +53,8 @@ html {
 }
 
 body {
-  background-color: #020617; /* slate-950 */
-  color: #94a3b8;            /* slate-400 */
+  background-color: #022c22; /* slate-950 (now dark green) */
+  color: #a7f3d0;            /* slate-400 (now light green) */
   font-family: var(--font-inter), var(--font-poppins), sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
