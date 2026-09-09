@@ -29,8 +29,8 @@ const speakers = [
 const sessionTags = ["AI Keynote", "Product", "Web3", "Startup Growth", "Future of Work"];
 
 const workshopTracks = [
-  { label: "AI / ML Engineering", color: "bg-blue-500/20 text-blue-300 border-blue-500/30" },
-  { label: "Web3 & Blockchain",   color: "bg-indigo-500/20 text-indigo-300 border-indigo-500/30" },
+  { label: "AI / ML Engineering", color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" },
+  { label: "Web3 & Blockchain",   color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" },
   { label: "Product Design",      color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" },
   { label: "Cloud DevOps",        color: "bg-slate-700 text-slate-300 border-slate-600" },
 ];
@@ -71,7 +71,7 @@ export default function BentoGrid() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <span className="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4">
+          <span className="inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-4">
             Event Highlights
           </span>
           <h2
@@ -124,7 +124,7 @@ export default function BentoGrid() {
             {/* Content */}
             <div className="relative z-10 flex h-full flex-col justify-end p-6">
               {/* Tag */}
-              <span className="mb-3 inline-block self-start rounded-full border border-blue-500/40 bg-blue-500/15 px-3 py-1 text-xs font-semibold tracking-wide text-blue-300">
+              <span className="mb-3 inline-block self-start rounded-full border border-emerald-500/40 bg-emerald-500/15 px-3 py-1 text-xs font-semibold tracking-wide text-emerald-300">
                 🎤 Keynote Stage
               </span>
 
@@ -141,7 +141,7 @@ export default function BentoGrid() {
                   {speakers.map((s, i) => (
                     <div
                       key={i}
-                      className="relative h-8 w-8 overflow-hidden rounded-full ring-2 ring-slate-950 border border-blue-500/60"
+                      className="relative h-8 w-8 overflow-hidden rounded-full ring-2 ring-slate-950 border border-emerald-500/60"
                       title={s.name}
                     >
                       <Image
@@ -174,7 +174,7 @@ export default function BentoGrid() {
               {/* CTA */}
               <Link
                 href="/speakers"
-                className="mt-5 self-start text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center gap-1"
+                className="mt-5 self-start text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors inline-flex items-center gap-1"
                 aria-label="View all speakers"
               >
                 View all speakers →
@@ -250,7 +250,7 @@ export default function BentoGrid() {
             />
 
             <div>
-              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-500/10">
+              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10">
                 <span aria-hidden="true" className="text-xl">⚗️</span>
               </div>
               <h3 className="text-lg font-bold text-white">Labs &amp; Workshops</h3>
@@ -290,8 +290,8 @@ export default function BentoGrid() {
             />
 
             <div>
-              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10">
-                <MapPin className="h-5 w-5 text-blue-400" aria-hidden="true" />
+              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10">
+                <MapPin className="h-5 w-5 text-emerald-400" aria-hidden="true" />
               </div>
               <h3 className="text-lg font-bold text-white">Venue &amp; Logistics</h3>
               <address className="mt-2 not-italic text-sm text-slate-400 leading-relaxed">
@@ -307,7 +307,7 @@ export default function BentoGrid() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View Sarau Event Center on Google Maps"
-                className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                className="text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
               >
                 View on Google Maps →
               </a>
@@ -373,8 +373,8 @@ export default function BentoGrid() {
                   key={label}
                   className="flex flex-col gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4"
                 >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 border border-blue-500/20">
-                    <Icon className="h-4 w-4 text-blue-400" aria-hidden="true" />
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                    <Icon className="h-4 w-4 text-emerald-400" aria-hidden="true" />
                   </div>
                   <span className="text-sm font-semibold text-slate-200">{label}</span>
                   <span className="text-xs text-slate-500">{sub}</span>

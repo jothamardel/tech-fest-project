@@ -232,7 +232,7 @@ export default function GalleriesPage() {
                 transition={{ duration: 0.5, delay: (index % 10) * 0.04 }}
                 onClick={() => openLightbox(index)}
                 aria-label={`View photo: ${photo.alt}`}
-                className="group relative block w-full break-inside-avoid overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+                className="group relative block w-full break-inside-avoid overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
               >
                 <img
                   src={toUrl(photo.id)}

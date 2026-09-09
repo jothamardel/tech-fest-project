@@ -101,7 +101,7 @@ export default function Partners() {
           transition={{ duration: 0.6 }}
           className="mb-14 text-center"
         >
-          <span className="inline-block rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-4">
+          <span className="inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-4">
             Backed By
           </span>
           <h2

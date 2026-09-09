@@ -29,7 +29,7 @@ function HostCard({ host, rotate, delay }: { host: Host; rotate: string; delay: 
       transition={{ duration: 0.8, delay, ease: "easeOut" }}
     >
       <article
-        className="relative w-56 h-80 sm:w-64 sm:h-96 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl shadow-black/60 transition-shadow duration-300 hover:shadow-blue-900/20"
+        className="relative w-56 h-80 sm:w-64 sm:h-96 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl shadow-black/60 transition-shadow duration-300 hover:shadow-emerald-900/20"
         aria-label={`${host.name}, ${host.role}`}
       >
         {/* Gradient overlay — top */}
@@ -43,7 +43,7 @@ function HostCard({ host, rotate, delay }: { host: Host; rotate: string; delay: 
 
         {/* Name + role */}
         <div className="absolute top-4 left-4 z-20">
-          <p className="text-xs font-semibold text-blue-400">{host.name}</p>
+          <p className="text-xs font-semibold text-emerald-400">{host.name}</p>
           <p className="text-xs text-slate-500 mt-0.5">{host.role}</p>
         </div>
 
@@ -96,7 +96,7 @@ export default function Host() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <span className="inline-block rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-indigo-400 mb-4">
+          <span className="inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-4">
             Meet the Anchors
           </span>
           <h2

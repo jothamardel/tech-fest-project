@@ -41,7 +41,7 @@ export default function Venue() {
           {/* Address row */}
           <div className="mt-4 flex items-start gap-3">
             <MapPin
-              className="mt-0.5 h-5 w-5 flex-shrink-0 text-blue-400"
+              className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-400"
               aria-hidden="true"
             />
             <address className="not-italic text-slate-300 text-sm leading-relaxed">
@@ -58,7 +58,7 @@ export default function Venue() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="View Sarau Event Center on Google Maps"
-              className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
+              className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
             >
               View on Google Maps →
             </a>
@@ -99,8 +99,8 @@ export default function Venue() {
                 }}
               >
                 <span className="relative flex items-center justify-center">
-                  <span className="absolute inline-flex h-6 w-6 rounded-full bg-blue-500 opacity-60 animate-ping" />
-                  <span className="relative inline-flex h-3 w-3 rounded-full bg-blue-500 border-2 border-white shadow" />
+                  <span className="absolute inline-flex h-6 w-6 rounded-full bg-emerald-500 opacity-60 animate-ping" />
+                  <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500 border-2 border-white shadow" />
                 </span>
               </div>
             </div>

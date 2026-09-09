@@ -132,7 +132,7 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Register for TechFest 2026"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-blue-600 hover:bg-blue-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-blue-900/40 transition-all duration-200 hover:shadow-blue-700/40"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-emerald-600 hover:bg-emerald-500 px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-emerald-900/40 transition-all duration-200 hover:shadow-emerald-700/40"
           >
             Register Now
             <svg

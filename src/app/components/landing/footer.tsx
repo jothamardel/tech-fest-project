@@ -25,7 +25,7 @@ export default function Footer() {
       className="relative bg-slate-950 border-t border-slate-800"
     >
       {/* Top gradient line */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16">
         {/* Main grid */}
@@ -133,12 +133,12 @@ export default function Footer() {
                 type="email"
                 placeholder="your@email.com"
                 aria-label="Email address for newsletter"
-                className="w-full rounded-full border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/40 transition-all"
+                className="w-full rounded-full border border-slate-700 bg-slate-900 px-4 py-2.5 text-sm text-slate-100 placeholder:text-slate-600 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/40 transition-all"
               />
               <button
                 type="submit"
                 aria-label="Subscribe to TechFest newsletter"
-                className="flex-shrink-0 rounded-full bg-blue-600 hover:bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-150"
+                className="flex-shrink-0 rounded-full bg-emerald-600 hover:bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-150"
               >
                 Subscribe
               </button>

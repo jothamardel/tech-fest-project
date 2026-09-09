@@ -104,7 +104,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images, aspectRatio = "4/3" }
             onClick={() => goToSlide(index)}
             className={`h-1.5 rounded-full transition-all duration-300 ${
               index === currentIndex
-                ? "bg-blue-500 w-8"
+                ? "bg-emerald-500 w-8"
                 : "bg-slate-700 hover:bg-slate-500 w-2"
             }`}
             aria-label={`Go to slide ${index + 1}`}
@@ -172,12 +172,12 @@ const AboutPage: React.FC = () => {
               }}
             >
               <div>
-                <span className="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-400 mb-6">
+                <span className="inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-6">
                   Our Mission
                 </span>
                 <h1 className="text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight tracking-tight">
                   Unleashing Potential, <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-400">
                     Igniting Innovation.
                   </span>
                 </h1>
@@ -224,7 +224,7 @@ const AboutPage: React.FC = () => {
               <ImageSlider images={heroSliderImages} aspectRatio="4/3" />
               {/* Decorative blurs */}
               <div className="absolute -top-12 -right-12 w-32 h-32 bg-emerald-500/20 blur-3xl rounded-full"></div>
-              <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-blue-500/20 blur-3xl rounded-full"></div>
+              <div className="absolute -bottom-12 -left-12 w-32 h-32 bg-emerald-500/20 blur-3xl rounded-full"></div>
             </motion.div>
           </div>
         </div>
@@ -255,7 +255,7 @@ const AboutPage: React.FC = () => {
                 <h2 className="text-4xl lg:text-5xl font-black text-white mb-6 tracking-tight">
                   Who We Are
                 </h2>
-                <div className="w-16 h-1 rounded-full bg-gradient-to-r from-blue-500 to-emerald-500 mb-8"></div>
+                <div className="w-16 h-1 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-500 mb-8"></div>
               </div>
 
               <div className="space-y-6 text-slate-400 text-lg">
@@ -289,7 +289,7 @@ const AboutPage: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="rounded-3xl border border-slate-800 bg-slate-900/50 p-10 sm:p-16 backdrop-blur-sm relative overflow-hidden"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent pointer-events-none" />
             
             <h2 className="text-4xl font-black text-white mb-6 tracking-tight relative z-10">
               Ready to Be Part of the Innovation?
@@ -304,7 +304,7 @@ const AboutPage: React.FC = () => {
                 href="https://smartinvites.xyz/forms/68e930bf881d91001bd67f19/6903335d256533001abab3b9/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex justify-center items-center bg-blue-600 hover:bg-blue-500 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg shadow-blue-900/20"
+                className="inline-flex justify-center items-center bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg shadow-emerald-900/20"
               >
                 Register Now
               </Link>

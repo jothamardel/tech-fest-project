@@ -51,7 +51,7 @@ export default function Agenda() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <span className="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4">
+          <span className="inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-4">
             Programme
           </span>
           <h2
@@ -83,7 +83,7 @@ export default function Agenda() {
                   <h3 className="text-lg font-bold text-white">{day.day}</h3>
                   <p className="mt-1 text-sm text-slate-500">{day.date}</p>
                 </div>
-                <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-1 text-xs font-semibold text-blue-400">
+                <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-400">
                   Day {index + 1}
                 </span>
               </div>
@@ -94,7 +94,7 @@ export default function Agenda() {
                   <li key={i} className="flex items-start gap-4">
                     {/* Timeline line + dot */}
                     <div className="flex flex-col items-center">
-                      <div className="h-2.5 w-2.5 rounded-full bg-blue-500 flex-shrink-0 mt-1 ring-2 ring-blue-500/20" />
+                      <div className="h-2.5 w-2.5 rounded-full bg-emerald-500 flex-shrink-0 mt-1 ring-2 ring-emerald-500/20" />
                       {i < day.events.length - 1 && (
                         <div className="w-px flex-1 bg-slate-800 mt-1 min-h-[1.5rem]" />
                       )}

@@ -124,7 +124,7 @@ export default function Gallery() {
               />
 
               {/* Ring highlight on hover */}
-              <div className="absolute inset-0 ring-0 rounded-2xl group-hover:ring-1 group-hover:ring-blue-500/30 transition-all duration-300" />
+              <div className="absolute inset-0 ring-0 rounded-2xl group-hover:ring-1 group-hover:ring-emerald-500/30 transition-all duration-300" />
             </motion.div>
           ))}
         </div>

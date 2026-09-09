@@ -60,7 +60,7 @@ export default function Speakers() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4">
+            <span className="inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-4">
               Meet Our Speakers
             </span>
             <h1 className="text-5xl sm:text-6xl font-black text-white tracking-tight">
@@ -109,7 +109,7 @@ export default function Speakers() {
                 <p className="mt-1 text-sm text-slate-500">{speaker.role}</p>
                 <div className="mt-3 h-px bg-slate-800" />
                 <div className="mt-3 flex gap-2">
-                  <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-xs text-blue-300">
+                  <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-xs text-emerald-300">
                     TechFest 2026
                   </span>
                   <span className="rounded-full border border-slate-700 bg-slate-800/60 px-2.5 py-0.5 text-xs text-slate-400">

@@ -98,13 +98,13 @@ const ContactPage = () => {
       
       {/* Ambient glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto z-10">
         <div className="text-center mb-16">
-          <span className="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4">
+          <span className="inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-4">
             Get in Touch
           </span>
           <h1 className="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight">
@@ -163,7 +163,7 @@ const ContactPage = () => {
                     key={index}
                     onClick={() => setCurrentSlide(index)}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
-                      index === currentSlide ? 'bg-blue-500 w-8' : 'bg-slate-700 hover:bg-slate-500 w-2'
+                      index === currentSlide ? 'bg-emerald-500 w-8' : 'bg-slate-700 hover:bg-slate-500 w-2'
                     }`}
                   />
                 ))}
@@ -177,12 +177,12 @@ const ContactPage = () => {
               <div className="space-y-6 flex-1 flex flex-col relative z-10">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="relative group">
-                    <label className="block text-sm font-semibold text-slate-400 mb-2 transition-colors duration-300 group-focus-within:text-blue-400">
+                    <label className="block text-sm font-semibold text-slate-400 mb-2 transition-colors duration-300 group-focus-within:text-emerald-400">
                       Name
                     </label>
                     <div className="relative">
                       <User className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-all duration-300 ${
-                        focusedField === 'name' ? 'text-blue-500' : 'text-slate-500'
+                        focusedField === 'name' ? 'text-emerald-500' : 'text-slate-500'
                       }`} />
                       <input
                         type="text"
@@ -192,18 +192,18 @@ const ContactPage = () => {
                         onFocus={() => setFocusedField('name')}
                         onBlur={() => setFocusedField(null)}
                         placeholder="Your name"
-                        className="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-slate-600 text-slate-300 text-sm outline-none"
+                        className="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all duration-300 placeholder-slate-600 text-slate-300 text-sm outline-none"
                       />
                     </div>
                   </div>
 
                   <div className="relative group">
-                    <label className="block text-sm font-semibold text-slate-400 mb-2 transition-colors duration-300 group-focus-within:text-blue-400">
+                    <label className="block text-sm font-semibold text-slate-400 mb-2 transition-colors duration-300 group-focus-within:text-emerald-400">
                       Email
                     </label>
                     <div className="relative">
                       <Mail className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 transition-all duration-300 ${
-                        focusedField === 'email' ? 'text-blue-500' : 'text-slate-500'
+                        focusedField === 'email' ? 'text-emerald-500' : 'text-slate-500'
                       }`} />
                       <input
                         type="email"
@@ -213,19 +213,19 @@ const ContactPage = () => {
                         onFocus={() => setFocusedField('email')}
                         onBlur={() => setFocusedField(null)}
                         placeholder="example@email.com"
-                        className="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-slate-600 text-slate-300 text-sm outline-none"
+                        className="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all duration-300 placeholder-slate-600 text-slate-300 text-sm outline-none"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div className="relative group flex-1">
-                  <label className="block text-sm font-semibold text-slate-400 mb-2 transition-colors duration-300 group-focus-within:text-blue-400">
+                  <label className="block text-sm font-semibold text-slate-400 mb-2 transition-colors duration-300 group-focus-within:text-emerald-400">
                     Description
                   </label>
                   <div className="relative h-full min-h-[150px]">
                     <MessageSquare className={`absolute left-3 top-4 w-4 h-4 transition-all duration-300 ${
-                      focusedField === 'description' ? 'text-blue-500' : 'text-slate-500'
+                      focusedField === 'description' ? 'text-emerald-500' : 'text-slate-500'
                     }`} />
                     <textarea
                       name="description"
@@ -234,7 +234,7 @@ const ContactPage = () => {
                       onFocus={() => setFocusedField('description')}
                       onBlur={() => setFocusedField(null)}
                       placeholder="Include as much details as you can"
-                      className="w-full h-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 placeholder-slate-600 text-slate-300 text-sm outline-none resize-none"
+                      className="w-full h-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all duration-300 placeholder-slate-600 text-slate-300 text-sm outline-none resize-none"
                     />
                   </div>
                 </div>
@@ -242,11 +242,11 @@ const ContactPage = () => {
                 <div className="text-center mt-2">
                   <p className="text-xs text-slate-500">
                     By continuing, you agree to our{' '}
-                    <a href="#" className="text-blue-400 hover:text-blue-300 underline transition-colors">
+                    <a href="#" className="text-emerald-400 hover:text-emerald-300 underline transition-colors">
                       Terms of Use
                     </a>{' '}
                     and{' '}
-                    <a href="#" className="text-blue-400 hover:text-blue-300 underline transition-colors">
+                    <a href="#" className="text-emerald-400 hover:text-emerald-300 underline transition-colors">
                       Privacy policy
                     </a>
                   </p>
@@ -256,10 +256,10 @@ const ContactPage = () => {
                   <button
                     type="submit"
                     disabled={isSubmitted}
-                    className={`w-full py-3.5 px-6 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    className={`w-full py-3.5 px-6 rounded-xl font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500 ${
                       isSubmitted
                         ? 'bg-emerald-600/20 text-emerald-400 cursor-not-allowed border border-emerald-500/30'
-                        : 'bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-900/20 active:scale-[0.98]'
+                        : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-900/20 active:scale-[0.98]'
                     }`}
                   >
                     <div className="flex items-center justify-center gap-2">
@@ -286,7 +286,7 @@ const ContactPage = () => {
               href="https://smartinvites.xyz/forms/68e930bf881d91001bd67f19/6903335d256533001abab3b9/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-blue-600 hover:bg-blue-500 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-lg shadow-blue-900/20"
+              className="inline-block bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-200 shadow-lg shadow-emerald-900/20"
             >
               Register Now
             </Link>
@@ -318,7 +318,7 @@ const ContactPage = () => {
                       value={registrationData.firstName}
                       onChange={handleRegistrationChange}
                       placeholder="First name"
-                      className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300 placeholder-slate-600"
+                      className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-emerald-500 outline-none text-slate-300 placeholder-slate-600"
                     />
                   </div>
                   <div>
@@ -329,7 +329,7 @@ const ContactPage = () => {
                       value={registrationData.lastName}
                       onChange={handleRegistrationChange}
                       placeholder="Your surname"
-                      className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300 placeholder-slate-600"
+                      className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-emerald-500 outline-none text-slate-300 placeholder-slate-600"
                     />
                   </div>
                 </div>
@@ -342,7 +342,7 @@ const ContactPage = () => {
                     value={registrationData.email}
                     onChange={handleRegistrationChange}
                     placeholder="you@company.com"
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300 placeholder-slate-600"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-emerald-500 outline-none text-slate-300 placeholder-slate-600"
                   />
                 </div>
 
@@ -354,7 +354,7 @@ const ContactPage = () => {
                     value={registrationData.phoneNumber}
                     onChange={handleRegistrationChange}
                     placeholder="+234 (900) 000-0000"
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300 placeholder-slate-600"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-emerald-500 outline-none text-slate-300 placeholder-slate-600"
                   />
                 </div>
 
@@ -364,7 +364,7 @@ const ContactPage = () => {
                     name="state"
                     value={registrationData.state}
                     onChange={handleRegistrationChange}
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-emerald-500 outline-none text-slate-300"
                   >
                     <option value="">Enter your State</option>
                     <option value="plateau">Plateau</option>
@@ -382,7 +382,7 @@ const ContactPage = () => {
                     name="intoTech"
                     value={registrationData.intoTech}
                     onChange={handleRegistrationChange}
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-emerald-500 outline-none text-slate-300"
                   >
                     <option value="">Select an option</option>
                     <option value="yes">Yes</option>
@@ -397,7 +397,7 @@ const ContactPage = () => {
                     name="fieldOfInterest"
                     value={registrationData.fieldOfInterest}
                     onChange={handleRegistrationChange}
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-emerald-500 outline-none text-slate-300"
                   >
                     <option value="">Select a Tech field of interest</option>
                     <option value="web-development">Web Development</option>
@@ -417,7 +417,7 @@ const ContactPage = () => {
                     name="gender"
                     value={registrationData.gender}
                     onChange={handleRegistrationChange}
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-emerald-500 outline-none text-slate-300"
                   >
                     <option value="">Select your gender</option>
                     <option value="male">Male</option>
@@ -432,7 +432,7 @@ const ContactPage = () => {
                     name="howDidYouHear"
                     value={registrationData.howDidYouHear}
                     onChange={handleRegistrationChange}
-                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-blue-500 outline-none text-slate-300"
+                    className="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl focus:ring-1 focus:ring-emerald-500 outline-none text-slate-300"
                   >
                     <option value="">Select an option</option>
                     <option value="social-media">Social Media</option>
@@ -450,17 +450,17 @@ const ContactPage = () => {
                     name="agreeToPrivacy"
                     checked={registrationData.agreeToPrivacy}
                     onChange={handleRegistrationChange}
-                    className="mt-1 w-4 h-4 text-blue-600 bg-slate-950 border-slate-800 rounded focus:ring-blue-500 focus:ring-offset-slate-900"
+                    className="mt-1 w-4 h-4 text-emerald-600 bg-slate-950 border-slate-800 rounded focus:ring-emerald-500 focus:ring-offset-slate-900"
                   />
                   <label className="text-sm text-slate-400">
-                    You agree to our friendly <a href="#" className="text-blue-400 hover:text-blue-300 underline">privacy policy</a>.
+                    You agree to our friendly <a href="#" className="text-emerald-400 hover:text-emerald-300 underline">privacy policy</a>.
                   </label>
                 </div>
 
                 <form onSubmit={handleRegistrationSubmit}>
                   <button
                     type="submit"
-                    className="w-full mt-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold py-3.5 px-6 rounded-xl transition-colors duration-300 shadow-lg shadow-blue-900/20"
+                    className="w-full mt-4 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-3.5 px-6 rounded-xl transition-colors duration-300 shadow-lg shadow-emerald-900/20"
                   >
                     Submit Registration
                   </button>

@@ -45,7 +45,7 @@ export default function KeynoteSpeakers() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <span className="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4">
+          <span className="inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-4">
             Keynote Speakers
           </span>
           <h2
@@ -100,7 +100,7 @@ export default function KeynoteSpeakers() {
                 <p className="mt-1 text-sm text-slate-500">{speaker.role}</p>
                 <div className="mt-3 h-px bg-slate-800" />
                 <div className="mt-3 flex gap-2">
-                  <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-2.5 py-0.5 text-xs text-blue-300">
+                  <span className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 text-xs text-emerald-300">
                     TechFest 2026
                   </span>
                   <span className="rounded-full border border-slate-700 bg-slate-800/60 px-2.5 py-0.5 text-xs text-slate-400">
@@ -123,7 +123,7 @@ export default function KeynoteSpeakers() {
           <Link
             href="/speakers"
             aria-label="View all TechFest 2026 speakers"
-            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-blue-600 hover:bg-blue-500 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-blue-900/40 transition-all duration-200"
+            className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-emerald-600 hover:bg-emerald-500 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-900/40 transition-all duration-200"
           >
             View All Speakers
             <svg
