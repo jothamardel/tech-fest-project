@@ -301,7 +301,7 @@ const AboutPage: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
               <Link
-                href="https://smartinvites.xyz/forms/68e930bf881d91001bd67f19/6903335d256533001abab3b9/"
+                href="https://register.techfest.com.ng"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex justify-center items-center bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-200 transform hover:scale-105 shadow-lg shadow-emerald-900/20"

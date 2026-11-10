@@ -83,7 +83,7 @@ export default function Header() {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center gap-3">
           <Link
-            href="https://smartinvites.xyz/forms/68e930bf881d91001bd67f19/6903335d256533001abab3b9/"
+            href="https://register.techfest.com.ng"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Register for TechFest 2026"
@@ -142,7 +142,7 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href="https://smartinvites.xyz/forms/68e930bf881d91001bd67f19/6903335d256533001abab3b9/"
+            href="https://register.techfest.com.ng"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
