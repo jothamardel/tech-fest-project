@@ -114,8 +114,8 @@ export default function Hero() {
           variants={fadeDown(0.3)}
           className="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed"
         >
-          Africa&apos;s most energetic tech event returns — two powerful days of keynotes,
-          hands-on workshops, and open-floor networking designed to accelerate the next
+          Africa&apos;s most energetic tech event returns — one powerful day of keynotes,
+          focused breakout sessions, and open-floor networking designed to accelerate the next
           generation of African builders.
         </motion.p>
 
@@ -189,9 +189,9 @@ export default function Hero() {
         >
           {[
             { value: "500+", label: "Builders" },
-            { value: "6+", label: "Keynote Speakers" },
-            { value: "2", label: "Action-Packed Days" },
-            { value: "Jos", label: "Plateau State" },
+            { value: "15", label: "Session Speakers" },
+            { value: "4", label: "Focus Sessions" },
+            { value: "26 Nov", label: "Jos, Plateau State" },
           ].map(({ value, label }) => (
             <div key={label} className="flex flex-col items-center gap-1">
               <span className="text-2xl font-bold text-white">{value}</span>

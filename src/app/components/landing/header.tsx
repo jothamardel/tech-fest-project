@@ -7,28 +7,27 @@ import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/#sessions", label: "Sessions" },
+  { href: "/speakers", label: "Speakers" },
   { href: "/about", label: "About" },
   { href: "/community", label: "Community" },
-  { href: "/speakers", label: "Speakers" },
   { href: "/contact", label: "Contact" },
 ];
 
 const tickerWords = [
   "TechFest 2026",
-  "AI x Industry",
-  "Innovation",
-  "Networking",
-  "Builders",
+  "AI x Education",
+  "AI x Business",
+  "AI x Creatives",
+  "Startup Ecosystem & Policy",
   "26 Nov, Jos",
-  "Workshops",
   "#JosTechFest",
   "TechFest 2026",
-  "AI x Industry",
-  "Innovation",
-  "Networking",
-  "Builders",
+  "AI x Education",
+  "AI x Business",
+  "AI x Creatives",
+  "Startup Ecosystem & Policy",
   "26 Nov, Jos",
-  "Workshops",
   "#JosTechFest",
 ];
 
@@ -67,12 +66,12 @@ export default function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav aria-label="Primary navigation" className="hidden md:flex items-center gap-7 text-sm font-medium">
+        <nav aria-label="Primary" className="hidden md:flex items-center gap-7 text-sm font-medium">
           {navLinks.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
-              className="text-slate-400 hover:text-white transition-colors duration-150 relative group"
+              className="text-slate-400 hover:text-white transition-colors duration-150 relative group focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-blue-400"
             >
               {label}
               <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-emerald-500 transition-all duration-200 group-hover:w-full" />
@@ -96,7 +95,8 @@ export default function Header() {
 
         {/* Mobile menu toggle */}
         <button
-          className="md:hidden text-slate-300 hover:text-white transition-colors p-1"
+          type="button"
+          className="md:hidden text-slate-300 hover:text-white transition-colors p-1 cursor-pointer"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -112,7 +112,7 @@ export default function Header() {
           ${scrolled ? "bg-slate-900/95 border-slate-800" : "bg-slate-900/80 border-slate-800/60"}`}
         aria-hidden="true"
       >
-        <div className="flex items-center gap-6 text-xs font-medium text-slate-500 animate-marquee whitespace-nowrap">
+        <div className="flex items-center gap-6 text-xs font-medium text-slate-400 animate-marquee whitespace-nowrap">
           {tickerWords.map((word, i) => (
             <span key={i} className="flex items-center gap-3">
               <span>{word}</span>
@@ -128,7 +128,7 @@ export default function Header() {
       {open && (
         <nav
           id="mobile-menu"
-          aria-label="Mobile navigation"
+          aria-label="Mobile"
           className="md:hidden flex flex-col items-center gap-5 py-6 bg-slate-950/98 backdrop-blur-lg border-b border-slate-800 shadow-xl"
         >
           {navLinks.map(({ href, label }) => (

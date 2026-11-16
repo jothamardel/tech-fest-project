@@ -2,62 +2,95 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Mic } from "lucide-react";
+import {
+  TECHFEST_ANCHORS,
+  getPersonInitials,
+  type EventAnchor,
+} from "@/data/sessions";
 
-interface Host {
-  name: string;
-  role: string;
-  image: string;
-}
+function HostCard({
+  host,
+  rotate,
+  delay,
+}: {
+  host: EventAnchor;
+  rotate: string;
+  delay: number;
+}) {
+  const initials = getPersonInitials(host.name);
 
-const hosts: Host[] = [
-  { name: "Sam Adebayo",      role: "Anchor", image: "/images/ancor7.jpg" },
-  { name: "Winifred Wade",    role: "Anchor", image: "/images/ancor1.jpg" },
-  { name: "Judith Nyior",     role: "Anchor", image: "/images/ancor6.jpg" },
-  { name: "Ajifa Solomon",    role: "Anchor", image: "/images/ancor2.jpg" },
-  { name: "Rinret Keswet",    role: "Anchor", image: "/images/ancor5.jpg" },
-  { name: "Tamimia Esther Nuhu", role: "Anchor", image: "/images/ancor3.jpg" },
-];
-
-function HostCard({ host, rotate, delay }: { host: Host; rotate: string; delay: number }) {
   return (
     <motion.div
       className={`md:${rotate}`}
-      whileHover={{ scale: 1.06, rotate: 0 }}
-      initial={{ opacity: 0, y: 60 }}
+      whileHover={{ scale: 1.04, rotate: 0 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8, delay, ease: "easeOut" }}
+      transition={{ duration: 0.7, delay, ease: [0.32, 0.72, 0, 1] }}
     >
-      <article
-        className="relative w-56 h-80 sm:w-64 sm:h-96 overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 shadow-2xl shadow-black/60 transition-shadow duration-300 hover:shadow-emerald-900/20"
-        aria-label={`${host.name}, ${host.role}`}
-      >
-        {/* Gradient overlay — top */}
-        <div
-          className="absolute inset-0 z-10"
-          style={{
-            background:
-              "linear-gradient(to bottom, rgba(2,6,23,0.7) 0%, transparent 30%, rgba(2,6,23,0.85) 100%)",
-          }}
-        />
+      <div className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-1.5 shadow-2xl shadow-black/60">
+        <article
+          className="relative w-64 h-88 sm:w-72 sm:h-96 overflow-hidden rounded-[calc(2rem-0.375rem)] bg-slate-900 shadow-[inset_0_1px_1px_rgba(255,255,255,0.12)]"
+          aria-label={`${host.name}, ${host.role}`}
+        >
+          {/* Gradient overlay */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 z-10"
+            style={{
+              background:
+                "linear-gradient(to bottom, rgba(2,6,23,0.75) 0%, transparent 35%, rgba(2,6,23,0.9) 100%)",
+            }}
+          />
 
-        {/* Name + role */}
-        <div className="absolute top-4 left-4 z-20">
-          <p className="text-xs font-semibold text-emerald-400">{host.name}</p>
-          <p className="text-xs text-slate-500 mt-0.5">{host.role}</p>
-        </div>
+          {/* Name + role */}
+          <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between">
+            <div>
+              <p className="text-sm font-bold text-white">{host.name}</p>
+              <p className="text-xs text-indigo-400 font-medium mt-0.5">
+                {host.role}
+              </p>
+            </div>
+            <span className="flex h-7 w-7 items-center justify-center rounded-full border border-indigo-500/30 bg-indigo-500/15 text-indigo-300">
+              <Mic className="h-3.5 w-3.5" aria-hidden="true" />
+            </span>
+          </div>
 
-        <Image
-          src={host.image}
-          alt={`${host.name} — TechFest Anchor`}
-          fill
-          sizes="(max-width: 640px) 56vw, 256px"
-          className="object-cover"
-        />
-      </article>
+          {host.image ? (
+            <Image
+              src={host.image}
+              alt={`${host.name} — TechFest Anchor`}
+              fill
+              sizes="(max-width: 640px) 64vw, 288px"
+              className="object-cover object-top"
+            />
+          ) : (
+            <div
+              className="flex h-full w-full flex-col items-center justify-center p-6 text-center"
+              style={{
+                background:
+                  "radial-gradient(circle at 50% 45%, rgba(99,102,241,0.3) 0%, rgba(15,23,42,0.98) 72%)",
+              }}
+            >
+              <div
+                className="flex h-24 w-24 items-center justify-center rounded-full border border-indigo-500/40 bg-indigo-500/15 text-3xl font-black tracking-wider text-white shadow-inner"
+                aria-hidden="true"
+              >
+                {initials}
+              </div>
+              <span className="mt-4 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-300">
+                TechFest 2026 Anchor
+              </span>
+            </div>
+          )}
+        </article>
+      </div>
     </motion.div>
   );
 }
+
+const ROTATIONS = ["-rotate-2", "rotate-1", "rotate-2"];
 
 export default function Host() {
   return (
@@ -96,7 +129,7 @@ export default function Host() {
           transition={{ duration: 0.6 }}
           className="mb-16 text-center"
         >
-          <span className="inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-4">
+          <span className="inline-block rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-indigo-400 mb-4">
             Meet the Anchors
           </span>
           <h2
@@ -106,22 +139,20 @@ export default function Host() {
             Our Anchors
           </h2>
           <p className="mt-4 text-slate-400 max-w-lg mx-auto">
-            Guiding the flow of TechFest with energy, insight, and passion.
+            Guiding the flow of Jos TechFest 2026 across all sessions with energy, insight, and passion.
           </p>
         </motion.div>
 
-        {/* Top row — 3 cards */}
-        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-center md:mb-8">
-          <HostCard host={hosts[0]} rotate="-rotate-3"  delay={0} />
-          <HostCard host={hosts[1]} rotate="rotate-3"   delay={0.15} />
-          <HostCard host={hosts[2]} rotate="-rotate-2"  delay={0.3} />
-        </div>
-
-        {/* Bottom row — 3 cards */}
-        <div className="flex flex-col items-center gap-6 md:flex-row md:justify-center mt-0 md:mt-2">
-          <HostCard host={hosts[3]} rotate="rotate-3"   delay={0.45} />
-          <HostCard host={hosts[4]} rotate="-rotate-3"  delay={0.6} />
-          <HostCard host={hosts[5]} rotate="rotate-2"   delay={0.75} />
+        {/* Single row — Samuel Adebayo, Judith Nyior, and Anna */}
+        <div className="flex flex-col items-center gap-8 md:flex-row md:justify-center">
+          {TECHFEST_ANCHORS.map((host, idx) => (
+            <HostCard
+              key={host.id}
+              host={host}
+              rotate={ROTATIONS[idx % ROTATIONS.length]}
+              delay={idx * 0.15}
+            />
+          ))}
         </div>
       </div>
     </section>

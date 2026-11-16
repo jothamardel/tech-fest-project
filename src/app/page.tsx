@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Jos TechFest 2026 — AI x Industry: Automating the Future of Work",
+  title:
+    "Jos TechFest 2026 — AI x Education, Business, Creatives & Startup Policy",
   description:
-    "Join Africa's most energetic tech event. Two days of keynotes, workshops, networking, and hands-on sessions in Jos, Plateau State — 26 November 2026.",
+    "Join Africa's most energetic tech event for a full day of sessions on AI x Education, AI x Business, AI x Creatives, and Startup Ecosystem & Policy in Jos — 26 November 2026.",
 };
 
 import Hero from "./components/landing/hero";
 import BentoGrid from "./components/landing/bento-grid";
+import Sessions from "./components/landing/sessions";
 import Gallery from "./components/landing/gallery";
 import KeynoteSpeakers from "./components/landing/keySpeakers";
 import Host from "./components/landing/host";
@@ -23,6 +25,9 @@ export default function LandingPage() {
 
       {/* Bento Grid Highlights */}
       <BentoGrid />
+
+      {/* Featured Sessions: AI x Education, AI x Business, AI x Creatives */}
+      <Sessions />
 
       {/* Photo Gallery Strip */}
       <Gallery />

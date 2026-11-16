@@ -3,7 +3,19 @@
 import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Users, Coffee, Layers } from "lucide-react";
+import {
+  MapPin,
+  Users,
+  Coffee,
+  Layers,
+  Mic,
+  FlaskConical,
+  Handshake,
+} from "lucide-react";
+import {
+  ALL_SESSION_SPEAKERS,
+  CONFIRMED_IMAGE_SPEAKERS,
+} from "@/data/sessions";
 
 /* ── Animation helpers ───────────────────────────────────── */
 const cardVariant = (delay = 0): Variants => ({
@@ -11,34 +23,44 @@ const cardVariant = (delay = 0): Variants => ({
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay, ease: [0.25, 0.1, 0.25, 1] },
+    transition: { duration: 0.6, delay, ease: [0.32, 0.72, 0, 1] },
   },
 });
 
-/* ── Speaker data ────────────────────────────────────────── */
-const speakers = [
-  { name: "Mr. David Daser",             role: "Speaker", image: "/images/Daser.jpg" },
-  { name: "Oluwafunmilayo Para Mallam",  role: "Speaker", image: "/images/Funmi.jpg" },
-  { name: "Prof. Goselle Obed Nanjul",   role: "Speaker", image: "/images/Gosale.jpg" },
-  { name: "Engr. Christie Dasaro",       role: "Speaker", image: "/images/Chriatie.jpg" },
-  { name: "Ardel Mbiplang",             role: "Speaker", image: "/images/mbi.jpg" },
-  { name: "Uduma Glory",                role: "Speaker", image: "/images/speaker.jpg" },
+const sessionTags = [
+  "AI x Education",
+  "AI x Business",
+  "AI x Creatives",
+  "Startup Ecosystem & Policy",
 ];
 
-/* ── Tags ──────────────────────────────────────────────── */
-const sessionTags = ["AI Keynote", "Product", "Web3", "Startup Growth", "Future of Work"];
-
 const workshopTracks = [
-  { label: "AI / ML Engineering", color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" },
-  { label: "Web3 & Blockchain",   color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" },
-  { label: "Product Design",      color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30" },
-  { label: "Cloud DevOps",        color: "bg-slate-700 text-slate-300 border-slate-600" },
+  {
+    label: "AI x Education — Learning & Research",
+    href: "#sessions",
+    color: "bg-blue-500/20 text-blue-300 border-blue-500/30",
+  },
+  {
+    label: "AI x Business — Enterprise & Growth",
+    href: "#sessions",
+    color: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
+  },
+  {
+    label: "AI x Creatives — Design, Media & Craft",
+    href: "#sessions",
+    color: "bg-indigo-500/20 text-indigo-300 border-indigo-500/30",
+  },
+  {
+    label: "Startup Ecosystem & Policy",
+    href: "#sessions",
+    color: "bg-amber-500/20 text-amber-300 border-amber-500/30",
+  },
 ];
 
 const mixerFeatures = [
-  { icon: Users,  label: "Community Roundtables",     sub: "Curated peer circles by domain" },
-  { icon: Coffee, label: "Coffee & Tea Meetups",       sub: "Informal breakouts, open agenda" },
-  { icon: Layers, label: "Open Builder Lounges",       sub: "Co-working space & demo tables" },
+  { icon: Users, label: "Community Roundtables", sub: "Curated peer circles by domain" },
+  { icon: Coffee, label: "Coffee & Tea Meetups", sub: "Informal breakouts, open agenda" },
+  { icon: Layers, label: "Open Builder Lounges", sub: "Co-working space & demo tables" },
 ];
 
 /* ── Previous event HD image (Google Drive) ─────────────── */
@@ -46,6 +68,8 @@ const PREV_EVENT_IMG =
   "https://lh3.googleusercontent.com/d/1ZMrYAMeAjZdj81gULy_9ShrLuQyO2EVo";
 
 export default function BentoGrid() {
+  const backdropSpeakers = CONFIRMED_IMAGE_SPEAKERS.slice(0, 3);
+
   return (
     <section
       id="highlights"
@@ -71,7 +95,7 @@ export default function BentoGrid() {
           transition={{ duration: 0.6 }}
           className="mb-12 text-center"
         >
-          <span className="inline-block rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-emerald-400 mb-4">
+          <span className="inline-block rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-blue-400 mb-4">
             Event Highlights
           </span>
           <h2
@@ -81,32 +105,31 @@ export default function BentoGrid() {
             Everything You Need to Know
           </h2>
           <p className="mt-4 text-slate-400 max-w-xl mx-auto">
-            Two days. Six speakers. Dozens of builders. One unmissable event.
+            Four signature tracks. {ALL_SESSION_SPEAKERS.length} confirmed speakers. One full day of high-velocity building on 26 November 2026.
           </p>
         </motion.div>
 
         {/* ── Bento Grid ─────────────────────────────────────────── */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 auto-rows-[minmax(220px,auto)]">
-
-          {/* ── Card 1: Keynote Stage (col-span-2 row-span-2) ─────── */}
+          {/* ── Card 1: Keynote & Session Stage (col-span-2 row-span-2) ── */}
           <motion.article
             variants={cardVariant(0)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            aria-label="Keynote Stage"
+            aria-label="Keynote and Session Stage"
             className="bento-card relative md:col-span-2 md:row-span-2 group"
           >
-            {/* Speaker image grid */}
+            {/* Speaker image grid using confirmed speaker photos */}
             <div className="absolute inset-0 grid grid-cols-3 gap-0.5">
-              {speakers.slice(0, 3).map((s, i) => (
-                <div key={i} className="relative overflow-hidden">
+              {backdropSpeakers.map((speaker) => (
+                <div key={speaker.id} className="relative overflow-hidden bg-slate-900">
                   <Image
-                    src={s.image}
-                    alt={s.name}
+                    src={speaker.image}
+                    alt={`${speaker.name} — ${speaker.sessionLabel}`}
                     fill
                     sizes="(max-width:768px) 33vw, 20vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
               ))}
@@ -117,45 +140,44 @@ export default function BentoGrid() {
               className="absolute inset-0"
               style={{
                 background:
-                  "linear-gradient(to top, rgba(2,6,23,0.97) 0%, rgba(2,6,23,0.5) 45%, rgba(2,6,23,0.1) 100%)",
+                  "linear-gradient(to top, rgba(2,6,23,0.97) 0%, rgba(2,6,23,0.55) 45%, rgba(2,6,23,0.12) 100%)",
               }}
             />
 
             {/* Content */}
             <div className="relative z-10 flex h-full flex-col justify-end p-6">
-              {/* Tag */}
-              <span className="mb-3 inline-block self-start rounded-full border border-emerald-500/40 bg-emerald-500/15 px-3 py-1 text-xs font-semibold tracking-wide text-emerald-300">
-                🎤 Keynote Stage
+              <span className="mb-3 inline-flex items-center gap-1.5 self-start rounded-full border border-blue-500/40 bg-blue-500/15 px-3 py-1 text-xs font-semibold tracking-wide text-blue-300">
+                <Mic className="h-3.5 w-3.5" aria-hidden="true" />
+                4 Core Sessions
               </span>
 
               <h3 className="text-2xl font-bold text-white leading-tight">
-                World-Class Speakers
+                Education · Business · Creatives · Startup Policy
               </h3>
               <p className="mt-2 text-sm text-slate-400">
-                Six visionary leaders sharing ideas to shape the future of technology and industry in Africa.
+                Dedicated breakout sessions featuring educators, enterprise leaders, creative pioneers, and startup policy leaders shaping Africa&apos;s future.
               </p>
 
-              {/* Speaker avatar row */}
+              {/* Speaker avatar row — only confirmed speakers */}
               <div className="mt-4 flex items-center gap-3">
                 <div className="flex -space-x-2">
-                  {speakers.map((s, i) => (
+                  {CONFIRMED_IMAGE_SPEAKERS.map((s) => (
                     <div
-                      key={i}
-                      className="relative h-8 w-8 overflow-hidden rounded-full ring-2 ring-slate-950 border border-emerald-500/60"
-                      title={s.name}
+                      key={s.id}
+                      className="relative h-8 w-8 overflow-hidden rounded-full ring-2 ring-slate-950 border border-blue-500/60"
                     >
                       <Image
                         src={s.image}
                         alt={s.name}
                         fill
                         sizes="32px"
-                        className="object-cover"
+                        className="object-cover object-top"
                       />
                     </div>
                   ))}
                 </div>
-                <span className="text-sm text-slate-400">
-                  {speakers.length} confirmed speakers
+                <span className="text-sm text-slate-300">
+                  {ALL_SESSION_SPEAKERS.length} session speakers
                 </span>
               </div>
 
@@ -173,11 +195,10 @@ export default function BentoGrid() {
 
               {/* CTA */}
               <Link
-                href="/speakers"
-                className="mt-5 self-start text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors inline-flex items-center gap-1"
-                aria-label="View all speakers"
+                href="#sessions"
+                className="mt-5 self-start text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
               >
-                View all speakers →
+                Explore all 4 sessions &amp; speakers →
               </Link>
             </div>
           </motion.article>
@@ -210,7 +231,6 @@ export default function BentoGrid() {
 
             {/* Content */}
             <div className="relative z-10 flex h-full flex-col justify-end p-6">
-              {/* Stats badge */}
               <div className="mb-3 self-start flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-3 py-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="text-xs font-semibold text-emerald-400">500+ Builders</span>
@@ -223,7 +243,7 @@ export default function BentoGrid() {
 
               <Link
                 href="/galleries"
-                className="mt-4 self-start text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors inline-flex items-center gap-1"
+                className="mt-4 self-start text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors inline-flex items-center gap-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
                 aria-label="View photo archive from previous TechFest editions"
               >
                 View photo archive →
@@ -231,16 +251,15 @@ export default function BentoGrid() {
             </div>
           </motion.article>
 
-          {/* ── Card 3: Labs & Workshops (col-span-1) ─────────────── */}
+          {/* ── Card 3: Session Tracks Overview (col-span-1) ────────── */}
           <motion.article
             variants={cardVariant(0.2)}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            aria-label="Hands-on Labs and Workshops"
+            aria-label="Session Tracks and Labs"
             className="bento-card relative p-6 flex flex-col justify-between"
           >
-            {/* Glow accent */}
             <div
               aria-hidden="true"
               className="absolute -top-8 -right-8 h-32 w-32 rounded-full opacity-20"
@@ -250,23 +269,24 @@ export default function BentoGrid() {
             />
 
             <div>
-              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10">
-                <span aria-hidden="true" className="text-xl">⚗️</span>
+              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-indigo-500/30 bg-indigo-500/10">
+                <FlaskConical className="h-5 w-5 text-indigo-400" aria-hidden="true" />
               </div>
-              <h3 className="text-lg font-bold text-white">Labs &amp; Workshops</h3>
+              <h3 className="text-lg font-bold text-white">2026 Focus Tracks</h3>
               <p className="mt-2 text-sm text-slate-400">
-                Guided hands-on sessions — bring your laptop and leave with a build.
+                Four dedicated sessions across education, business, creatives, and policy.
               </p>
             </div>
 
             <div className="mt-5 flex flex-col gap-2">
-              {workshopTracks.map(({ label, color }) => (
-                <span
+              {workshopTracks.map(({ label, href, color }) => (
+                <Link
                   key={label}
-                  className={`inline-flex self-start rounded-full border px-3 py-1 text-xs font-medium ${color}`}
+                  href={href}
+                  className={`inline-flex self-start rounded-full border px-3 py-1 text-xs font-medium transition-opacity hover:opacity-90 ${color}`}
                 >
                   {label}
-                </span>
+                </Link>
               ))}
             </div>
           </motion.article>
@@ -280,7 +300,6 @@ export default function BentoGrid() {
             aria-label="Venue and Logistics"
             className="bento-card relative p-6 flex flex-col justify-between"
           >
-            {/* Glow accent */}
             <div
               aria-hidden="true"
               className="absolute -bottom-8 -left-8 h-32 w-32 rounded-full opacity-15"
@@ -290,8 +309,8 @@ export default function BentoGrid() {
             />
 
             <div>
-              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-500/30 bg-emerald-500/10">
-                <MapPin className="h-5 w-5 text-emerald-400" aria-hidden="true" />
+              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-blue-500/30 bg-blue-500/10">
+                <MapPin className="h-5 w-5 text-blue-400" aria-hidden="true" />
               </div>
               <h3 className="text-lg font-bold text-white">Venue &amp; Logistics</h3>
               <address className="mt-2 not-italic text-sm text-slate-400 leading-relaxed">
@@ -307,7 +326,7 @@ export default function BentoGrid() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="View Sarau Event Center on Google Maps"
-                className="text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors"
+                className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
               >
                 View on Google Maps →
               </a>
@@ -332,7 +351,6 @@ export default function BentoGrid() {
             aria-label="Networking and Builder Mixer"
             className="bento-card relative md:col-span-2 p-6 flex flex-col justify-between overflow-hidden"
           >
-            {/* Background grid texture */}
             <div
               aria-hidden="true"
               className="absolute inset-0 opacity-[0.04]"
@@ -343,7 +361,6 @@ export default function BentoGrid() {
               }}
             />
 
-            {/* Glow */}
             <div
               aria-hidden="true"
               className="absolute -right-10 top-1/2 -translate-y-1/2 h-48 w-48 rounded-full opacity-10"
@@ -353,9 +370,9 @@ export default function BentoGrid() {
             />
 
             <div className="relative">
-              {/* Founder badge */}
               <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-400 mb-4">
-                🤝 For CEOs, CTOs &amp; Founders
+                <Handshake className="h-3.5 w-3.5" aria-hidden="true" />
+                For Builders, Founders &amp; Policy Leaders
               </span>
 
               <h3 className="text-xl font-bold text-white">
@@ -366,15 +383,14 @@ export default function BentoGrid() {
               </p>
             </div>
 
-            {/* Features */}
             <div className="relative mt-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
               {mixerFeatures.map(({ icon: Icon, label, sub }) => (
                 <div
                   key={label}
                   className="flex flex-col gap-2 rounded-xl border border-slate-800 bg-slate-900/40 p-4"
                 >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 border border-emerald-500/20">
-                    <Icon className="h-4 w-4 text-emerald-400" aria-hidden="true" />
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-500/10 border border-blue-500/20">
+                    <Icon className="h-4 w-4 text-blue-400" aria-hidden="true" />
                   </div>
                   <span className="text-sm font-semibold text-slate-200">{label}</span>
                   <span className="text-xs text-slate-500">{sub}</span>
@@ -382,7 +398,6 @@ export default function BentoGrid() {
               ))}
             </div>
           </motion.article>
-
         </div>
       </div>
     </section>
