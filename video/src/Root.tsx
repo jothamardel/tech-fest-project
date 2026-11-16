@@ -24,6 +24,17 @@ export const RemotionRoot: React.FC = () => {
         fps={60}
         width={1080}
         height={1920}
+        defaultProps={{
+          hookEyebrow: "JOS TECHFEST 2026 · 1 FULL DAY",
+          hookLine1: "AI for",
+          hookLine2: "every sector.",
+          hookSubcopy:
+            "4 signature sessions. 15 industry speakers. 3 stage anchors. One unforgettable day at Sarau Event Center, Jos.",
+          showcaseHeader: "One Day. Four Power Tracks.",
+          ctaUrl: "register.techfest.com.ng",
+          eventDate: "26 Nov 2026 · 08:30 WAT",
+          eventVenue: "Sarau Event Center, Jos",
+        }}
       />
 
       {/* 16:9 Stage LED Walk-On Videos (1920x1080, 480 frames / 8s @ 60fps) */}

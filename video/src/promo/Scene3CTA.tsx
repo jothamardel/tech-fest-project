@@ -20,7 +20,21 @@ import {
  * high-contrast CTA pill button ("Register now at register.techfest.com.ng")
  * with a spring-driven specular shimmer sweep, and clean final hold.
  */
-export const Scene3CTA: React.FC = () => {
+export type Scene3CTAProps = {
+  line1?: string;
+  line2?: string;
+  ctaUrl?: string;
+  eventDate?: string;
+  eventVenue?: string;
+};
+
+export const Scene3CTA: React.FC<Scene3CTAProps> = ({
+  line1 = "AI for",
+  line2 = "every sector.",
+  ctaUrl = "register.techfest.com.ng",
+  eventDate = "26 Nov 2026 · 08:30 WAT",
+  eventVenue = "Sarau Event Center, Jos",
+}) => {
   const frame = useCurrentFrame(); // 0..239 inside Sequence
   const { fps } = useVideoConfig();
 
@@ -144,7 +158,7 @@ export const Scene3CTA: React.FC = () => {
             color: "#FAFAFA",
           }}
         >
-          AI for{" "}
+          {line1}{" "}
           <span
             style={{
               background:
@@ -153,7 +167,7 @@ export const Scene3CTA: React.FC = () => {
               WebkitTextFillColor: "transparent",
             }}
           >
-            every sector.
+            {line2}
           </span>
         </h1>
 
@@ -198,7 +212,7 @@ export const Scene3CTA: React.FC = () => {
             DATE & TIME
           </span>
           <span style={{ fontSize: 32, fontWeight: 800, color: "#FAFAFA" }}>
-            26 Nov 2026 · 08:30 WAT
+            {eventDate}
           </span>
         </div>
         <div
@@ -218,7 +232,7 @@ export const Scene3CTA: React.FC = () => {
             VENUE
           </span>
           <span style={{ fontSize: 32, fontWeight: 800, color: "#34D399" }}>
-            Sarau Event Center, Jos
+            {eventVenue}
           </span>
         </div>
       </div>
@@ -286,7 +300,7 @@ export const Scene3CTA: React.FC = () => {
               letterSpacing: "-0.02em",
             }}
           >
-            register.techfest.com.ng
+            {ctaUrl}
           </span>
         </div>
 

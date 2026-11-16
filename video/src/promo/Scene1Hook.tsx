@@ -14,8 +14,12 @@ import {
   SPRING_SNAPPY,
 } from "./DarkGlassStreaksBg";
 
-const HOOK_WORDS_LINE_1 = ["AI", "for"];
-const HOOK_WORDS_LINE_2 = ["every", "sector."];
+export type Scene1HookProps = {
+  eyebrow?: string;
+  line1?: string;
+  line2?: string;
+  subcopy?: string;
+};
 
 const PREVIEW_PORTRAITS = [
   { name: "Christie D.", src: "images/Chriatie.jpg", accent: "#3B82F6" },
@@ -26,9 +30,16 @@ const PREVIEW_PORTRAITS = [
   { name: "David Enyi", src: "images/dav.jpg", accent: "#6366F1" },
 ];
 
-export const Scene1Hook: React.FC = () => {
+export const Scene1Hook: React.FC<Scene1HookProps> = ({
+  eyebrow = "JOS TECHFEST 2026 · 1 FULL DAY",
+  line1 = "AI for",
+  line2 = "every sector.",
+  subcopy = "4 signature sessions. 15 industry speakers. 3 stage anchors. One unforgettable day at Sarau Event Center, Jos.",
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+  const wordsLine1 = line1.split(" ");
+  const wordsLine2 = line2.split(" ");
 
   // Natural spring camera push-in (scale: 1 -> 1.04)
   const cameraSpring = spring({
@@ -159,10 +170,10 @@ export const Scene1Hook: React.FC = () => {
             opacity: interpolate(badgeSpring, [0, 1], [0, 1]),
           }}
         >
-          JOS TECHFEST 2026 · 1 FULL DAY
+          {eyebrow}
         </div>
 
-        {/* Line 1: "Build the Future." */}
+        {/* Line 1 */}
         <div
           style={{
             display: "flex",
@@ -171,7 +182,7 @@ export const Scene1Hook: React.FC = () => {
             rowGap: 8,
           }}
         >
-          {HOOK_WORDS_LINE_1.map((word, index) => {
+          {wordsLine1.map((word, index) => {
             const wordSpring = spring({
               frame: Math.max(0, frame - (8 + index * 5)),
               fps,
@@ -183,7 +194,7 @@ export const Scene1Hook: React.FC = () => {
 
             return (
               <span
-                key={word}
+                key={`${word}-${index}`}
                 style={{
                   display: "inline-block",
                   fontSize: 96,
@@ -201,7 +212,7 @@ export const Scene1Hook: React.FC = () => {
           })}
         </div>
 
-        {/* Line 2: "Shape the Industry." */}
+        {/* Line 2 */}
         <div
           style={{
             display: "flex",
@@ -210,7 +221,7 @@ export const Scene1Hook: React.FC = () => {
             rowGap: 8,
           }}
         >
-          {HOOK_WORDS_LINE_2.map((word, index) => {
+          {wordsLine2.map((word, index) => {
             const wordSpring = spring({
               frame: Math.max(0, frame - (20 + index * 5)),
               fps,
@@ -222,7 +233,7 @@ export const Scene1Hook: React.FC = () => {
 
             return (
               <span
-                key={word}
+                key={`${word}-${index}`}
                 style={{
                   display: "inline-block",
                   fontSize: 96,
@@ -256,11 +267,7 @@ export const Scene1Hook: React.FC = () => {
             transform: `translateY(${interpolate(subSpring, [0, 1], [36, 0])}px)`,
           }}
         >
-          4 signature sessions. 15 industry speakers. 3 stage anchors. One unforgettable day at{" "}
-          <span style={{ color: "#34D399", fontWeight: 800 }}>
-            Sarau Event Center, Jos
-          </span>
-          .
+          {subcopy}
         </p>
       </div>
 

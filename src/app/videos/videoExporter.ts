@@ -631,13 +631,35 @@ export async function downloadSpeakerVideoFile(
   URL.revokeObjectURL(url);
 }
 
+export type PromoEditableConfig = {
+  hookEyebrow: string;
+  hookLine1: string;
+  hookLine2: string;
+  hookSubcopy: string;
+  showcaseHeader: string;
+  ctaUrl: string;
+  eventDate: string;
+  eventVenue: string;
+};
+
 /**
  * Records and downloads the 15-second "AI for every sector." Event Promo Video
  */
 export async function downloadPromoVideoFile(
   speakers: ExportableSpeaker[],
-  onProgress?: (percent: number) => void
+  onProgress?: (percent: number) => void,
+  customConfig?: PromoEditableConfig
 ): Promise<void> {
+  const config: PromoEditableConfig = customConfig ?? {
+    hookEyebrow: "JOS TECHFEST 2026 · 26 NOV 2026",
+    hookLine1: "AI for",
+    hookLine2: "every sector.",
+    hookSubcopy: "1 Full Day · 4 Sessions · 15 Speakers",
+    showcaseHeader: "One Day. Four Power Tracks.",
+    ctaUrl: "register.techfest.com.ng",
+    eventDate: "26 November 2026 · 08:30 WAT",
+    eventVenue: "Sarau Event Center, Jos",
+  };
   const width = 1080;
   const height = 1920;
   const durationSec = 9; // 9-second punchy 3-scene promo (3s per scene)
@@ -718,19 +740,22 @@ export async function downloadPromoVideoFile(
         ctx!.globalAlpha = clamp01(s1 * 1.4);
         ctx!.font = "800 28px Inter, system-ui, sans-serif";
         ctx!.fillStyle = "#60A5FA";
-        ctx!.fillText("JOS TECHFEST 2026 · 26 NOV 2026", 80, 580);
+        ctx!.fillText(config.hookEyebrow, 80, 580);
 
         ctx!.font = "900 104px Inter, system-ui, sans-serif";
         ctx!.fillStyle = "#FAFAFA";
-        ctx!.fillText("AI for", 80, 710 + lerp(40, 0, s1));
+        ctx!.fillText(config.hookLine1, 80, 710 + lerp(40, 0, s1));
         ctx!.fillStyle = "#34D399";
-        ctx!.fillText("every sector.", 80, 825 + lerp(40, 0, s1));
+        ctx!.fillText(config.hookLine2, 80, 825 + lerp(40, 0, s1));
 
-        ctx!.font = "600 40px Inter, system-ui, sans-serif";
+        ctx!.font = "600 38px Inter, system-ui, sans-serif";
         ctx!.fillStyle = "#D4D4D8";
-        ctx!.fillText("1 Full Day · 4 Sessions · 15 Speakers", 80, 930);
+        const subLines = wrapTextLines(ctx!, config.hookSubcopy, 920);
+        subLines.slice(0, 3).forEach((ln, idx) => {
+          ctx!.fillText(ln, 80, 920 + idx * 50);
+        });
         ctx!.fillStyle = "#34D399";
-        ctx!.fillText("Sarau Event Center, Jos", 80, 990);
+        ctx!.fillText(config.eventVenue, 80, 920 + subLines.slice(0, 3).length * 50 + 16);
 
         // 6 Portraits Row
         portraitImgs.forEach((pImg, idx) => {
@@ -750,9 +775,9 @@ export async function downloadPromoVideoFile(
       } else if (elapsed < 6) {
         // Scene 2: 4 Signature Sessions
         const localT = elapsed - 3;
-        ctx!.font = "900 68px Inter, system-ui, sans-serif";
+        ctx!.font = "900 64px Inter, system-ui, sans-serif";
         ctx!.fillStyle = "#FAFAFA";
-        ctx!.fillText("One Day. Four Power Tracks.", 80, 320);
+        ctx!.fillText(config.showcaseHeader, 80, 320);
 
         tracks.forEach((tr, idx) => {
           const ts = evalSpring(localT - idx * 0.12, 1.1, 160, 20);
@@ -783,15 +808,15 @@ export async function downloadPromoVideoFile(
         ctx!.globalAlpha = clamp01(s3 * 1.4);
         ctx!.font = "900 92px Inter, system-ui, sans-serif";
         ctx!.fillStyle = "#FAFAFA";
-        ctx!.fillText("AI for", 80, 680);
+        ctx!.fillText(config.hookLine1, 80, 680);
         ctx!.fillStyle = "#34D399";
-        ctx!.fillText("every sector.", 80, 790);
+        ctx!.fillText(config.hookLine2, 80, 790);
 
         ctx!.font = "700 36px Inter, system-ui, sans-serif";
         ctx!.fillStyle = "#D4D4D8";
-        ctx!.fillText("26 November 2026 · 08:30 WAT", 80, 910);
+        ctx!.fillText(config.eventDate, 80, 910);
         ctx!.fillStyle = "#34D399";
-        ctx!.fillText("Sarau Event Center, Jos", 80, 968);
+        ctx!.fillText(config.eventVenue, 80, 968);
 
         // CTA Pill
         drawRoundedRect(ctx!, 80, 1380, 920, 170, 85);
@@ -802,9 +827,10 @@ export async function downloadPromoVideoFile(
         ctx!.fillStyle = "#052E16";
         ctx!.fillText("REGISTER NOW", 420, 1448);
 
-        ctx!.font = "900 50px Inter, system-ui, sans-serif";
+        ctx!.font = "900 48px Inter, system-ui, sans-serif";
         ctx!.fillStyle = "#FAFAFA";
-        ctx!.fillText("register.techfest.com.ng", 225, 1512);
+        const urlW = ctx!.measureText(config.ctaUrl).width;
+        ctx!.fillText(config.ctaUrl, Math.max(100, (width - urlW) / 2), 1512);
         ctx!.restore();
       }
 

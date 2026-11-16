@@ -23,7 +23,13 @@ import {
  *  - Notification badge pop
  * Safe zone: 145px top/bottom padding, 80px left/right padding.
  */
-export const Scene2Showcase: React.FC = () => {
+export type Scene2ShowcaseProps = {
+  headline?: string;
+};
+
+export const Scene2Showcase: React.FC<Scene2ShowcaseProps> = ({
+  headline = "One Day. Four Power Tracks.",
+}) => {
   const frame = useCurrentFrame(); // 0..479 inside Sequence
   const { fps } = useVideoConfig();
 
@@ -117,7 +123,7 @@ export const Scene2Showcase: React.FC = () => {
             color: "#FAFAFA",
           }}
         >
-          One Day. Four Power Tracks.
+          {headline}
         </h2>
       </div>
 
