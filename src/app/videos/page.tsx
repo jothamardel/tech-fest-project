@@ -17,7 +17,15 @@ import {
   ChevronLeft,
   ChevronRight,
   Film,
+  Download,
+  Image as ImageIcon,
+  Loader2,
 } from "lucide-react";
+import {
+  downloadSpeakerVideoFile,
+  downloadSpeakerPosterPng,
+  downloadPromoVideoFile,
+} from "./videoExporter";
 
 type SpotlightPerson = {
   id: string;
@@ -215,9 +223,36 @@ export default function VideosStagePage() {
   const [replayKey, setReplayKey] = useState(0);
   const [promoScene, setPromoScene] = useState<0 | 1 | 2>(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [downloadingLabel, setDownloadingLabel] = useState<string | null>(null);
+  const [downloadProgress, setDownloadProgress] = useState<number>(0);
 
   const stageContainerRef = useRef<HTMLDivElement>(null);
   const currentSpeaker = SPOTLIGHT_ROSTER[selectedIndex];
+
+  const handleDownloadCurrentVideo = useCallback(async () => {
+    if (downloadingLabel) return;
+    try {
+      setDownloadProgress(0);
+      if (mode === "promo") {
+        setDownloadingLabel("15s Promo Video");
+        await downloadPromoVideoFile(SPOTLIGHT_ROSTER, (pct) =>
+          setDownloadProgress(pct)
+        );
+      } else {
+        setDownloadingLabel(`${currentSpeaker.name} (${aspect})`);
+        await downloadSpeakerVideoFile(currentSpeaker, aspect, (pct) =>
+          setDownloadProgress(pct)
+        );
+      }
+    } finally {
+      setDownloadingLabel(null);
+      setDownloadProgress(0);
+    }
+  }, [downloadingLabel, mode, currentSpeaker, aspect]);
+
+  const handleDownloadCurrentPoster = useCallback(async () => {
+    await downloadSpeakerPosterPng(currentSpeaker, aspect);
+  }, [currentSpeaker, aspect]);
 
   // Auto-cycle speakers every 8 seconds when reel mode is active
   useEffect(() => {
@@ -396,6 +431,37 @@ export default function VideosStagePage() {
               >
                 <Repeat className="h-3.5 w-3.5" aria-hidden="true" />
                 {autoCycle ? "Auto-Reel: ON" : "Auto-Reel: OFF"}
+              </button>
+            )}
+
+            <button
+              type="button"
+              onClick={handleDownloadCurrentVideo}
+              disabled={Boolean(downloadingLabel)}
+              className="inline-flex items-center gap-1.5 rounded-full bg-blue-600 hover:bg-blue-500 disabled:opacity-60 px-4 py-2 text-xs font-bold text-white shadow-lg shadow-blue-950/50 transition-all cursor-pointer"
+            >
+              {downloadingLabel ? (
+                <>
+                  <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden="true" />
+                  Exporting {downloadProgress}%
+                </>
+              ) : (
+                <>
+                  <Download className="h-3.5 w-3.5" aria-hidden="true" />
+                  Download Video ({mode === "promo" ? "9:16" : aspect})
+                </>
+              )}
+            </button>
+
+            {mode === "speakers" && (
+              <button
+                type="button"
+                onClick={handleDownloadCurrentPoster}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/[0.05] hover:bg-white/[0.1] px-3.5 py-2 text-xs font-bold text-white transition-all cursor-pointer"
+                title="Download High-Res PNG Poster"
+              >
+                <ImageIcon className="h-3.5 w-3.5" aria-hidden="true" />
+                PNG Poster
               </button>
             )}
 
@@ -990,7 +1056,14 @@ export default function VideosStagePage() {
             {SPOTLIGHT_ROSTER.map((person, idx) => {
               const isSelected = mode === "speakers" && selectedIndex === idx;
               return (
-                <li key={person.id}>
+                <li
+                  key={person.id}
+                  className={`group flex flex-col justify-between rounded-2xl p-2.5 transition-all border ${
+                    isSelected
+                      ? "bg-white/[0.1] border-emerald-400 shadow-lg shadow-emerald-950/40"
+                      : "bg-white/[0.03] border-white/10 hover:border-white/25"
+                  }`}
+                >
                   <button
                     type="button"
                     onClick={() => {
@@ -998,11 +1071,7 @@ export default function VideosStagePage() {
                       setSelectedIndex(idx);
                       setReplayKey((k) => k + 1);
                     }}
-                    className={`group w-full text-left rounded-2xl p-2.5 transition-all cursor-pointer border ${
-                      isSelected
-                        ? "bg-white/[0.1] border-emerald-400 shadow-lg shadow-emerald-950/40"
-                        : "bg-white/[0.03] border-white/10 hover:border-white/25"
-                    }`}
+                    className="w-full text-left cursor-pointer"
                   >
                     <div className="relative aspect-square w-full overflow-hidden rounded-xl mb-2 bg-slate-900">
                       <Image
@@ -1026,6 +1095,30 @@ export default function VideosStagePage() {
                       {person.trackTitle}
                     </p>
                   </button>
+
+                  <button
+                    type="button"
+                    disabled={Boolean(downloadingLabel)}
+                    onClick={async () => {
+                      if (downloadingLabel) return;
+                      try {
+                        setMode("speakers");
+                        setSelectedIndex(idx);
+                        setDownloadProgress(0);
+                        setDownloadingLabel(`${person.name} (${aspect})`);
+                        await downloadSpeakerVideoFile(person, aspect, (pct) =>
+                          setDownloadProgress(pct)
+                        );
+                      } finally {
+                        setDownloadingLabel(null);
+                        setDownloadProgress(0);
+                      }
+                    }}
+                    className="mt-2 inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-white/10 bg-white/[0.05] hover:bg-emerald-500/20 hover:border-emerald-400/50 py-1.5 text-[10px] font-bold text-slate-200 hover:text-emerald-300 transition-colors cursor-pointer disabled:opacity-50"
+                  >
+                    <Download className="h-3 w-3" aria-hidden="true" />
+                    Download ({aspect})
+                  </button>
                 </li>
               );
             })}
@@ -1045,3 +1138,4 @@ export default function VideosStagePage() {
     </main>
   );
 }
+
