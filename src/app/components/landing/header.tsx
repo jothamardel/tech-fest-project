@@ -9,7 +9,6 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/#sessions", label: "Sessions" },
   { href: "/speakers", label: "Speakers" },
-  { href: "/videos", label: "Stage & Videos" },
   { href: "/about", label: "About" },
   { href: "/community", label: "Community" },
   { href: "/contact", label: "Contact" },
