@@ -4,19 +4,26 @@ import {
   getPersonInitials,
 } from "@/data/sessions";
 
-export type SlideActId = "act-1-preshow" | "act-2-opening" | "act-3-sessions" | "act-4-closing";
+export type SlideActId =
+  | "act-1-preshow"
+  | "act-2-opening"
+  | "act-3-sessions"
+  | "act-4-closing";
 
 export type SlideTemplateKind =
   | "welcome-loop"
   | "promo-loop"
   | "photo-reel"
   | "sponsors-wall"
+  | "icebreaker-games"
   | "opening-bumper"
   | "anchors-trio"
   | "agenda-overview"
   | "session-bumper"
   | "speaker-walkon"
   | "panel-backdrop"
+  | "startup-video"
+  | "fireside-chat"
   | "break-hold"
   | "custom-media"
   | "closing-thankyou";
@@ -46,13 +53,13 @@ export interface ProgramSlide {
   accent: SlideThemeAccent;
   /** Primary portrait or custom uploaded image/video URL */
   mediaUrl?: string | null;
-  /** Type of custom media when kind === "custom-media" */
+  /** Type of custom media when kind === "custom-media" or "startup-video" */
   mediaType?: "image" | "video" | "embed";
   /** Initials when speaker/anchor has no confirmed photo */
   initials?: string;
-  /** Bullet highlights for session bumpers */
+  /** Bullet highlights for session bumpers or game rounds */
   highlights?: string[];
-  /** Multiple people for panel backdrops or anchor trio */
+  /** Multiple people for panel backdrops, fireside chat, or anchor trio */
   people?: SlidePanelPerson[];
   /** Gallery photo list for photo-reel */
   galleryPhotos?: string[];
@@ -65,24 +72,24 @@ export const ACT_META: Record<
   { shortLabel: string; fullTitle: string; timeRange: string }
 > = {
   "act-1-preshow": {
-    shortLabel: "Act I · Pre-Show",
-    fullTitle: "Act I — Doors Open, Walk-In Loops & Sponsors",
-    timeRange: "08:30 AM – 09:30 AM",
+    shortLabel: "Act I · Arrival & Icebreakers",
+    fullTitle: "Act I — Arrival, Check-Ins, Red Carpet Photos & Icebreaker Games",
+    timeRange: "08:00 AM – 09:20 AM",
   },
   "act-2-opening": {
-    shortLabel: "Act II · Opening",
-    fullTitle: "Act II — Opening Ceremony, Anchors & Programme",
-    timeRange: "09:30 AM – 10:15 AM",
+    shortLabel: "Act II · Keynotes & AI RAG",
+    fullTitle: "Act II — Opening Speech, DG PICTDA Keynote & AI RAG Presentation",
+    timeRange: "09:20 AM – 10:25 AM",
   },
   "act-3-sessions": {
-    shortLabel: "Act III · 4 Sessions",
-    fullTitle: "Act III — The 4 Signature Sessions & Speaker Walk-Ons",
-    timeRange: "10:15 AM – 04:15 PM",
+    shortLabel: "Act III · Sessions & Startups",
+    fullTitle: "Act III — 4 Sessions, In-Between Startup Videos & Fireside Chat",
+    timeRange: "10:25 AM – 04:25 PM",
   },
   "act-4-closing": {
-    shortLabel: "Act IV · Closing",
-    fullTitle: "Act IV — Open Demos, Mixer & Closing Finale",
-    timeRange: "04:15 PM – 05:45 PM",
+    shortLabel: "Act IV · Demos & Closing",
+    fullTitle: "Act IV — Open Demos, Ecosystem Mixer & Closing Finale",
+    timeRange: "04:25 PM – 05:45 PM",
   },
 };
 
@@ -103,7 +110,7 @@ export const ACCENT_PALETTE: Record<
     glowRgba: "rgba(59, 130, 246, 0.42)",
     borderRgba: "rgba(96, 165, 250, 0.55)",
     badgeBgRgba: "rgba(37, 99, 235, 0.22)",
-    label: "Cobalt (AI x Education)",
+    label: "Cobalt (AI x Education / Tech)",
   },
   emerald: {
     primary: "#10B981",
@@ -119,7 +126,7 @@ export const ACCENT_PALETTE: Record<
     glowRgba: "rgba(99, 102, 241, 0.45)",
     borderRgba: "rgba(129, 140, 248, 0.55)",
     badgeBgRgba: "rgba(99, 102, 241, 0.22)",
-    label: "Indigo (AI x Creatives)",
+    label: "Indigo (AI x Creatives / Startups)",
   },
   amber: {
     primary: "#F59E0B",
@@ -127,7 +134,7 @@ export const ACCENT_PALETTE: Record<
     glowRgba: "rgba(245, 158, 11, 0.40)",
     borderRgba: "rgba(251, 191, 36, 0.55)",
     badgeBgRgba: "rgba(245, 158, 11, 0.22)",
-    label: "Amber/Gold (Policy & Host)",
+    label: "Amber/Gold (Keynote / Policy / Host)",
   },
 };
 
@@ -173,33 +180,34 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
   const nextCue = () => String(cue++).padStart(2, "0");
 
   // =========================================================================
-  // ACT I — PRE-SHOW & DOORS OPEN (08:30 AM – 09:30 AM)
+  // ACT I — ARRIVAL, CHECK-INS, PHOTOS & ICEBREAKER GAMES (08:00 AM – 09:20 AM)
   // =========================================================================
   slides.push({
-    id: "preshow-welcome",
+    id: "preshow-arrival-checkins",
     cueNumber: nextCue(),
     actId: "act-1-preshow",
-    actLabel: "Act I · Pre-Show",
+    actLabel: "Act I · Arrival",
     kind: "welcome-loop",
-    timeSlot: "08:30 AM WAT",
-    badgeLabel: "DOORS OPEN · REGISTRATION & CHECK-IN",
-    title: "AI for every sector.",
+    timeSlot: "08:00 AM – 08:45 AM",
+    badgeLabel: "ARRIVAL · CHECK-INS · RED CARPET PHOTOS",
+    title: "Arrival, Check-Ins & Photos",
     subtitle:
-      "Welcome to Jos TechFest 2026 · Sarau Event Center, Jos · Take your seat and connect with 500+ builders.",
+      "Welcome to Jos TechFest 2026 · Complete your badge check-in, visit the photo wall & share with #JosTechFest",
     accent: "emerald",
-    stageNote: "Project on LED wall during morning arrival and check-in (08:30 – 09:15 AM).",
+    stageNote:
+      "Project on main LED screen during morning arrival, accreditation check-ins, and red carpet photography.",
   });
 
   slides.push({
     id: "preshow-promo-loop",
     cueNumber: nextCue(),
     actId: "act-1-preshow",
-    actLabel: "Act I · Pre-Show",
+    actLabel: "Act I · Arrival",
     kind: "promo-loop",
-    timeSlot: "08:45 AM WAT",
+    timeSlot: "08:30 AM WAT",
     badgeLabel: "OFFICIAL 2026 MOTION BUMPER",
     title: "AI for every sector.",
-    subtitle: "1 Full Day · 4 Signature Sessions · 15 Speakers · 3 Stage Anchors",
+    subtitle: "1 Full Day · 4 Signature Sessions · Keynotes · Startup Showcases",
     accent: "emerald",
     stageNote: "Auto-loops the 3-scene kinetic event promo on the main LED screen.",
   });
@@ -208,33 +216,56 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     id: "preshow-photo-reel",
     cueNumber: nextCue(),
     actId: "act-1-preshow",
-    actLabel: "Act I · Pre-Show",
+    actLabel: "Act I · Photos",
     kind: "photo-reel",
-    timeSlot: "09:00 AM WAT",
-    badgeLabel: "COMMUNITY MEMORIES · #JOSTECHFEST",
+    timeSlot: "08:40 AM WAT",
+    badgeLabel: "COMMUNITY MEMORIES & PHOTO WALL · #JOSTECHFEST",
     title: "The Builders of Plateau & Beyond",
-    subtitle: "Highlights from the Jos TechFest community movement",
+    subtitle: "Tag your arrival photos with #JosTechFest to feature on the community wall",
     accent: "blue",
     galleryPhotos: EVENT_GALLERY_PHOTOS,
-    stageNote: "Auto-advances through high-res event photos every 5 seconds with Ken-Burns motion.",
+    stageNote:
+      "Auto-advances through high-res event photos every 4.5 seconds. You can also upload live arrival photos via 'Add Media'.",
   });
 
   slides.push({
     id: "preshow-sponsors",
     cueNumber: nextCue(),
     actId: "act-1-preshow",
-    actLabel: "Act I · Pre-Show",
+    actLabel: "Act I · Partners",
     kind: "sponsors-wall",
-    timeSlot: "09:15 AM WAT",
+    timeSlot: "08:50 AM WAT",
     badgeLabel: "POWERED BY OUR PARTNERS & SPONSORS",
     title: "Backed by Industry Leaders",
     subtitle: "Thank you to our Headline Sponsors, Ecosystem Partners, and Community Hubs",
     accent: "emerald",
-    stageNote: "Keep on screen prior to anchor walk-on and during transition breaks.",
+    stageNote: "Sponsor recognition loop before the icebreaker session begins.",
+  });
+
+  slides.push({
+    id: "preshow-icebreaker-games",
+    cueNumber: nextCue(),
+    actId: "act-1-preshow",
+    actLabel: "Act I · Icebreakers",
+    kind: "icebreaker-games",
+    timeSlot: "08:55 AM – 09:20 AM",
+    badgeLabel: "INTERACTIVE STAGE · BREAKING THE ICE & GAMES",
+    title: "Breaking the Ice & Tech Games",
+    subtitle:
+      "Get ready for fast-paced AI & Tech Trivia, Speed Networking Challenges, and Instant Swag Giveaways!",
+    accent: "indigo",
+    highlights: [
+      "Round 01 · 60-Second Builder Speed Meet",
+      "Round 02 · Live AI & Plateau Tech Trivia",
+      "Round 03 · Fastest Post on #JosTechFest",
+      "Round 04 · Stage Challenge & Swag Prizes",
+    ],
+    stageNote:
+      "Cue when anchors take the mic at 08:55 AM to energize the hall with icebreakers and games.",
   });
 
   // =========================================================================
-  // ACT II — OPENING CEREMONY & ANCHORS (09:30 AM – 10:15 AM)
+  // ACT II — OPENING CEREMONY, KEYNOTE & AI RAG PRESENTATION (09:20 AM – 10:25 AM)
   // =========================================================================
   slides.push({
     id: "opening-master-bumper",
@@ -242,24 +273,24 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     actId: "act-2-opening",
     actLabel: "Act II · Opening",
     kind: "opening-bumper",
-    timeSlot: "09:30 AM WAT",
-    badgeLabel: "LIVE ON MAIN STAGE · OPENING CEREMONY",
+    timeSlot: "09:20 AM WAT",
+    badgeLabel: "LIVE ON MAIN STAGE · OFFICIAL OPENING",
     title: "Welcome to Jos TechFest 2026",
     subtitle: "AI for Every Sector — Education · Business · Creatives · Startup Policy",
     accent: "emerald",
-    stageNote: "Cue when house lights dim and opening music hits at 09:30 AM.",
+    stageNote: "Cue when house lights dim and opening music hits at 09:20 AM.",
   });
 
   slides.push({
     id: "opening-anchors-trio",
     cueNumber: nextCue(),
     actId: "act-2-opening",
-    actLabel: "Act II · Opening",
+    actLabel: "Act II · Anchors",
     kind: "anchors-trio",
-    timeSlot: "09:35 AM WAT",
+    timeSlot: "09:25 AM WAT",
     badgeLabel: "MAIN STAGE HOSTS & ANCHORS",
     title: "Meet Your Stage Anchors",
-    subtitle: "Guiding the energy, conversations, and stage flow across all four tracks",
+    subtitle: "Guiding the energy, conversations, and stage flow across all sessions",
     accent: "amber",
     people: TECHFEST_ANCHORS.map((a) => ({
       id: a.id,
@@ -268,7 +299,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
       image: a.image,
       initials: getPersonInitials(a.name),
     })),
-    stageNote: "Project when introducing the three hosts together on stage.",
+    stageNote: "Project when introducing Samuel Adebayo, Judith Nyior, and Anna together on stage.",
   });
 
   TECHFEST_ANCHORS.forEach((anchor) => {
@@ -276,9 +307,9 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
       id: `anchor-walkon-${anchor.id}`,
       cueNumber: nextCue(),
       actId: "act-2-opening",
-      actLabel: "Act II · Opening",
+      actLabel: "Act II · Anchor",
       kind: "speaker-walkon",
-      timeSlot: "09:40 AM WAT",
+      timeSlot: "09:28 AM WAT",
       badgeLabel: "MAIN STAGE ANCHOR · JOS TECHFEST 2026",
       title: anchor.name,
       subtitle: "Official Stage Host & Event Anchor",
@@ -290,40 +321,201 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     });
   });
 
+  // Opening Speech by Mbiplang Ardel (Lead Convener)
+  slides.push({
+    id: "opening-speech-mbiplang-ardel",
+    cueNumber: nextCue(),
+    actId: "act-2-opening",
+    actLabel: "Act II · Opening Speech",
+    kind: "speaker-walkon",
+    timeSlot: "09:35 AM – 09:50 AM",
+    badgeLabel: "OPENING SPEECH · LEAD CONVENER",
+    title: "Mbiplang Ardel",
+    subtitle: "Lead Convener · Jos TechFest 2026",
+    talkTitle:
+      "Opening Speech: Unlocking AI for Every Sector & Building Plateau's Next-Gen Innovation Ecosystem",
+    accent: "emerald",
+    mediaUrl: "/images/mbi.jpg",
+    initials: "MA",
+    stageNote:
+      "Cue as Lead Convener Mbiplang Ardel is called on stage for the official Opening Speech.",
+  });
+
+  // Keynote by DG PICTDA Engr. Dominic Datong
+  slides.push({
+    id: "keynote-dg-pictda-dominic-datong",
+    cueNumber: nextCue(),
+    actId: "act-2-opening",
+    actLabel: "Act II · Keynote",
+    kind: "speaker-walkon",
+    timeSlot: "09:50 AM – 10:05 AM",
+    badgeLabel: "OFFICIAL KEYNOTE ADDRESS · DG PICTDA",
+    title: "Engr. Dominic Datong",
+    subtitle: "Director General · PICTDA (Plateau State ICT Development Agency)",
+    talkTitle:
+      "Keynote Address: Advancing Digital Governance, Public-Private Innovation & AI Readiness Across Plateau State",
+    accent: "amber",
+    mediaUrl: null,
+    initials: "DD",
+    stageNote:
+      "Cue for the Keynote Address by DG PICTDA Engr. Dominic Datong. Use 'Upload / Replace Photo' in Edit Slide if a portrait is provided on event day.",
+  });
+
+  // Special Presentation on AI RAG for Businesses by Samuel Dutse
+  slides.push({
+    id: "presentation-ai-rag-samuel-dutse",
+    cueNumber: nextCue(),
+    actId: "act-2-opening",
+    actLabel: "Act II · AI RAG Presentation",
+    kind: "speaker-walkon",
+    timeSlot: "10:05 AM – 10:20 AM",
+    badgeLabel: "TECHNICAL PRESENTATION · AI RAG FOR BUSINESSES",
+    title: "Samuel Dutse",
+    subtitle: "AI Systems Speaker · Special Presentation",
+    talkTitle:
+      "AI RAG for Businesses: Deploying Retrieval-Augmented Generation on Private Enterprise Data",
+    accent: "blue",
+    mediaUrl: null,
+    initials: "SD",
+    stageNote:
+      "Cue when Samuel Dutse is called on stage for 'AI RAG for Businesses'. If he has slides, inject or embed his deck via the 'Add Media' tab.",
+  });
+
   slides.push({
     id: "opening-agenda-overview",
     cueNumber: nextCue(),
     actId: "act-2-opening",
-    actLabel: "Act II · Opening",
+    actLabel: "Act II · Run of Show",
     kind: "agenda-overview",
-    timeSlot: "10:00 AM WAT",
+    timeSlot: "10:20 AM WAT",
     badgeLabel: "26 NOVEMBER 2026 · FULL-DAY RUN OF SHOW",
     title: "Today's Programme at a Glance",
-    subtitle: "Four focused tracks designed to accelerate AI adoption across every sector",
+    subtitle: "Four signature sessions, startup showcases, and founder fireside chats",
     accent: "blue",
-    stageNote: "Project while anchors walk the audience through today's schedule.",
+    stageNote: "Project while anchors transition into the 4 signature sessions.",
   });
 
   // =========================================================================
-  // ACT III — THE 4 SIGNATURE SESSIONS (10:15 AM – 04:15 PM)
+  // ACT III — 4 SESSIONS, IN-BETWEEN STARTUP VIDEOS & FIRESIDE CHAT
   // =========================================================================
   TECHFEST_SESSIONS.forEach((session, sIdx) => {
     const sessionNum = String(sIdx + 1).padStart(2, "0");
 
-    // Insert Afternoon Break before Session 03
+    // In-between Session 01 & Session 02: Startup Spotlight Video Showcase #1
+    if (sIdx === 1) {
+      slides.push({
+        id: "startup-video-slot-1",
+        cueNumber: nextCue(),
+        actId: "act-3-sessions",
+        actLabel: "Startup Video #1",
+        kind: "startup-video",
+        timeSlot: "11:30 AM – 11:45 AM",
+        badgeLabel: "IN-BETWEEN SESSIONS · STARTUP VIDEO SHOWCASE #01",
+        title: "Startup Ecosystem Video Spotlight",
+        subtitle:
+          "Showcasing innovative products and startups built by founders across our ecosystem",
+        accent: "emerald",
+        mediaUrl: "/videos/landing.mp4",
+        mediaType: "video",
+        stageNote:
+          "Plays startup promo videos between Session 01 and Session 02. Click 'Upload Startup MP4' in Edit Slide to load any startup video file.",
+      });
+    }
+
+    // In-between Session 02 & Session 03: Midday Break + Startup Video #2 + Startup Fireside Chat
     if (sIdx === 2) {
       slides.push({
         id: "midday-break-hold",
         cueNumber: nextCue(),
         actId: "act-3-sessions",
-        actLabel: "Act III · 4 Sessions",
+        actLabel: "Midday Break",
         kind: "break-hold",
-        timeSlot: "01:00 PM – 01:30 PM",
+        timeSlot: "01:00 PM – 01:15 PM",
         badgeLabel: "MIDDAY NETWORKING & EXHIBITION BREAK",
         title: "Networking & Refreshment Break",
-        subtitle: "Up Next at 1:30 PM: Session 03 — AI x Creatives",
+        subtitle: "Up Next: Startup Video Reel & Founders Fireside Chat",
         accent: "emerald",
-        stageNote: "Enable the 30-minute stage countdown timer during the midday break.",
+        stageNote: "Enable the stage countdown timer during the midday break.",
+      });
+
+      slides.push({
+        id: "startup-video-slot-2",
+        cueNumber: nextCue(),
+        actId: "act-3-sessions",
+        actLabel: "Startup Video #2",
+        kind: "startup-video",
+        timeSlot: "01:15 PM – 01:25 PM",
+        badgeLabel: "IN-BETWEEN SESSIONS · STARTUP VIDEO SHOWCASE #02",
+        title: "Featured Startup Product Reel",
+        subtitle: "Discover the builders shipping AI and digital products from Jos",
+        accent: "indigo",
+        mediaUrl: "/videos/landing.mp4",
+        mediaType: "video",
+        stageNote:
+          "Second startup video showcase slot before the Startup Founders Fireside Chat.",
+      });
+
+      // Startup Founders Fireside Chat
+      slides.push({
+        id: "startup-founders-fireside-chat",
+        cueNumber: nextCue(),
+        actId: "act-3-sessions",
+        actLabel: "Fireside Chat",
+        kind: "fireside-chat",
+        timeSlot: "01:25 PM – 01:50 PM",
+        badgeLabel: "LIVE STAGE · STARTUP FOUNDERS FIRESIDE CHAT",
+        title: "Startup Founders Fireside Chat",
+        subtitle:
+          "Candid conversations with founders on building products, traction, and scaling startups",
+        accent: "amber",
+        people: [
+          {
+            id: "fireside-founder-1",
+            name: "Featured Founder 01",
+            role: "Startup Founder · Edit Name in Sidebar",
+            talkTitle: "Building & Scaling from Zero to Market Traction",
+            image: null,
+            initials: "F1",
+          },
+          {
+            id: "fireside-founder-2",
+            name: "Featured Founder 02",
+            role: "Startup Founder · Edit Name in Sidebar",
+            talkTitle: "Product Innovation & Customer Growth",
+            image: null,
+            initials: "F2",
+          },
+          {
+            id: "fireside-founder-3",
+            name: "Featured Founder 03",
+            role: "Startup Founder · Edit Name in Sidebar",
+            talkTitle: "Navigating Talent, Funding & Ecosystem Support",
+            image: null,
+            initials: "F3",
+          },
+        ],
+        stageNote:
+          "Use the 'Edit Slide' panel on the right to type the exact names, startup names, and upload photos for the founders joining the Fireside Chat.",
+      });
+    }
+
+    // In-between Session 03 & Session 04: Startup Spotlight Video Showcase #3
+    if (sIdx === 3) {
+      slides.push({
+        id: "startup-video-slot-3",
+        cueNumber: nextCue(),
+        actId: "act-3-sessions",
+        actLabel: "Startup Video #3",
+        kind: "startup-video",
+        timeSlot: "03:00 PM – 03:10 PM",
+        badgeLabel: "IN-BETWEEN SESSIONS · STARTUP VIDEO SHOWCASE #03",
+        title: "Ecosystem Startup Demo Video",
+        subtitle: "Leading into Session 04: Startup Ecosystem & Policy",
+        accent: "amber",
+        mediaUrl: "/videos/landing.mp4",
+        mediaType: "video",
+        stageNote:
+          "Third startup video slot transitioning into Session 04 (Startup Ecosystem & Policy).",
       });
     }
 
@@ -352,7 +544,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
       stageNote: `Cue when anchors announce Session ${sessionNum}: ${session.title}.`,
     });
 
-    // 2. Individual Speaker Walk-On Slides for every speaker in the session
+    // 2. Individual Speaker Walk-On Slides
     session.speakers.forEach((speaker) => {
       slides.push({
         id: `speaker-walkon-${speaker.id}`,
@@ -397,15 +589,15 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
   });
 
   // =========================================================================
-  // ACT IV — OPEN DEMOS, MIXER & CLOSING (04:15 PM – 05:45 PM)
+  // ACT IV — OPEN DEMOS, MIXER & CLOSING (04:25 PM – 05:45 PM)
   // =========================================================================
   slides.push({
     id: "closing-open-demos",
     cueNumber: nextCue(),
     actId: "act-4-closing",
-    actLabel: "Act IV · Closing",
+    actLabel: "Act IV · Demos",
     kind: "opening-bumper",
-    timeSlot: "04:15 PM WAT",
+    timeSlot: "04:25 PM WAT",
     badgeLabel: "LIVE SHOWCASE · OPEN DEMOS & FOUNDER MIXER",
     title: "Open Demos & Ecosystem Showcase",
     subtitle: "Live product demos from Plateau builders, founder networking & exhibitions",
@@ -417,7 +609,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     id: "closing-thank-you",
     cueNumber: nextCue(),
     actId: "act-4-closing",
-    actLabel: "Act IV · Closing",
+    actLabel: "Act IV · Finale",
     kind: "closing-thankyou",
     timeSlot: "05:15 PM WAT",
     badgeLabel: "COMMUNITY FINALE · GROUP PHOTO & CLOSING",
@@ -431,4 +623,3 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
 }
 
 export const DEFAULT_PROGRAM_SLIDES: ProgramSlide[] = buildDefaultProgramSlides();
-

@@ -18,6 +18,24 @@ export type SpeakerSpotlightItem = {
 
 export const PHOTO_SPEAKERS_AND_ANCHORS: SpeakerSpotlightItem[] = [
   {
+    id: "mbiplang-ardel",
+    slug: "Mbiplang-Ardel",
+    name: "Mbiplang Ardel",
+    role: "Lead Convener · Jos TechFest 2026",
+    badgeLabel: "OPENING SPEECH · LEAD CONVENER",
+    sessionNumber: "OPENING",
+    trackTitle: "Opening Speech",
+    talkTitle:
+      "Unlocking AI for Every Sector & Building Plateau's Next-Gen Innovation Ecosystem",
+    timeSlot: "09:35 – 09:50 WAT",
+    image: "images/mbi.jpg",
+    primaryColor: "#10B981",
+    secondaryColor: "#34D399",
+    glowRgba: "rgba(16, 185, 129, 0.42)",
+    borderRgba: "rgba(52, 211, 153, 0.55)",
+    badgeBgRgba: "rgba(16, 185, 129, 0.22)",
+  },
+  {
     id: "christie-dasaro",
     slug: "Christie-Dasaro",
     name: "Engr. Christie Dasaro",

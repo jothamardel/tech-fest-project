@@ -448,14 +448,16 @@ export const SlideStageRenderer: React.FC<{
             </div>
           )}
 
-          {/* ── BODY VARIANT 3: PANEL DISCUSSION / ANCHORS TRIO BACKDROP ── */}
-          {(slide.kind === "panel-backdrop" || slide.kind === "anchors-trio") && (
+          {/* ── BODY VARIANT 3: PANEL DISCUSSION / FIRESIDE CHAT / ANCHORS TRIO ── */}
+          {(slide.kind === "panel-backdrop" ||
+            slide.kind === "anchors-trio" ||
+            slide.kind === "fireside-chat") && (
             <div className="flex flex-1 flex-col justify-center gap-5 my-2">
               <div className="text-center">
                 <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white">
                   {slide.title}
                 </h2>
-                <p className="mt-1.5 text-sm sm:text-lg text-slate-300 font-medium">
+                <p className="mt-1.5 text-sm sm:text-lg text-slate-300 font-medium max-w-3xl mx-auto">
                   {slide.subtitle}
                 </p>
               </div>
@@ -463,7 +465,11 @@ export const SlideStageRenderer: React.FC<{
               {slide.people && (
                 <div
                   className={`grid gap-4 ${
-                    slide.people.length === 3
+                    slide.people.length === 1
+                      ? "grid-cols-1 max-w-md mx-auto w-full"
+                      : slide.people.length === 2
+                      ? "grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto w-full"
+                      : slide.people.length === 3
                       ? "grid-cols-1 sm:grid-cols-3"
                       : "grid-cols-2 sm:grid-cols-4"
                   }`}
@@ -701,16 +707,41 @@ export const SlideStageRenderer: React.FC<{
             </div>
           )}
 
-          {/* ── BODY VARIANT 7: CUSTOM INJECTED MEDIA (Image / Video / Embed) ── */}
-          {slide.kind === "custom-media" && (
+          {/* ── BODY VARIANT 7: CUSTOM INJECTED MEDIA OR STARTUP VIDEO SHOWCASE ── */}
+          {(slide.kind === "custom-media" || slide.kind === "startup-video") && (
             <div className="flex flex-1 flex-col justify-center gap-3 my-2">
-              <div className="relative flex-1 min-h-[280px] overflow-hidden rounded-3xl border border-white/15 bg-black flex items-center justify-center">
-                {slide.mediaType === "video" && slide.mediaUrl ? (
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+                    {slide.title}
+                  </h2>
+                  <p className="text-xs sm:text-sm text-slate-300">{slide.subtitle}</p>
+                </div>
+                <span
+                  className="rounded-full px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider"
+                  style={{
+                    backgroundColor: theme.badgeBgRgba,
+                    color: theme.secondary,
+                    border: `1px solid ${theme.borderRgba}`,
+                  }}
+                >
+                  {slide.kind === "startup-video" ? "STARTUP SPOTLIGHT VIDEO" : "LIVE MEDIA"}
+                </span>
+              </div>
+              <div
+                className="relative flex-1 min-h-[260px] overflow-hidden rounded-3xl bg-black flex items-center justify-center shadow-2xl"
+                style={{ border: `2px solid ${theme.borderRgba}` }}
+              >
+                {(slide.mediaType === "video" || slide.kind === "startup-video") &&
+                slide.mediaUrl &&
+                slide.mediaType !== "embed" ? (
                   <video
+                    key={slide.mediaUrl}
                     src={slide.mediaUrl}
                     controls
                     autoPlay
                     loop
+                    playsInline
                     className="h-full w-full object-contain"
                   />
                 ) : slide.mediaType === "embed" && slide.mediaUrl ? (
@@ -728,13 +759,72 @@ export const SlideStageRenderer: React.FC<{
                   />
                 ) : (
                   <div className="text-center p-8">
-                    <h2 className="text-3xl sm:text-5xl font-black text-white">
+                    <h3 className="text-2xl sm:text-4xl font-black text-white">
                       {slide.title}
-                    </h2>
-                    <p className="mt-2 text-base text-slate-300">{slide.subtitle}</p>
+                    </h3>
+                    <p className="mt-2 text-sm text-slate-400">
+                      Use the &ldquo;Upload Startup MP4 / Video&rdquo; button in the right editor panel to load the startup video file.
+                    </p>
                   </div>
                 )}
               </div>
+            </div>
+          )}
+
+          {/* ── BODY VARIANT 7B: BREAKING THE ICE & INTERACTIVE TECH GAMES ── */}
+          {slide.kind === "icebreaker-games" && (
+            <div className="flex flex-1 flex-col items-center justify-center text-center gap-6 my-2 px-4">
+              <span
+                className="rounded-full px-5 py-1.5 text-xs sm:text-sm font-black uppercase tracking-[0.2em]"
+                style={{
+                  backgroundColor: theme.badgeBgRgba,
+                  border: `1.5px solid ${theme.borderRgba}`,
+                  color: theme.secondary,
+                }}
+              >
+                AUDIENCE WARM-UP · PRIZES & SWAG GIVEAWAYS
+              </span>
+
+              <motion.h2
+                initial={{ opacity: 0, scale: 0.9, y: 24 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 180, damping: 16 }}
+                className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-white leading-[1.03]"
+              >
+                {slide.title}
+              </motion.h2>
+
+              <p className="text-base sm:text-2xl font-semibold text-slate-300 max-w-3xl">
+                {slide.subtitle}
+              </p>
+
+              {slide.highlights && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 w-full max-w-4xl pt-2">
+                  {slide.highlights.map((round, rIdx) => (
+                    <motion.div
+                      key={round}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.12 + rIdx * 0.08 }}
+                      className="flex items-center gap-3.5 rounded-2xl bg-white/[0.05] px-5 py-4 text-left shadow-xl"
+                      style={{ border: `1.5px solid ${theme.borderRgba}` }}
+                    >
+                      <span
+                        className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl text-sm font-black"
+                        style={{
+                          backgroundColor: theme.badgeBgRgba,
+                          color: theme.secondary,
+                        }}
+                      >
+                        0{rIdx + 1}
+                      </span>
+                      <span className="text-sm sm:text-lg font-extrabold text-white">
+                        {round}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 

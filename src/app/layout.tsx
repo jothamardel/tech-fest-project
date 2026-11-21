@@ -18,9 +18,14 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Jos TechFest 2026 — AI x Industry: Automating the Future of Work",
+  title: "Jos TechFest 2026 — AI for Every Sector",
   description:
     "Join Africa's most energetic tech event. One full day of keynotes, breakout sessions, and networking in Jos, Plateau State — 26 November 2026.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   openGraph: {
     title: "Jos TechFest 2026",
     description: "AI x Industry: Automating the Future of Work",

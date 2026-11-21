@@ -44,9 +44,9 @@ import {
   downloadSlideVideoFile,
 } from "./slideExporter";
 
-const STORAGE_KEY_SLIDES = "jtf2026_live_program_slides_v1";
-const STORAGE_KEY_SYNC = "jtf2026_live_sync_payload_v1";
-const BROADCAST_CHANNEL_NAME = "jtf2026_live_stage_v1";
+const STORAGE_KEY_SLIDES = "jtf2026_live_program_slides_v2";
+const STORAGE_KEY_SYNC = "jtf2026_live_sync_payload_v2";
+const BROADCAST_CHANNEL_NAME = "jtf2026_live_stage_v2";
 
 interface SyncPayload {
   slides: ProgramSlide[];
@@ -308,10 +308,22 @@ export default function LiveEventProjectionPage() {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
       if (!file) return;
+      if (file.type.startsWith("video/")) {
+        const videoUrl = URL.createObjectURL(file);
+        updateCurrentSlide({
+          mediaUrl: videoUrl,
+          mediaType: "video",
+        });
+        setReplayKey((k) => k + 1);
+        return;
+      }
       const reader = new FileReader();
       reader.onload = () => {
         if (typeof reader.result === "string") {
-          updateCurrentSlide({ mediaUrl: reader.result });
+          updateCurrentSlide({
+            mediaUrl: reader.result,
+            mediaType: "image",
+          });
           setReplayKey((k) => k + 1);
         }
       };
@@ -887,7 +899,7 @@ export default function LiveEventProjectionPage() {
                   <input
                     ref={fileInputRef}
                     type="file"
-                    accept="image/*"
+                    accept="image/*,video/*"
                     onChange={handlePhotoUpload}
                     className="hidden"
                   />
@@ -897,7 +909,9 @@ export default function LiveEventProjectionPage() {
                     className="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl border border-emerald-500/40 bg-emerald-500/15 hover:bg-emerald-500/25 px-3 py-2 font-bold text-emerald-300 cursor-pointer"
                   >
                     <Upload className="h-3.5 w-3.5" aria-hidden="true" />
-                    Upload / Replace Photo
+                    {currentSlide.kind === "startup-video"
+                      ? "Upload Startup MP4 Video"
+                      : "Upload Photo / Video"}
                   </button>
                   {slides.length > 1 && (
                     <button
@@ -973,6 +987,99 @@ export default function LiveEventProjectionPage() {
                     className="rounded-xl border border-white/15 bg-black/60 px-3 py-2 text-white font-semibold focus:border-emerald-400 focus:outline-none resize-none"
                   />
                 </label>
+
+                {/* Fireside Chat / Panelists Live Roster Editor */}
+                {currentSlide.people && currentSlide.people.length > 0 && (
+                  <div className="rounded-2xl border border-white/10 bg-black/40 p-3 flex flex-col gap-2.5">
+                    <div className="flex items-center justify-between">
+                      <span className="font-extrabold uppercase tracking-wider text-amber-300 text-[11px]">
+                        Stage Guests / Founders ({currentSlide.people.length})
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const nextPeople = [
+                            ...(currentSlide.people || []),
+                            {
+                              id: `guest-${Date.now()}`,
+                              name: `Founder ${(currentSlide.people?.length || 0) + 1}`,
+                              role: "Startup Founder",
+                              talkTitle: "Building & Scaling from Jos",
+                              image: null,
+                              initials: `F${(currentSlide.people?.length || 0) + 1}`,
+                            },
+                          ];
+                          updateCurrentSlide({ people: nextPeople });
+                        }}
+                        className="inline-flex items-center gap-1 rounded-full bg-amber-500/20 border border-amber-400/40 px-2.5 py-0.5 text-[10px] font-bold text-amber-300 cursor-pointer"
+                      >
+                        <Plus className="h-3 w-3" aria-hidden="true" /> Add Guest
+                      </button>
+                    </div>
+                    <div className="max-h-44 overflow-y-auto space-y-2 pr-1">
+                      {currentSlide.people.map((person, pIdx) => (
+                        <div
+                          key={person.id}
+                          className="rounded-xl border border-white/10 bg-white/[0.03] p-2 flex flex-col gap-1.5"
+                        >
+                          <div className="flex items-center gap-1.5">
+                            <input
+                              type="text"
+                              value={person.name}
+                              onChange={(e) => {
+                                const newName = e.target.value;
+                                const parts = newName.trim().split(/\s+/);
+                                const initials =
+                                  parts.length > 1
+                                    ? `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase()
+                                    : (parts[0] || "F").slice(0, 2).toUpperCase();
+                                const nextPeople = (currentSlide.people || []).map(
+                                  (item, i) =>
+                                    i === pIdx
+                                      ? { ...item, name: newName, initials }
+                                      : item
+                                );
+                                updateCurrentSlide({ people: nextPeople });
+                              }}
+                              placeholder="Founder / Guest Name"
+                              className="flex-1 rounded-lg border border-white/15 bg-black/60 px-2 py-1 text-[11px] font-bold text-white"
+                            />
+                            {currentSlide.people && currentSlide.people.length > 1 && (
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  const nextPeople = (currentSlide.people || []).filter(
+                                    (_, i) => i !== pIdx
+                                  );
+                                  updateCurrentSlide({ people: nextPeople });
+                                }}
+                                className="text-red-400 hover:text-red-300 p-1 cursor-pointer"
+                                title="Remove guest"
+                              >
+                                <Trash2 className="h-3 w-3" aria-hidden="true" />
+                              </button>
+                            )}
+                          </div>
+                          <input
+                            type="text"
+                            value={person.role}
+                            onChange={(e) => {
+                              const nextPeople = (currentSlide.people || []).map(
+                                (item, i) =>
+                                  i === pIdx
+                                    ? { ...item, role: e.target.value }
+                                    : item
+                              );
+                              updateCurrentSlide({ people: nextPeople });
+                            }}
+                            placeholder="Startup Name / Role"
+                            className="rounded-lg border border-white/10 bg-black/50 px-2 py-1 text-[10px] text-slate-300"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 <div>
                   <span className="block font-bold text-slate-400 mb-1.5">

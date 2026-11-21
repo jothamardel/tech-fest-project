@@ -30,47 +30,119 @@ const afternoonSessions = TECHFEST_SESSIONS.slice(2, 4);
 
 const agendaBlocks: AgendaBlock[] = [
   {
-    blockTitle: "Morning Programme — Opening & Sessions 01–02",
+    blockTitle: "Morning Programme — Arrival, Keynotes & Sessions 01–02",
     date: "26 November 2026 · Sarau Event Center, Jos",
     badge: "Morning",
     events: [
       {
-        time: "08:30 AM",
-        title: "Registration, Check-in & Morning Networking",
-        subtitle: "Arrival of builders, speakers, and guests",
+        time: "08:00 AM",
+        title: "Arrival, Accreditation Check-ins & Red Carpet Photos",
+        subtitle: "Arrival of builders, speakers, and guests · Photo wall & networking",
       },
       {
-        time: "09:30 AM",
-        title: "Welcome Remark & Opening Keynote",
+        time: "08:55 AM",
+        title: "Breaking the Ice & Interactive Tech Games",
+        subtitle: "AI & Tech trivia, speed networking challenges, and giveaways",
+        trackBadge: "Interactive Stage",
+        accent: "indigo",
+      },
+      {
+        time: "09:20 AM",
+        title: "Official Welcome by Stage Anchors",
         subtitle: "Hosted by Samuel Adebayo, Judith Nyior & Anna",
       },
-      ...morningSessions.map((session) => ({
-        time: session.time,
-        title: `Session: ${session.title}`,
-        subtitle: session.tagline,
-        trackBadge: session.stage,
-        accent: session.accent,
-        speakers: session.speakers,
-      })),
+      {
+        time: "09:35 AM",
+        title: "Opening Speech — Mbiplang Ardel (Lead Convener)",
+        subtitle: "Unlocking AI for Every Sector & Building Plateau's Innovation Ecosystem",
+        trackBadge: "Opening Speech",
+        accent: "emerald",
+      },
+      {
+        time: "09:50 AM",
+        title: "Keynote Address — Engr. Dominic Datong (DG, PICTDA)",
+        subtitle: "Advancing Digital Governance, Innovation Policy & AI Infrastructure",
+        trackBadge: "Keynote Address",
+        accent: "amber",
+      },
+      {
+        time: "10:05 AM",
+        title: "Presentation: AI RAG for Businesses — Samuel Dutse",
+        subtitle: "Deploying Retrieval-Augmented Generation on Private Enterprise Data",
+        trackBadge: "Special Presentation",
+        accent: "blue",
+      },
+      {
+        time: morningSessions[0].time,
+        title: `Session 01: ${morningSessions[0].title}`,
+        subtitle: morningSessions[0].tagline,
+        trackBadge: morningSessions[0].stage,
+        accent: morningSessions[0].accent,
+        speakers: morningSessions[0].speakers,
+      },
+      {
+        time: "11:30 AM",
+        title: "Startup Ecosystem Video Spotlight #01",
+        subtitle: "In-between session showcase of innovative startups & products",
+        trackBadge: "Startup Spotlight",
+        accent: "emerald",
+      },
+      {
+        time: morningSessions[1].time,
+        title: `Session 02: ${morningSessions[1].title}`,
+        subtitle: morningSessions[1].tagline,
+        trackBadge: morningSessions[1].stage,
+        accent: morningSessions[1].accent,
+        speakers: morningSessions[1].speakers,
+      },
     ],
   },
   {
-    blockTitle: "Afternoon Programme — Sessions 03–04 & Closing Showcase",
+    blockTitle: "Afternoon Programme — Fireside Chat, Sessions 03–04 & Finale",
     date: "26 November 2026 · Sarau Event Center, Jos",
     badge: "Afternoon",
     events: [
-      ...afternoonSessions.map((session) => ({
-        time: session.time,
-        title: `Session: ${session.title}`,
-        subtitle: session.tagline,
-        trackBadge: session.stage,
-        accent: session.accent,
-        speakers: session.speakers,
-      })),
       {
-        time: "04:15 PM",
+        time: "01:00 PM",
+        title: "Midday Networking Break & Startup Video Showcase #02",
+        subtitle: "Exhibition tour, refreshments & featured startup product videos",
+        trackBadge: "Startup Spotlight",
+        accent: "indigo",
+      },
+      {
+        time: "01:25 PM",
+        title: "Startup Founders Fireside Chat",
+        subtitle: "Candid conversations with startup founders on building, traction & scaling",
+        trackBadge: "Fireside Chat",
+        accent: "amber",
+      },
+      {
+        time: afternoonSessions[0].time,
+        title: `Session 03: ${afternoonSessions[0].title}`,
+        subtitle: afternoonSessions[0].tagline,
+        trackBadge: afternoonSessions[0].stage,
+        accent: afternoonSessions[0].accent,
+        speakers: afternoonSessions[0].speakers,
+      },
+      {
+        time: "03:00 PM",
+        title: "Startup Ecosystem Video Spotlight #03",
+        subtitle: "Featured startup demos transitioning into Ecosystem & Policy",
+        trackBadge: "Startup Spotlight",
+        accent: "amber",
+      },
+      {
+        time: afternoonSessions[1].time,
+        title: `Session 04: ${afternoonSessions[1].title}`,
+        subtitle: afternoonSessions[1].tagline,
+        trackBadge: afternoonSessions[1].stage,
+        accent: afternoonSessions[1].accent,
+        speakers: afternoonSessions[1].speakers,
+      },
+      {
+        time: "04:25 PM",
         title: "Open Demos, Ecosystem Networking & Closing Remarks",
-        subtitle: "Live product demos, founder mixer & community photo",
+        subtitle: "Live product demos, founder mixer & all-attendee community group photo",
       },
     ],
   },
@@ -119,7 +191,7 @@ export default function Agenda() {
             Event Agenda
           </h2>
           <p className="mt-4 text-slate-400 max-w-2xl mx-auto">
-            One action-packed day featuring four signature sessions —{" "}
+            One action-packed day featuring keynotes, startup showcases, founder fireside chats, and four signature sessions —{" "}
             <span className="text-slate-200 font-medium">AI x Education</span>,{" "}
             <span className="text-slate-200 font-medium">AI x Business</span>,{" "}
             <span className="text-slate-200 font-medium">AI x Creatives</span>, and{" "}
