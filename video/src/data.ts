@@ -73,5 +73,5 @@ export const VIDEO_SESSIONS: FrameSession[] = [
 export const VIDEO_ANCHORS = [
   { name: "Samuel Adebayo", role: "Event Anchor", initials: "SA", image: "images/ancor7.jpg" },
   { name: "Judith Nyior", role: "Event Anchor", initials: "JN", image: "images/ancor6.jpg" },
-  { name: "Anna", role: "Event Anchor", initials: "AN", image: null },
+  { name: "Anna Agbolade", role: "Event Anchor", initials: "AA", image: "images/anna-agbolade.jpg" },
 ];

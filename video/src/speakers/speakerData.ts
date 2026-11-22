@@ -171,5 +171,22 @@ export const PHOTO_SPEAKERS_AND_ANCHORS: SpeakerSpotlightItem[] = [
     borderRgba: "rgba(251, 191, 36, 0.55)",
     badgeBgRgba: "rgba(245, 158, 11, 0.20)",
   },
+  {
+    id: "anna-agbolade",
+    slug: "Anchor-Anna-Agbolade",
+    name: "Anna Agbolade",
+    role: "Official Stage Host & Event Anchor",
+    badgeLabel: "MAIN STAGE ANCHOR · JOS TECHFEST",
+    sessionNumber: "HOST",
+    trackTitle: "Main Stage Anchor",
+    talkTitle: "Guiding the Energy, Conversations & Stage Flow Across All Sessions",
+    timeSlot: "08:30 – 17:45 WAT",
+    image: "images/anna-agbolade.jpg",
+    primaryColor: "#10B981",
+    secondaryColor: "#FBBF24",
+    glowRgba: "rgba(245, 158, 11, 0.38)",
+    borderRgba: "rgba(251, 191, 36, 0.55)",
+    badgeBgRgba: "rgba(245, 158, 11, 0.20)",
+  },
 ];
 

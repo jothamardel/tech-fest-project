@@ -307,7 +307,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
       image: a.image,
       initials: getPersonInitials(a.name),
     })),
-    stageNote: "Project when introducing Samuel Adebayo, Judith Nyior, and Anna together on stage.",
+    stageNote: "Project when introducing Samuel Adebayo, Judith Nyior, and Anna Agbolade together on stage.",
   });
 
   TECHFEST_ANCHORS.forEach((anchor) => {

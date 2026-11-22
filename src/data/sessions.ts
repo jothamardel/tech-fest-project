@@ -289,8 +289,8 @@ export const TECHFEST_ANCHORS: EventAnchor[] = [
   },
   {
     id: "anna",
-    name: "Anna",
+    name: "Anna Agbolade",
     role: "Event Anchor",
-    image: null,
+    image: "/images/anna-agbolade.jpg",
   },
 ];

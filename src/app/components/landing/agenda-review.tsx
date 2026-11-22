@@ -49,7 +49,7 @@ const agendaBlocks: AgendaBlock[] = [
       {
         time: "09:20 AM",
         title: "Official Welcome by Stage Anchors",
-        subtitle: "Hosted by Samuel Adebayo, Judith Nyior & Anna",
+        subtitle: "Hosted by Samuel Adebayo, Judith Nyior & Anna Agbolade",
       },
       {
         time: "09:35 AM",
