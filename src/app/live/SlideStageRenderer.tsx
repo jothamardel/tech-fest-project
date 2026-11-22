@@ -452,19 +452,59 @@ export const SlideStageRenderer: React.FC<{
           {(slide.kind === "panel-backdrop" ||
             slide.kind === "anchors-trio" ||
             slide.kind === "fireside-chat") && (
-            <div className="flex flex-1 flex-col justify-center gap-5 my-2">
+            <div className="flex flex-1 flex-col justify-center gap-4 my-2">
               <div className="text-center">
-                <h2 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight text-white">
+                <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
                   {slide.title}
                 </h2>
-                <p className="mt-1.5 text-sm sm:text-lg text-slate-300 font-medium max-w-3xl mx-auto">
-                  {slide.subtitle}
-                </p>
+                {typeof slide.activeQuestionIndex !== "number" && (
+                  <p className="mt-1.5 text-xs sm:text-base text-slate-300 font-medium max-w-3xl mx-auto line-clamp-2">
+                    {slide.subtitle}
+                  </p>
+                )}
               </div>
+
+              {/* Active Projected Panel Question Banner on LED Wall */}
+              {slide.panelQuestions &&
+                typeof slide.activeQuestionIndex === "number" &&
+                slide.panelQuestions[slide.activeQuestionIndex] && (
+                  <motion.div
+                    key={slide.panelQuestions[slide.activeQuestionIndex].id}
+                    initial={{ opacity: 0, y: 18, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ type: "spring", stiffness: 180, damping: 18 }}
+                    className="mx-auto w-full max-w-5xl rounded-3xl bg-white/[0.06] p-5 sm:p-7 shadow-2xl"
+                    style={{ border: `2px solid ${theme.borderRgba}` }}
+                  >
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                      <span
+                        className="rounded-full px-3.5 py-1 text-xs font-black uppercase tracking-wider"
+                        style={{
+                          backgroundColor: theme.badgeBgRgba,
+                          color: theme.secondary,
+                          border: `1px solid ${theme.borderRgba}`,
+                        }}
+                      >
+                        QUESTION 0
+                        {slide.panelQuestions[slide.activeQuestionIndex].number} ·{" "}
+                        {slide.panelQuestions[slide.activeQuestionIndex].title}
+                      </span>
+                      <span className="text-xs font-bold text-slate-300">
+                        {
+                          slide.panelQuestions[slide.activeQuestionIndex]
+                            .defaultSpeakerNames.join(" · ")
+                        }
+                      </span>
+                    </div>
+                    <p className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white leading-snug">
+                      “{slide.panelQuestions[slide.activeQuestionIndex].prompt}”
+                    </p>
+                  </motion.div>
+                )}
 
               {slide.people && (
                 <div
-                  className={`grid gap-4 ${
+                  className={`grid gap-3.5 ${
                     slide.people.length === 1
                       ? "grid-cols-1 max-w-md mx-auto w-full"
                       : slide.people.length === 2

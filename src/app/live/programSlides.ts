@@ -3,6 +3,10 @@ import {
   TECHFEST_ANCHORS,
   getPersonInitials,
 } from "@/data/sessions";
+import {
+  SESSION_MODERATOR_BRIEFINGS,
+  type PanelQuestionItem,
+} from "@/data/panelQuestions";
 
 export type SlideActId =
   | "act-1-preshow"
@@ -63,6 +67,10 @@ export interface ProgramSlide {
   people?: SlidePanelPerson[];
   /** Gallery photo list for photo-reel */
   galleryPhotos?: string[];
+  /** Panel discussion questions for panel-backdrop slides */
+  panelQuestions?: PanelQuestionItem[];
+  /** Currently projected panel question index on LED screen (null = show all panelists overview) */
+  activeQuestionIndex?: number | null;
   /** Operator cue notes */
   stageNote?: string;
 }
@@ -565,6 +573,9 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     });
 
     // 3. Session Panel / All-Speakers Stage Backdrop
+    const sessionBriefing = SESSION_MODERATOR_BRIEFINGS.find(
+      (b) => b.sessionId === session.id
+    );
     slides.push({
       id: `session-panel-${session.id}`,
       cueNumber: nextCue(),
@@ -574,7 +585,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
       timeSlot: session.time,
       badgeLabel: `LIVE PANEL & Q&A · SESSION ${sessionNum}`,
       title: `${session.title} — Panel & Q&A`,
-      subtitle: session.tagline,
+      subtitle: sessionBriefing?.moderatorIntro || session.tagline,
       accent: session.accent,
       people: session.speakers.map((sp) => ({
         id: sp.id,
@@ -584,7 +595,9 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
         image: sp.image,
         initials: getPersonInitials(sp.name),
       })),
-      stageNote: `Hold on the LED wall while all ${session.speakers.length} speakers are seated for discussion/Q&A.`,
+      panelQuestions: sessionBriefing?.questions || [],
+      activeQuestionIndex: null,
+      stageNote: `Hold on the LED wall during the panel. Use the Q1–Q4 buttons in the right sidebar to project the active panel question on the LED screen!`,
     });
   });
 

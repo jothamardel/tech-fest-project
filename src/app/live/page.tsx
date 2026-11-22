@@ -44,9 +44,9 @@ import {
   downloadSlideVideoFile,
 } from "./slideExporter";
 
-const STORAGE_KEY_SLIDES = "jtf2026_live_program_slides_v2";
-const STORAGE_KEY_SYNC = "jtf2026_live_sync_payload_v2";
-const BROADCAST_CHANNEL_NAME = "jtf2026_live_stage_v2";
+const STORAGE_KEY_SLIDES = "jtf2026_live_program_slides_v3";
+const STORAGE_KEY_SYNC = "jtf2026_live_sync_payload_v3";
+const BROADCAST_CHANNEL_NAME = "jtf2026_live_stage_v3";
 
 interface SyncPayload {
   slides: ProgramSlide[];
@@ -988,6 +988,68 @@ export default function LiveEventProjectionPage() {
                   />
                 </label>
 
+                {/* Panel Questions LED Projector Switcher (for panel-backdrop slides) */}
+                {currentSlide.panelQuestions &&
+                  currentSlide.panelQuestions.length > 0 && (
+                    <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.06] p-3 flex flex-col gap-2">
+                      <span className="font-extrabold uppercase tracking-wider text-emerald-300 text-[11px]">
+                        Project Panel Question on LED Wall
+                      </span>
+                      <div className="grid grid-cols-5 gap-1.5">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            updateCurrentSlide({ activeQuestionIndex: null })
+                          }
+                          className={`rounded-lg border py-1.5 text-[11px] font-bold cursor-pointer ${
+                            typeof currentSlide.activeQuestionIndex !== "number"
+                              ? "border-emerald-400 bg-emerald-500 text-slate-950"
+                              : "border-white/10 bg-black/50 text-slate-300"
+                          }`}
+                        >
+                          All
+                        </button>
+                        {currentSlide.panelQuestions.map((q, qIdx) => (
+                          <button
+                            key={q.id}
+                            type="button"
+                            onClick={() =>
+                              updateCurrentSlide({ activeQuestionIndex: qIdx })
+                            }
+                            className={`rounded-lg border py-1.5 text-[11px] font-bold cursor-pointer ${
+                              currentSlide.activeQuestionIndex === qIdx
+                                ? "border-emerald-400 bg-emerald-500 text-slate-950"
+                                : "border-white/10 bg-black/50 text-slate-300"
+                            }`}
+                            title={q.title}
+                          >
+                            Q{q.number}
+                          </button>
+                        ))}
+                      </div>
+                      {typeof currentSlide.activeQuestionIndex === "number" &&
+                        currentSlide.panelQuestions[
+                          currentSlide.activeQuestionIndex
+                        ] && (
+                          <p className="text-[11px] text-slate-300 leading-snug mt-1">
+                            <strong className="text-white">
+                              {
+                                currentSlide.panelQuestions[
+                                  currentSlide.activeQuestionIndex
+                                ].title
+                              }
+                              :
+                            </strong>{" "}
+                            {
+                              currentSlide.panelQuestions[
+                                currentSlide.activeQuestionIndex
+                              ].prompt
+                            }
+                          </p>
+                        )}
+                    </div>
+                  )}
+
                 {/* Fireside Chat / Panelists Live Roster Editor */}
                 {currentSlide.people && currentSlide.people.length > 0 && (
                   <div className="rounded-2xl border border-white/10 bg-black/40 p-3 flex flex-col gap-2.5">
@@ -1316,8 +1378,16 @@ export default function LiveEventProjectionPage() {
               </div>
             )}
 
-            {/* Quick Links to Remotion Studio Bundle & Main Website */}
+            {/* Quick Links to Moderator Guide, Remotion Studio Bundle & Main Website */}
             <div className="mt-auto pt-3 border-t border-white/10 flex flex-col gap-2 text-xs">
+              <Link
+                href="/guide"
+                target="_blank"
+                className="inline-flex items-center justify-between rounded-xl border border-emerald-500/30 bg-emerald-500/10 hover:bg-emerald-500/20 px-3.5 py-2.5 font-bold text-emerald-300 transition-colors"
+              >
+                <span>Moderator &amp; Guest Questions Guide</span>
+                <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+              </Link>
               <a
                 href="/remotion-studio/index.html"
                 target="_blank"
