@@ -246,7 +246,7 @@ export const TECHFEST_SESSIONS: EventSession[] = [
         name: "Mr. Stephen Kusu",
         role: "Speaker · Startup Ecosystem & Policy",
         talkTitle: "Founder Support Systems & Venture Pathways",
-        image: null,
+        image: "/images/stephen-kusu.jpg",
         sessionId: "startup-ecosystem-policy",
         sessionLabel: "Startup Ecosystem & Policy",
       },

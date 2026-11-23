@@ -64,7 +64,7 @@ export const VIDEO_SESSIONS: FrameSession[] = [
     speakers: [
       { name: "Mr. Theodore Longji", initials: "TL", image: "images/theodore-longji.jpg" },
       { name: "Mr. Bashir Sheidu", initials: "BS", image: "images/bashir-sheidu.jpg" },
-      { name: "Mr. Stephen Kusu", initials: "SK", image: null },
+      { name: "Mr. Stephen Kusu", initials: "SK", image: "images/stephen-kusu.jpg" },
       { name: "Mr. Sheneni Tukura", initials: "ST", image: "images/sheneni-tukura.jpg" },
     ],
   },
