@@ -363,13 +363,13 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     talkTitle:
       "Keynote Address: Advancing Digital Governance, Public-Private Innovation & AI Readiness Across Plateau State",
     accent: "amber",
-    mediaUrl: null,
+    mediaUrl: "/images/dominic-datong.jpg",
     initials: "DD",
     stageNote:
-      "Cue for the Keynote Address by DG PICTDA Engr. Dominic Datong. Use 'Upload / Replace Photo' in Edit Slide if a portrait is provided on event day.",
+      "Cue for the Official Keynote Address by DG PICTDA Engr. Dominic Datong.",
   });
 
-  // Special Presentation on AI RAG for Businesses by Samuel Dutse
+  // Special Presentation on AI RAG for Businesses by Samuel Yaula Dutse
   slides.push({
     id: "presentation-ai-rag-samuel-dutse",
     cueNumber: nextCue(),
@@ -378,15 +378,15 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     kind: "speaker-walkon",
     timeSlot: "10:05 AM – 10:20 AM",
     badgeLabel: "TECHNICAL PRESENTATION · AI RAG FOR BUSINESSES",
-    title: "Samuel Dutse",
+    title: "Samuel Yaula Dutse",
     subtitle: "AI Systems Speaker · Special Presentation",
     talkTitle:
       "AI RAG for Businesses: Deploying Retrieval-Augmented Generation on Private Enterprise Data",
     accent: "blue",
-    mediaUrl: null,
+    mediaUrl: "/images/samuel-dutse.jpg",
     initials: "SD",
     stageNote:
-      "Cue when Samuel Dutse is called on stage for 'AI RAG for Businesses'. If he has slides, inject or embed his deck via the 'Add Media' tab.",
+      "Cue when Samuel Yaula Dutse is called on stage for 'AI RAG for Businesses'. If he has slides, inject or embed his deck via the 'Add Media' tab.",
   });
 
   slides.push({

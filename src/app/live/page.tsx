@@ -44,9 +44,9 @@ import {
   downloadSlideVideoFile,
 } from "./slideExporter";
 
-const STORAGE_KEY_SLIDES = "jtf2026_live_program_slides_v4";
-const STORAGE_KEY_SYNC = "jtf2026_live_sync_payload_v4";
-const BROADCAST_CHANNEL_NAME = "jtf2026_live_stage_v4";
+const STORAGE_KEY_SLIDES = "jtf2026_live_program_slides_v14";
+const STORAGE_KEY_SYNC = "jtf2026_live_sync_payload_v14";
+const BROADCAST_CHANNEL_NAME = "jtf2026_live_stage_v14";
 
 interface SyncPayload {
   slides: ProgramSlide[];

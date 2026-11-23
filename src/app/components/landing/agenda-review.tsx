@@ -57,6 +57,17 @@ const agendaBlocks: AgendaBlock[] = [
         subtitle: "Unlocking AI for Every Sector & Building Plateau's Innovation Ecosystem",
         trackBadge: "Opening Speech",
         accent: "emerald",
+        speakers: [
+          {
+            id: "mbiplang-ardel",
+            name: "Mbiplang Ardel",
+            role: "Lead Convener",
+            talkTitle: "Opening Speech",
+            image: "/images/mbi.jpg",
+            sessionId: "ai-business",
+            sessionLabel: "Opening Speech",
+          },
+        ],
       },
       {
         time: "09:50 AM",
@@ -64,13 +75,35 @@ const agendaBlocks: AgendaBlock[] = [
         subtitle: "Advancing Digital Governance, Innovation Policy & AI Infrastructure",
         trackBadge: "Keynote Address",
         accent: "amber",
+        speakers: [
+          {
+            id: "dominic-datong",
+            name: "Engr. Dominic Datong",
+            role: "DG, PICTDA",
+            talkTitle: "Keynote Address",
+            image: "/images/dominic-datong.jpg",
+            sessionId: "startup-ecosystem-policy",
+            sessionLabel: "Keynote Address",
+          },
+        ],
       },
       {
         time: "10:05 AM",
-        title: "Presentation: AI RAG for Businesses — Samuel Dutse",
+        title: "Presentation: AI RAG for Businesses — Samuel Yaula Dutse",
         subtitle: "Deploying Retrieval-Augmented Generation on Private Enterprise Data",
         trackBadge: "Special Presentation",
         accent: "blue",
+        speakers: [
+          {
+            id: "samuel-yaula-dutse",
+            name: "Samuel Yaula Dutse",
+            role: "Special Presentation · AI RAG",
+            talkTitle: "AI RAG for Businesses",
+            image: "/images/samuel-dutse.jpg",
+            sessionId: "ai-business",
+            sessionLabel: "Special Presentation",
+          },
+        ],
       },
       {
         time: morningSessions[0].time,

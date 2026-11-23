@@ -35,9 +35,9 @@ export const VIDEO_SESSIONS: FrameSession[] = [
     accentBorder: "rgba(52, 211, 153, 0.45)",
     speakers: [
       { name: "Mr. Nnamdi Ibe", initials: "NI", image: "images/nnamdi.jpg" },
-      { name: "Mr. Ibrahim Jimoh", initials: "IJ", image: null },
+      { name: "Mr. Ibrahim Jimoh", initials: "IJ", image: "images/ibrahim-jimoh.jpg" },
       { name: "Moses Amama", initials: "MA", image: "images/Mo.jpg" },
-      { name: "Jennifer Turay", initials: "JT", image: null },
+      { name: "Jennifer Turay", initials: "JT", image: "images/jennifer-turay.jpg" },
     ],
   },
   {
@@ -48,9 +48,9 @@ export const VIDEO_SESSIONS: FrameSession[] = [
     accentBg: "rgba(99, 102, 241, 0.16)",
     accentBorder: "rgba(129, 140, 248, 0.45)",
     speakers: [
-      { name: "Mr. Christopher Haruna", initials: "CH", image: null },
-      { name: "Jethro Da'ar", initials: "JD", image: null },
-      { name: "Timothy Kunat", initials: "TK", image: null },
+      { name: "Mr. Christopher Haruna", initials: "CH", image: "images/christopher-haruna.jpg" },
+      { name: "Jethro Da'ar", initials: "JD", image: "images/jethro-daar.jpg" },
+      { name: "Timothy Kunat", initials: "TK", image: "images/timothy-kunat.jpg" },
       { name: "David Enyi", initials: "DE", image: "images/dav.jpg" },
     ],
   },
@@ -62,10 +62,10 @@ export const VIDEO_SESSIONS: FrameSession[] = [
     accentBg: "rgba(245, 158, 11, 0.16)",
     accentBorder: "rgba(251, 191, 36, 0.45)",
     speakers: [
-      { name: "Mr. Theodore Longji", initials: "TL", image: null },
-      { name: "Mr. Bashir Sheidu", initials: "BS", image: null },
+      { name: "Mr. Theodore Longji", initials: "TL", image: "images/theodore-longji.jpg" },
+      { name: "Mr. Bashir Sheidu", initials: "BS", image: "images/bashir-sheidu.jpg" },
       { name: "Mr. Stephen Kusu", initials: "SK", image: null },
-      { name: "Mr. Sheneni Tukura", initials: "ST", image: null },
+      { name: "Mr. Sheneni Tukura", initials: "ST", image: "images/sheneni-tukura.jpg" },
     ],
   },
 ];

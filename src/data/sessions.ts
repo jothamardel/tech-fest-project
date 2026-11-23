@@ -125,7 +125,7 @@ export const TECHFEST_SESSIONS: EventSession[] = [
         name: "Mr. Ibrahim Jimoh",
         role: "Speaker · AI x Business",
         talkTitle: "Scaling Operations & Enterprise Intelligence with AI",
-        image: null,
+        image: "/images/ibrahim-jimoh.jpg",
         sessionId: "ai-business",
         sessionLabel: "AI x Business",
       },
@@ -143,7 +143,7 @@ export const TECHFEST_SESSIONS: EventSession[] = [
         name: "Jennifer Turay",
         role: "Speaker · AI x Business",
         talkTitle: "Customer Intelligence & Market Expansion in the AI Era",
-        image: null,
+        image: "/images/jennifer-turay.jpg",
         sessionId: "ai-business",
         sessionLabel: "AI x Business",
       },
@@ -172,7 +172,7 @@ export const TECHFEST_SESSIONS: EventSession[] = [
         name: "Mr. Christopher Haruna",
         role: "Speaker · AI x Creatives",
         talkTitle: "Creative Direction & Generative Production Workflows",
-        image: null,
+        image: "/images/christopher-haruna.jpg",
         sessionId: "ai-creatives",
         sessionLabel: "AI x Creatives",
       },
@@ -181,7 +181,7 @@ export const TECHFEST_SESSIONS: EventSession[] = [
         name: "Jethro Da'ar",
         role: "Speaker · AI x Creatives",
         talkTitle: "Visual Craft, Brand Worlds & AI Storytelling",
-        image: null,
+        image: "/images/jethro-daar.jpg",
         sessionId: "ai-creatives",
         sessionLabel: "AI x Creatives",
       },
@@ -190,7 +190,7 @@ export const TECHFEST_SESSIONS: EventSession[] = [
         name: "Timothy Kunat",
         role: "Speaker · AI x Creatives",
         talkTitle: "Next-Gen Media & Interactive Creative Systems",
-        image: null,
+        image: "/images/timothy-kunat.jpg",
         sessionId: "ai-creatives",
         sessionLabel: "AI x Creatives",
       },
@@ -228,7 +228,7 @@ export const TECHFEST_SESSIONS: EventSession[] = [
         name: "Mr. Theodore Longji",
         role: "Speaker · Startup Ecosystem & Policy",
         talkTitle: "Building Sustainable Regional Startup Ecosystems",
-        image: null,
+        image: "/images/theodore-longji.jpg",
         sessionId: "startup-ecosystem-policy",
         sessionLabel: "Startup Ecosystem & Policy",
       },
@@ -237,7 +237,7 @@ export const TECHFEST_SESSIONS: EventSession[] = [
         name: "Mr. Bashir Sheidu",
         role: "Speaker · Startup Ecosystem & Policy",
         talkTitle: "Policy Enablement & Digital Economy Growth",
-        image: null,
+        image: "/images/bashir-sheidu.jpg",
         sessionId: "startup-ecosystem-policy",
         sessionLabel: "Startup Ecosystem & Policy",
       },
@@ -255,7 +255,7 @@ export const TECHFEST_SESSIONS: EventSession[] = [
         name: "Mr. Sheneni Tukura",
         role: "Speaker · Startup Ecosystem & Policy",
         talkTitle: "Institutional Collaboration & Tech Governance",
-        image: null,
+        image: "/images/sheneni-tukura.jpg",
         sessionId: "startup-ecosystem-policy",
         sessionLabel: "Startup Ecosystem & Policy",
       },
@@ -263,9 +263,43 @@ export const TECHFEST_SESSIONS: EventSession[] = [
   },
 ];
 
-export const ALL_SESSION_SPEAKERS: SessionSpeaker[] = TECHFEST_SESSIONS.flatMap(
-  (session) => session.speakers
-);
+export const SPECIAL_STAGE_SPEAKERS: SessionSpeaker[] = [
+  {
+    id: "mbiplang-ardel",
+    name: "Mbiplang Ardel",
+    role: "Lead Convener · Opening Speech",
+    talkTitle:
+      "Opening Speech: Unlocking AI for Every Sector & Building Plateau's Innovation Ecosystem",
+    image: "/images/mbi.jpg",
+    sessionId: "ai-business",
+    sessionLabel: "Opening Speech",
+  },
+  {
+    id: "dominic-datong",
+    name: "Engr. Dominic Datong",
+    role: "DG, PICTDA · Official Keynote Address",
+    talkTitle:
+      "Keynote Address: Advancing Digital Governance, Public-Private Innovation & AI Readiness",
+    image: "/images/dominic-datong.jpg",
+    sessionId: "startup-ecosystem-policy",
+    sessionLabel: "Keynote Address",
+  },
+  {
+    id: "samuel-yaula-dutse",
+    name: "Samuel Yaula Dutse",
+    role: "Special Presentation · AI RAG for Businesses",
+    talkTitle:
+      "AI RAG for Businesses: Deploying Retrieval-Augmented Generation on Private Enterprise Data",
+    image: "/images/samuel-dutse.jpg",
+    sessionId: "ai-business",
+    sessionLabel: "AI RAG for Businesses",
+  },
+];
+
+export const ALL_SESSION_SPEAKERS: SessionSpeaker[] = [
+  ...SPECIAL_STAGE_SPEAKERS,
+  ...TECHFEST_SESSIONS.flatMap((session) => session.speakers),
+];
 
 export const CONFIRMED_IMAGE_SPEAKERS: Array<
   SessionSpeaker & { image: string }

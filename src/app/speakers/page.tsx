@@ -15,6 +15,7 @@ import {
 import {
   TECHFEST_SESSIONS,
   ALL_SESSION_SPEAKERS,
+  SPECIAL_STAGE_SPEAKERS,
   getPersonInitials,
   type SessionTrackId,
 } from "@/data/sessions";
@@ -170,6 +171,118 @@ export default function Speakers() {
 
       {/* Grouped Session Sections */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 space-y-16">
+        {selectedTrack === "all" && (
+          <section
+            aria-labelledby="speakers-keynotes-heading"
+            className="space-y-8"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-800/80 pb-6">
+              <div>
+                <div className="flex flex-wrap items-center gap-2.5 mb-3">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-emerald-300">
+                    Keynotes &amp; Special Presentations
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-xs text-slate-400">
+                    <Clock className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" />
+                    09:35 AM – 10:20 AM WAT
+                  </span>
+                </div>
+                <h2
+                  id="speakers-keynotes-heading"
+                  className="text-3xl sm:text-4xl font-black text-white tracking-tight"
+                >
+                  Opening Speech, Keynote &amp; Special Presentation
+                </h2>
+              </div>
+            </div>
+
+            <ul
+              role="list"
+              aria-label="Keynote and special presentation speakers"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {SPECIAL_STAGE_SPEAKERS.map((speaker, index) => {
+                const initials = getPersonInitials(speaker.name);
+                const style = TRACK_BADGE_STYLES[speaker.sessionId];
+                return (
+                  <motion.li
+                    key={speaker.id}
+                    initial={shouldReduceMotion ? false : { opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.55,
+                      delay: shouldReduceMotion ? 0 : index * 0.08,
+                      ease: [0.32, 0.72, 0, 1],
+                    }}
+                    className="group rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-1.5 transition-colors duration-500 hover:border-white/20"
+                  >
+                    <article className="flex h-full flex-col overflow-hidden rounded-[calc(1.75rem-0.375rem)] bg-slate-900 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
+                      <div className="relative h-72 overflow-hidden bg-slate-950">
+                        {speaker.image ? (
+                          <>
+                            <Image
+                              src={speaker.image}
+                              alt={`${speaker.name}, ${speaker.role}`}
+                              fill
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
+                            />
+                            <div
+                              aria-hidden="true"
+                              className="absolute inset-0"
+                              style={{
+                                background:
+                                  "linear-gradient(to top, rgba(15,23,42,1) 0%, rgba(15,23,42,0.15) 55%, transparent 100%)",
+                              }}
+                            />
+                          </>
+                        ) : (
+                          <div
+                            className="flex h-full w-full flex-col items-center justify-center p-6 text-center"
+                            style={{ background: style.monogramBg }}
+                          >
+                            <div
+                              className={`flex h-20 w-20 items-center justify-center rounded-full border text-2xl font-black tracking-wider text-white shadow-inner ${style.badge}`}
+                              aria-hidden="true"
+                            >
+                              {initials}
+                            </div>
+                            <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-medium text-slate-400">
+                              <UserCheck className="h-3.5 w-3.5" aria-hidden="true" />
+                              Confirmed Speaker
+                            </span>
+                          </div>
+                        )}
+                        <div className="absolute top-3 left-3">
+                          <span
+                            className={`rounded-full border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider backdrop-blur-md ${style.badge}`}
+                          >
+                            {speaker.sessionLabel}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex flex-1 flex-col justify-between p-5">
+                        <div>
+                          <h3 className="text-base font-bold text-white">
+                            {speaker.name}
+                          </h3>
+                          <p className={`mt-1 text-xs font-medium ${style.textAccent}`}>
+                            {speaker.role}
+                          </p>
+                          <p className="mt-3 text-xs text-slate-400 leading-relaxed">
+                            {speaker.talkTitle}
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  </motion.li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+
         {displayedSessions.map((session) => {
           const style = TRACK_BADGE_STYLES[session.id];
           return (
