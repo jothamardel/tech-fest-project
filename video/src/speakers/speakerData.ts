@@ -28,7 +28,7 @@ export const PHOTO_SPEAKERS_AND_ANCHORS: SpeakerSpotlightItem[] = [
     talkTitle:
       "Unlocking AI for Every Sector & Building Plateau's Next-Gen Innovation Ecosystem",
     timeSlot: "09:35 – 09:50 WAT",
-    image: "images/mbi.jpg",
+    image: "images/mbiplang-ardel.jpg",
     primaryColor: "#10B981",
     secondaryColor: "#34D399",
     glowRgba: "rgba(16, 185, 129, 0.42)",

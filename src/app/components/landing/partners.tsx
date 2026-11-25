@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 /* ── Sponsor Tiers ────────────────────────────────────────────
-   Headline (5) | Ecosystem Partners (6) | Community Hubs (6)
+   Headline (4) | Ecosystem Partners (6) | Community Hubs (6)
    ─────────────────────────────────────────────────────────── */
 const headlineSponsors: Array<{
   src: string;
@@ -14,7 +14,6 @@ const headlineSponsors: Array<{
   { src: "/images/agrisync-ai.png", alt: "AgriSync AI" },
   { src: "/images/devkings.jpg",    alt: "Devkings Technologies", showLabel: true },
   { src: "/images/partners.png",    alt: "Bluehouse Technologies" },
-  { src: "/images/koenig.jpeg",     alt: "Koenig" },
   { src: "/images/openai.png",      alt: "OpenAI" },
 ];
 

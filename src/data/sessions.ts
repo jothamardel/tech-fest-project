@@ -270,7 +270,7 @@ export const SPECIAL_STAGE_SPEAKERS: SessionSpeaker[] = [
     role: "Lead Convener · Opening Speech",
     talkTitle:
       "Opening Speech: Unlocking AI for Every Sector & Building Plateau's Innovation Ecosystem",
-    image: "/images/mbi.jpg",
+    image: "/images/mbiplang-ardel.jpg",
     sessionId: "ai-business",
     sessionLabel: "Opening Speech",
   },

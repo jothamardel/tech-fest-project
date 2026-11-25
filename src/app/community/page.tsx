@@ -22,11 +22,11 @@ interface Member {
 const members: Member[] = [
   {
     id: 1,
-    name: "Ardel Mbiplang",
-    role: "Chief Executive Officer",
+    name: "Mbiplang Ardel",
+    role: "Lead Convener",
     description:
       "Leads company vision, drives innovation, and oversees strategic growth and success.",
-    image: "/images/mbi.jpg",
+    image: "/images/mbiplang-ardel.jpg",
   },
   {
     id: 2,

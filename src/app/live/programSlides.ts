@@ -169,7 +169,6 @@ export const SPONSOR_TIERS: {
     { src: "/images/agrisync-ai.png", name: "AgriSync AI" },
     { src: "/images/devkings.jpg", name: "Devkings Technologies", showLabel: true },
     { src: "/images/partners.png", name: "Bluehouse Technologies" },
-    { src: "/images/koenig.jpeg", name: "Koenig" },
     { src: "/images/openai.png", name: "OpenAI" },
   ],
   ecosystem: [
@@ -407,7 +406,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     talkTitle:
       "Opening Speech: Unlocking AI for Every Sector & Building Plateau's Next-Gen Innovation Ecosystem",
     accent: "emerald",
-    mediaUrl: "/images/mbi.jpg",
+    mediaUrl: "/images/mbiplang-ardel.jpg",
     initials: "MA",
     stageNote:
       "Cue as Lead Convener Mbiplang Ardel is called on stage for the official Opening Speech.",
@@ -595,36 +594,36 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
         badgeLabel: "LIVE STAGE · STARTUP FOUNDERS FIRESIDE CHAT",
         title: "Startup Founders Fireside Chat",
         subtitle:
-          "Candid conversations with founders on building products, traction, and scaling startups",
+          "Featuring David Yildum, Donald Ebuga & Mbiplang Ardel on building products, traction, and scaling startups",
         accent: "amber",
         people: [
           {
-            id: "fireside-founder-1",
-            name: "Featured Founder 01",
-            role: "Startup Founder · Edit Name in Sidebar",
+            id: "fireside-david-yildum",
+            name: "David Yildum",
+            role: "Startup Founder · Fireside Chat",
             talkTitle: "Building & Scaling from Zero to Market Traction",
-            image: null,
-            initials: "F1",
+            image: "/images/david-yildum.jpg",
+            initials: "DY",
           },
           {
-            id: "fireside-founder-2",
-            name: "Featured Founder 02",
-            role: "Startup Founder · Edit Name in Sidebar",
-            talkTitle: "Product Innovation & Customer Growth",
-            image: null,
-            initials: "F2",
+            id: "fireside-donald-ebuga",
+            name: "Donald Ebuga",
+            role: "Startup Founder · Fireside Chat",
+            talkTitle: "Product Innovation, Execution & Customer Growth",
+            image: "/images/donald-ebuga.jpg",
+            initials: "DE",
           },
           {
-            id: "fireside-founder-3",
-            name: "Featured Founder 03",
-            role: "Startup Founder · Edit Name in Sidebar",
+            id: "fireside-mbiplang-ardel",
+            name: "Mbiplang Ardel",
+            role: "Founder & Lead Convener · Fireside Chat",
             talkTitle: "Navigating Talent, Funding & Ecosystem Support",
-            image: null,
-            initials: "F3",
+            image: "/images/mbiplang-ardel.jpg",
+            initials: "MA",
           },
         ],
         stageNote:
-          "Use the 'Edit Slide' panel on the right to type the exact names, startup names, and upload photos for the founders joining the Fireside Chat.",
+          "Cue for the Startup Founders Fireside Chat featuring David Yildum, Donald Ebuga, and Mbiplang Ardel.",
       });
     }
 
