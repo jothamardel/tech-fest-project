@@ -300,7 +300,7 @@ export const SPECIAL_STAGE_SPEAKERS: SessionSpeaker[] = [
     role: "Special Presentation · Data Protection",
     talkTitle:
       "Data Protection in the AI Era: Privacy, Compliance & Safeguarding Enterprise Data",
-    image: null,
+    image: "/images/ribetnan-dami.jpg",
     sessionId: "startup-ecosystem-policy",
     sessionLabel: "Data Protection",
   },

@@ -479,7 +479,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
         role: "Special Presentation · Data Protection",
         talkTitle:
           "Data Protection in the AI Era: Privacy, Compliance & Safeguarding Enterprise Data",
-        image: null,
+        image: "/images/ribetnan-dami.jpg",
         initials: "RD",
       },
     ],
@@ -501,7 +501,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     talkTitle:
       "Data Protection in the AI Era: Privacy, Compliance & Safeguarding Enterprise Data",
     accent: "indigo",
-    mediaUrl: null,
+    mediaUrl: "/images/ribetnan-dami.jpg",
     initials: "RD",
     stageNote:
       "Cue when Ribetnan Dami takes the stage to deliver his presentation on Data Protection.",

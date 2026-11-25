@@ -117,7 +117,7 @@ const agendaBlocks: AgendaBlock[] = [
             name: "Ribetnan Dami",
             role: "Special Presentation · Data Protection",
             talkTitle: "Data Protection",
-            image: null,
+            image: "/images/ribetnan-dami.jpg",
             sessionId: "startup-ecosystem-policy",
             sessionLabel: "Data Protection",
           },
