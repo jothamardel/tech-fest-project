@@ -106,6 +106,24 @@ const agendaBlocks: AgendaBlock[] = [
         ],
       },
       {
+        time: "10:15 AM",
+        title: "Presentation: Data Protection — Ribetnan Dami",
+        subtitle: "Data Protection in the AI Era: Privacy, Compliance & Safeguarding Digital Assets",
+        trackBadge: "Special Presentation",
+        accent: "indigo",
+        speakers: [
+          {
+            id: "ribetnan-dami",
+            name: "Ribetnan Dami",
+            role: "Special Presentation · Data Protection",
+            talkTitle: "Data Protection",
+            image: null,
+            sessionId: "startup-ecosystem-policy",
+            sessionLabel: "Data Protection",
+          },
+        ],
+      },
+      {
         time: morningSessions[0].time,
         title: `Session 01: ${morningSessions[0].title}`,
         subtitle: morningSessions[0].tagline,

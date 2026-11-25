@@ -382,7 +382,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     actId: "act-2-opening",
     actLabel: "Act II · AI RAG Presentation",
     kind: "speaker-walkon",
-    timeSlot: "10:05 AM – 10:20 AM",
+    timeSlot: "10:05 AM – 10:15 AM",
     badgeLabel: "TECHNICAL PRESENTATION · AI RAG FOR BUSINESSES",
     title: "Samuel Yaula Dutse",
     subtitle: "AI Systems Speaker · Special Presentation",
@@ -393,6 +393,26 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     initials: "SD",
     stageNote:
       "Cue when Samuel Yaula Dutse is called on stage for 'AI RAG for Businesses'. If he has slides, inject or embed his deck via the 'Add Media' tab.",
+  });
+
+  // Special Presentation on Data Protection by Ribetnan Dami
+  slides.push({
+    id: "presentation-data-protection-ribetnan-dami",
+    cueNumber: nextCue(),
+    actId: "act-2-opening",
+    actLabel: "Act II · Data Protection",
+    kind: "speaker-walkon",
+    timeSlot: "10:15 AM – 10:25 AM",
+    badgeLabel: "SPECIAL PRESENTATION · DATA PROTECTION",
+    title: "Ribetnan Dami",
+    subtitle: "Data Protection Speaker · Special Presentation",
+    talkTitle:
+      "Data Protection in the AI Era: Privacy, Compliance & Safeguarding Enterprise Data",
+    accent: "indigo",
+    mediaUrl: null,
+    initials: "RD",
+    stageNote:
+      "Cue immediately after Samuel Yaula Dutse's presentation when Ribetnan Dami takes the stage to present on Data Protection.",
   });
 
   slides.push({

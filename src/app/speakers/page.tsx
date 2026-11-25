@@ -184,14 +184,14 @@ export default function Speakers() {
                   </span>
                   <span className="inline-flex items-center gap-1.5 text-xs text-slate-400">
                     <Clock className="h-3.5 w-3.5 text-slate-500" aria-hidden="true" />
-                    09:35 AM – 10:20 AM WAT
+                    09:35 AM – 10:25 AM WAT
                   </span>
                 </div>
                 <h2
                   id="speakers-keynotes-heading"
                   className="text-3xl sm:text-4xl font-black text-white tracking-tight"
                 >
-                  Opening Speech, Keynote &amp; Special Presentation
+                  Opening Speech, Keynote &amp; Special Presentations
                 </h2>
               </div>
             </div>
@@ -199,7 +199,7 @@ export default function Speakers() {
             <ul
               role="list"
               aria-label="Keynote and special presentation speakers"
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
             >
               {SPECIAL_STAGE_SPEAKERS.map((speaker, index) => {
                 const initials = getPersonInitials(speaker.name);

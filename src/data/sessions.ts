@@ -294,6 +294,16 @@ export const SPECIAL_STAGE_SPEAKERS: SessionSpeaker[] = [
     sessionId: "ai-business",
     sessionLabel: "AI RAG for Businesses",
   },
+  {
+    id: "ribetnan-dami",
+    name: "Ribetnan Dami",
+    role: "Special Presentation · Data Protection",
+    talkTitle:
+      "Data Protection in the AI Era: Privacy, Compliance & Safeguarding Enterprise Data",
+    image: null,
+    sessionId: "startup-ecosystem-policy",
+    sessionLabel: "Data Protection",
+  },
 ];
 
 export const ALL_SESSION_SPEAKERS: SessionSpeaker[] = [
