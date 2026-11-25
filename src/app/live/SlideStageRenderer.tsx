@@ -689,13 +689,23 @@ export const SlideStageRenderer: React.FC<{
                     {SPONSOR_TIERS.headline.map((s) => (
                       <div
                         key={s.src}
-                        className="flex h-14 w-36 items-center justify-center rounded-xl bg-white px-4 shadow"
+                        className="flex h-14 min-w-[9rem] items-center justify-center gap-2 rounded-xl bg-white px-4 shadow"
                       >
                         <img
                           src={s.src}
                           alt={s.name}
-                          className="max-h-9 w-auto object-contain"
+                          className={`${
+                            s.showLabel ? "h-9 w-9" : "max-h-9 w-auto"
+                          } object-contain`}
                         />
+                        {s.showLabel && (
+                          <span className="text-left text-[11px] font-black uppercase tracking-tight text-slate-900 leading-tight">
+                            Devkings
+                            <span className="block text-[9px] font-bold text-amber-600 tracking-wider">
+                              Technologies
+                            </span>
+                          </span>
+                        )}
                       </div>
                     ))}
                   </div>

@@ -159,9 +159,15 @@ export const EVENT_GALLERY_PHOTOS = [
   "/images/jtf-56.jpg",
 ];
 
-export const SPONSOR_TIERS = {
+export const SPONSOR_TIERS: {
+  headline: Array<{ src: string; name: string; showLabel?: boolean }>;
+  ecosystem: Array<{ src: string; name: string }>;
+  community: Array<{ src: string; name: string }>;
+} = {
   headline: [
-    { src: "/images/partners.png", name: "Headline Partner" },
+    { src: "/images/agrisync-ai.png", name: "AgriSync AI" },
+    { src: "/images/devkings.jpg", name: "Devkings Technologies", showLabel: true },
+    { src: "/images/partners.png", name: "Bluehouse Technologies" },
     { src: "/images/koenig.jpeg", name: "Koenig" },
     { src: "/images/openai.png", name: "OpenAI" },
   ],
@@ -176,9 +182,9 @@ export const SPONSOR_TIERS = {
   community: [
     { src: "/images/ahub.png", name: "AHub" },
     { src: "/images/boldimg.png", name: "Bold" },
-    { src: "/images/logo-dark.png", name: "Jos Community" },
-    { src: "/images/partners8.png", name: "Community Hub" },
-    { src: "/images/partners11..png", name: "Ecosystem Hub" },
+    { src: "/images/logo-dark.png", name: "TechSynergy" },
+    { src: "/images/partners8.png", name: "GDG DevFest" },
+    { src: "/images/Rimg.jpg", name: "Community Hub" },
   ],
 };
 
@@ -307,7 +313,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
       image: a.image,
       initials: getPersonInitials(a.name),
     })),
-    stageNote: "Project when introducing Samuel Adebayo, Judith Nyior, and Anna Agbolade together on stage.",
+    stageNote: "Project when introducing Samuel Adebayo, Tamimia Esther Nuhu, and Anna Agbolade together on stage.",
   });
 
   TECHFEST_ANCHORS.forEach((anchor) => {

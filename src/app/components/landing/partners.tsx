@@ -4,10 +4,16 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 /* ── Sponsor Tiers ────────────────────────────────────────────
-   Headline (3) | Ecosystem Partners (6) | Community Hubs (8)
+   Headline (5) | Ecosystem Partners (6) | Community Hubs (6)
    ─────────────────────────────────────────────────────────── */
-const headlineSponsors = [
-  { src: "/images/partners.png",    alt: "Headline Sponsor" },
+const headlineSponsors: Array<{
+  src: string;
+  alt: string;
+  showLabel?: boolean;
+}> = [
+  { src: "/images/agrisync-ai.png", alt: "AgriSync AI" },
+  { src: "/images/devkings.jpg",    alt: "Devkings Technologies", showLabel: true },
+  { src: "/images/partners.png",    alt: "Bluehouse Technologies" },
   { src: "/images/koenig.jpeg",     alt: "Koenig" },
   { src: "/images/openai.png",      alt: "OpenAI" },
 ];
@@ -31,20 +37,16 @@ const ecosystemPartners = [
 const communityHubs = [
   { src: "/images/ahub.png",         alt: "AHub" },
   { src: "/images/boldimg.png",      alt: "Bold" },
-  { src: "/images/logo-dark.png",    alt: "Community Hub" },
-  { src: "/images/partners11.png",   alt: "Community Hub" },
+  { src: "/images/logo-dark.png",    alt: "TechSynergy" },
   { src: "/images/Rimg.jpg",         alt: "Community Hub" },
-  { src: "/images/partners8.png",    alt: "Community Hub" },
-  { src: "/images/partners11..png",  alt: "Community Hub" },
+  { src: "/images/partners8.png",    alt: "GDG DevFest" },
   { src: "/images/axiahub.png",      alt: "Axia Hub" },
   // duplicate set for seamless loop
   { src: "/images/ahub.png",         alt: "AHub" },
   { src: "/images/boldimg.png",      alt: "Bold" },
-  { src: "/images/logo-dark.png",    alt: "Community Hub" },
-  { src: "/images/partners11.png",   alt: "Community Hub" },
+  { src: "/images/logo-dark.png",    alt: "TechSynergy" },
   { src: "/images/Rimg.jpg",         alt: "Community Hub" },
-  { src: "/images/partners8.png",    alt: "Community Hub" },
-  { src: "/images/partners11..png",  alt: "Community Hub" },
+  { src: "/images/partners8.png",    alt: "GDG DevFest" },
   { src: "/images/axiahub.png",      alt: "Axia Hub" },
 ];
 
@@ -130,15 +132,25 @@ export default function Partners() {
             {headlineSponsors.map((s, i) => (
               <div
                 key={i}
-                className="flex h-24 w-44 items-center justify-center rounded-2xl border border-slate-700/60 bg-slate-900 px-6 transition-all duration-300 hover:border-slate-600 hover:bg-slate-800/80 group"
+                className="flex h-24 w-56 items-center justify-center gap-3 rounded-2xl border border-emerald-500/30 bg-white px-5 shadow-lg shadow-emerald-950/20 transition-all duration-300 hover:scale-[1.03] hover:border-emerald-400 group"
               >
                 <Image
                   src={s.src}
                   alt={s.alt}
-                  width={140}
-                  height={56}
-                  className="h-12 w-auto object-contain logo-mono group-hover:filter-none transition-all duration-300"
+                  width={180}
+                  height={64}
+                  className={`${
+                    s.showLabel ? "h-12 w-12 rounded-lg" : "max-h-14 w-auto"
+                  } object-contain transition-all duration-300`}
                 />
+                {s.showLabel && (
+                  <span className="text-left text-xs font-extrabold uppercase tracking-tight text-slate-900 leading-tight">
+                    Devkings
+                    <span className="block text-[10px] font-bold text-amber-600 tracking-wider">
+                      Technologies
+                    </span>
+                  </span>
+                )}
               </div>
             ))}
           </div>
