@@ -85,8 +85,9 @@ export const ACT_META: Record<
     timeRange: "08:00 AM – 09:20 AM",
   },
   "act-2-opening": {
-    shortLabel: "Act II · Keynotes & AI RAG",
-    fullTitle: "Act II — Opening Speech, DG PICTDA Keynote & AI RAG Presentation",
+    shortLabel: "Act II · Keynotes, AI RAG & Data Protection",
+    fullTitle:
+      "Act II — Opening Speech, DG PICTDA Keynote, AI RAG & Data Protection Presentations",
     timeRange: "09:20 AM – 10:25 AM",
   },
   "act-3-sessions": {
@@ -187,6 +188,63 @@ export const SPONSOR_TIERS: {
     { src: "/images/Rimg.jpg", name: "Community Hub" },
   ],
 };
+
+export const SPOTLIGHT_STARTUPS: SlidePanelPerson[] = [
+  {
+    id: "spotlight-devkings",
+    name: "Devkings Technologies",
+    role: "Enterprise Software & AI Engineering",
+    talkTitle:
+      "Building Scalable Enterprise Software, AI Systems & Digital Infrastructure",
+    image: "/images/devkings.jpg",
+    initials: "DK",
+  },
+  {
+    id: "spotlight-agrisync-ai",
+    name: "AgriSync AI",
+    role: "AgriTech & Farm Data Intelligence",
+    talkTitle:
+      "Your Farm. Your Data. Your Future — Precision AI for Modern Agriculture",
+    image: "/images/agrisync-ai.png",
+    initials: "AA",
+  },
+  {
+    id: "spotlight-laskad",
+    name: "Laskad",
+    role: "Digital Product & Venture Innovation",
+    talkTitle:
+      "Shipping High-Impact Digital Products & Platforms Built for Scale",
+    image: null,
+    initials: "LK",
+  },
+  {
+    id: "spotlight-bluehouse",
+    name: "Bluehouse Technologies",
+    role: "Technology Innovation & Talent Ecosystem",
+    talkTitle:
+      "Engineering Digital Transformation, Software Solutions & Tech Talent Across Africa",
+    image: "/images/partners.png",
+    initials: "BT",
+  },
+  {
+    id: "spotlight-ajecars",
+    name: "Ajecars",
+    role: "Automotive Commerce & Smart Mobility",
+    talkTitle:
+      "Reimagining Vehicle Discovery, Trusted Auto Commerce & Mobility Access",
+    image: null,
+    initials: "AC",
+  },
+  {
+    id: "spotlight-africa-plus",
+    name: "Africa+",
+    role: "Pan-African Digital Gateway",
+    talkTitle:
+      "Gateway to Africa — Connecting Innovation, Digital Commerce & Opportunity",
+    image: "/images/partners2.png",
+    initials: "A+",
+  },
+];
 
 function buildDefaultProgramSlides(): ProgramSlide[] {
   const slides: ProgramSlide[] = [];
@@ -395,6 +453,40 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
       "Cue when Samuel Yaula Dutse is called on stage for 'AI RAG for Businesses'. If he has slides, inject or embed his deck via the 'Add Media' tab.",
   });
 
+  // Up Next Bumper right after Samuel Yaula Dutse's presentation: Ribetnan Dami on Data Protection
+  slides.push({
+    id: "up-next-data-protection-ribetnan-dami",
+    cueNumber: nextCue(),
+    actId: "act-2-opening",
+    actLabel: "Act II · Up Next: Data Protection",
+    kind: "session-bumper",
+    timeSlot: "10:15 AM – 10:25 AM",
+    badgeLabel: "UP NEXT ON MAIN STAGE · SPECIAL PRESENTATION",
+    title: "Data Protection — Ribetnan Dami",
+    subtitle:
+      "Up Next: Ribetnan Dami presenting on Data Protection, Privacy & AI Governance",
+    accent: "indigo",
+    highlights: [
+      "NDPA & Data Privacy Compliance",
+      "Safeguarding Customer & Enterprise Data",
+      "AI Training Data & Privacy Risks",
+      "Practical Security Hygiene for Startups",
+    ],
+    people: [
+      {
+        id: "ribetnan-dami",
+        name: "Ribetnan Dami",
+        role: "Special Presentation · Data Protection",
+        talkTitle:
+          "Data Protection in the AI Era: Privacy, Compliance & Safeguarding Enterprise Data",
+        image: null,
+        initials: "RD",
+      },
+    ],
+    stageNote:
+      "Cue immediately as Samuel Yaula Dutse concludes to announce that Ribetnan Dami's presentation on Data Protection is next.",
+  });
+
   // Special Presentation on Data Protection by Ribetnan Dami
   slides.push({
     id: "presentation-data-protection-ribetnan-dami",
@@ -412,7 +504,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
     mediaUrl: null,
     initials: "RD",
     stageNote:
-      "Cue immediately after Samuel Yaula Dutse's presentation when Ribetnan Dami takes the stage to present on Data Protection.",
+      "Cue when Ribetnan Dami takes the stage to deliver his presentation on Data Protection.",
   });
 
   slides.push({
@@ -441,18 +533,19 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
         id: "startup-video-slot-1",
         cueNumber: nextCue(),
         actId: "act-3-sessions",
-        actLabel: "Startup Video #1",
+        actLabel: "Startup Spotlight #1",
         kind: "startup-video",
         timeSlot: "11:30 AM – 11:45 AM",
-        badgeLabel: "IN-BETWEEN SESSIONS · STARTUP VIDEO SHOWCASE #01",
-        title: "Startup Ecosystem Video Spotlight",
+        badgeLabel: "ECOSYSTEM SPOTLIGHT #01 · DEVKINGS · AGRISYNC AI · LASKAD · BLUEHOUSE · AJECARS · AFRICA+",
+        title: "Startup Ecosystem Spotlight",
         subtitle:
-          "Showcasing innovative products and startups built by founders across our ecosystem",
+          "Highlighting Devkings, AgriSync AI, Laskad, Bluehouse, Ajecars & Africa+",
         accent: "emerald",
         mediaUrl: "/videos/landing.mp4",
         mediaType: "video",
+        people: SPOTLIGHT_STARTUPS,
         stageNote:
-          "Plays startup promo videos between Session 01 and Session 02. Click 'Upload Startup MP4' in Edit Slide to load any startup video file.",
+          "Auto-cycles and highlights Devkings, AgriSync AI, Laskad, Bluehouse, Ajecars, and Africa+ alongside the spotlight video player.",
       });
     }
 
@@ -467,7 +560,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
         timeSlot: "01:00 PM – 01:15 PM",
         badgeLabel: "MIDDAY NETWORKING & EXHIBITION BREAK",
         title: "Networking & Refreshment Break",
-        subtitle: "Up Next: Startup Video Reel & Founders Fireside Chat",
+        subtitle: "Up Next: Startup Spotlight Reel & Founders Fireside Chat",
         accent: "emerald",
         stageNote: "Enable the stage countdown timer during the midday break.",
       });
@@ -476,17 +569,19 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
         id: "startup-video-slot-2",
         cueNumber: nextCue(),
         actId: "act-3-sessions",
-        actLabel: "Startup Video #2",
+        actLabel: "Startup Spotlight #2",
         kind: "startup-video",
         timeSlot: "01:15 PM – 01:25 PM",
-        badgeLabel: "IN-BETWEEN SESSIONS · STARTUP VIDEO SHOWCASE #02",
+        badgeLabel: "ECOSYSTEM SPOTLIGHT #02 · DEVKINGS · AGRISYNC AI · LASKAD · BLUEHOUSE · AJECARS · AFRICA+",
         title: "Featured Startup Product Reel",
-        subtitle: "Discover the builders shipping AI and digital products from Jos",
+        subtitle:
+          "Showcasing Devkings, AgriSync AI, Laskad, Bluehouse, Ajecars & Africa+",
         accent: "indigo",
         mediaUrl: "/videos/landing.mp4",
         mediaType: "video",
+        people: SPOTLIGHT_STARTUPS,
         stageNote:
-          "Second startup video showcase slot before the Startup Founders Fireside Chat.",
+          "Second startup spotlight slot highlighting Devkings, AgriSync AI, Laskad, Bluehouse, Ajecars, and Africa+ before the Founders Fireside Chat.",
       });
 
       // Startup Founders Fireside Chat
@@ -539,17 +634,19 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
         id: "startup-video-slot-3",
         cueNumber: nextCue(),
         actId: "act-3-sessions",
-        actLabel: "Startup Video #3",
+        actLabel: "Startup Spotlight #3",
         kind: "startup-video",
         timeSlot: "03:00 PM – 03:10 PM",
-        badgeLabel: "IN-BETWEEN SESSIONS · STARTUP VIDEO SHOWCASE #03",
-        title: "Ecosystem Startup Demo Video",
-        subtitle: "Leading into Session 04: Startup Ecosystem & Policy",
+        badgeLabel: "ECOSYSTEM SPOTLIGHT #03 · DEVKINGS · AGRISYNC AI · LASKAD · BLUEHOUSE · AJECARS · AFRICA+",
+        title: "Ecosystem Startup Demo Spotlight",
+        subtitle:
+          "Featuring Devkings, AgriSync AI, Laskad, Bluehouse, Ajecars & Africa+",
         accent: "amber",
         mediaUrl: "/videos/landing.mp4",
         mediaType: "video",
+        people: SPOTLIGHT_STARTUPS,
         stageNote:
-          "Third startup video slot transitioning into Session 04 (Startup Ecosystem & Policy).",
+          "Third startup spotlight slot highlighting Devkings, AgriSync AI, Laskad, Bluehouse, Ajecars, and Africa+ leading into Session 04.",
       });
     }
 

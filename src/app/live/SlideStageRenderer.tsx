@@ -8,6 +8,7 @@ import {
   ACCENT_PALETTE,
   EVENT_GALLERY_PHOTOS,
   SPONSOR_TIERS,
+  SPOTLIGHT_STARTUPS,
   type ProgramSlide,
 } from "./programSlides";
 
@@ -38,6 +39,7 @@ export const SlideStageRenderer: React.FC<{
   const theme = ACCENT_PALETTE[slide.accent] || ACCENT_PALETTE.emerald;
   const [photoIdx, setPhotoIdx] = useState(0);
   const [promoScene, setPromoScene] = useState<0 | 1 | 2>(0);
+  const [spotlightIdx, setSpotlightIdx] = useState(0);
   const [clockTime, setClockTime] = useState("08:30 WAT");
 
   // Live clock for Welcome Walk-in Slide
@@ -72,6 +74,18 @@ export const SlideStageRenderer: React.FC<{
     }, 3800);
     return () => clearInterval(id);
   }, [slide.kind, replayKey]);
+
+  // Auto-cycle and highlight the 6 Spotlight Startups every 4s
+  useEffect(() => {
+    if (slide.kind !== "startup-video") return;
+    const startups =
+      slide.people && slide.people.length > 0 ? slide.people : SPOTLIGHT_STARTUPS;
+    setSpotlightIdx(0);
+    const id = setInterval(() => {
+      setSpotlightIdx((prev) => (prev + 1) % startups.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, [slide.kind, slide.id, slide.people, replayKey]);
 
   // 1. EMERGENCY BLACKOUT SCREEN (Key: B)
   if (broadcast.blackout) {
@@ -758,7 +772,7 @@ export const SlideStageRenderer: React.FC<{
           )}
 
           {/* ── BODY VARIANT 7: CUSTOM INJECTED MEDIA OR STARTUP VIDEO SHOWCASE ── */}
-          {(slide.kind === "custom-media" || slide.kind === "startup-video") && (
+          {slide.kind === "custom-media" && (
             <div className="flex flex-1 flex-col justify-center gap-3 my-2">
               <div className="flex items-center justify-between gap-4">
                 <div>
@@ -775,16 +789,14 @@ export const SlideStageRenderer: React.FC<{
                     border: `1px solid ${theme.borderRgba}`,
                   }}
                 >
-                  {slide.kind === "startup-video" ? "STARTUP SPOTLIGHT VIDEO" : "LIVE MEDIA"}
+                  LIVE MEDIA
                 </span>
               </div>
               <div
                 className="relative flex-1 min-h-[260px] overflow-hidden rounded-3xl bg-black flex items-center justify-center shadow-2xl"
                 style={{ border: `2px solid ${theme.borderRgba}` }}
               >
-                {(slide.mediaType === "video" || slide.kind === "startup-video") &&
-                slide.mediaUrl &&
-                slide.mediaType !== "embed" ? (
+                {slide.mediaType === "video" && slide.mediaUrl ? (
                   <video
                     key={slide.mediaUrl}
                     src={slide.mediaUrl}
@@ -807,19 +819,226 @@ export const SlideStageRenderer: React.FC<{
                     alt={slide.title}
                     className="h-full w-full object-contain"
                   />
-                ) : (
-                  <div className="text-center p-8">
-                    <h3 className="text-2xl sm:text-4xl font-black text-white">
-                      {slide.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-slate-400">
-                      Use the &ldquo;Upload Startup MP4 / Video&rdquo; button in the right editor panel to load the startup video file.
-                    </p>
-                  </div>
-                )}
+                ) : null}
               </div>
             </div>
           )}
+
+          {/* ── BODY VARIANT 7A: STARTUP ECOSYSTEM SPOTLIGHT PLAYER & HIGHLIGHT REEL ── */}
+          {slide.kind === "startup-video" &&
+            (() => {
+              const startups =
+                slide.people && slide.people.length > 0
+                  ? slide.people
+                  : SPOTLIGHT_STARTUPS;
+              const activeIdx = spotlightIdx % startups.length;
+              const activeStartup = startups[activeIdx] || startups[0];
+
+              return (
+                <div className="flex flex-1 flex-col justify-between gap-3 my-1">
+                  {/* Top Title Bar */}
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                      <h2 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+                        {slide.title}
+                      </h2>
+                      <p className="text-xs sm:text-sm text-slate-300">
+                        {slide.subtitle}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="inline-flex items-center gap-2 rounded-full px-3.5 py-1 text-xs font-extrabold uppercase tracking-wider"
+                        style={{
+                          backgroundColor: theme.badgeBgRgba,
+                          color: theme.secondary,
+                          border: `1.5px solid ${theme.borderRgba}`,
+                        }}
+                      >
+                        <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+                        NOW HIGHLIGHTING:{" "}
+                        <span className="text-white">{activeStartup.name}</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Main Split Stage: Video Reel + Active Startup Spotlight Hero */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5 flex-1 min-h-[220px]">
+                    {/* Left: Live Startup Video Reel */}
+                    <div
+                      className="lg:col-span-7 relative overflow-hidden rounded-3xl bg-black flex items-center justify-center shadow-2xl min-h-[200px]"
+                      style={{ border: `2px solid ${theme.borderRgba}` }}
+                    >
+                      {slide.mediaUrl && slide.mediaType !== "embed" ? (
+                        <video
+                          key={slide.mediaUrl}
+                          src={slide.mediaUrl}
+                          controls
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="h-full w-full object-cover"
+                        />
+                      ) : slide.mediaType === "embed" && slide.mediaUrl ? (
+                        <iframe
+                          src={slide.mediaUrl}
+                          title={slide.title}
+                          className="h-full w-full border-0"
+                          allow="fullscreen; autoplay"
+                        />
+                      ) : null}
+
+                      {/* Video Corner Overlay Pill showing active startup */}
+                      <div className="pointer-events-none absolute top-3 left-3 flex items-center gap-2 rounded-full bg-black/75 backdrop-blur-md border border-white/15 px-3.5 py-1.5">
+                        <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                        <span className="text-[11px] font-black uppercase tracking-wider text-white">
+                          SPOTLIGHT {String(activeIdx + 1).padStart(2, "0")} /{" "}
+                          {String(startups.length).padStart(2, "0")} ·{" "}
+                          {activeStartup.name}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Right: Animated Active Startup Spotlight Card */}
+                    <div className="lg:col-span-5 flex">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={activeStartup.id}
+                          initial={{ opacity: 0, y: 18, scale: 0.96 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: -14, scale: 0.96 }}
+                          transition={{ duration: 0.35 }}
+                          className="flex flex-1 flex-col justify-between rounded-3xl bg-white/[0.06] p-5 shadow-2xl relative overflow-hidden"
+                          style={{
+                            border: `2px solid ${theme.secondary}`,
+                            boxShadow: `0 0 36px ${theme.glowRgba}`,
+                          }}
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <span
+                              className="rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em]"
+                              style={{
+                                backgroundColor: theme.badgeBgRgba,
+                                color: theme.secondary,
+                                border: `1px solid ${theme.borderRgba}`,
+                              }}
+                            >
+                              FEATURED STARTUP #{activeIdx + 1}
+                            </span>
+                            <span className="text-xs font-bold text-slate-400">
+                              {activeIdx + 1} of {startups.length}
+                            </span>
+                          </div>
+
+                          <div className="my-3 flex items-center gap-4">
+                            {activeStartup.image ? (
+                              <div className="flex h-20 w-28 flex-shrink-0 items-center justify-center rounded-2xl bg-white p-2.5 shadow-xl">
+                                <img
+                                  src={activeStartup.image}
+                                  alt={activeStartup.name}
+                                  className="max-h-14 w-auto object-contain"
+                                />
+                              </div>
+                            ) : (
+                              <div
+                                className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-2xl text-2xl font-black text-white shadow-xl"
+                                style={{
+                                  backgroundColor: theme.badgeBgRgba,
+                                  border: `2px solid ${theme.secondary}`,
+                                }}
+                              >
+                                {activeStartup.initials}
+                              </div>
+                            )}
+
+                            <div className="min-w-0">
+                              <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-tight">
+                                {activeStartup.name}
+                              </h3>
+                              <p
+                                className="text-xs sm:text-sm font-extrabold uppercase tracking-wider mt-1"
+                                style={{ color: theme.secondary }}
+                              >
+                                {activeStartup.role}
+                              </p>
+                            </div>
+                          </div>
+
+                          {activeStartup.talkTitle && (
+                            <p className="text-xs sm:text-sm font-medium text-slate-200 leading-relaxed bg-black/35 rounded-2xl p-3.5 border border-white/10">
+                              &ldquo;{activeStartup.talkTitle}&rdquo;
+                            </p>
+                          )}
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+                  </div>
+
+                  {/* Bottom 6-Startup Highlight Strip (Devkings, AgriSync AI, Laskad, Bluehouse, Ajecars, Africa+) */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+                    {startups.map((st, idx) => {
+                      const isHighlighted = idx === activeIdx;
+                      return (
+                        <button
+                          key={st.id}
+                          type="button"
+                          onClick={() => setSpotlightIdx(idx)}
+                          className={`flex items-center gap-2.5 rounded-2xl px-3 py-2.5 text-left transition-all duration-300 cursor-pointer ${
+                            isHighlighted
+                              ? "bg-white/[0.14] scale-[1.03]"
+                              : "bg-white/[0.04] opacity-70 hover:opacity-100"
+                          }`}
+                          style={{
+                            border: isHighlighted
+                              ? `2px solid ${theme.secondary}`
+                              : "1px solid rgba(255,255,255,0.12)",
+                            boxShadow: isHighlighted
+                              ? `0 0 22px ${theme.glowRgba}`
+                              : undefined,
+                          }}
+                        >
+                          {st.image ? (
+                            <div className="flex h-9 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-white p-1">
+                              <img
+                                src={st.image}
+                                alt={st.name}
+                                className="max-h-7 w-auto object-contain"
+                              />
+                            </div>
+                          ) : (
+                            <div
+                              className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg text-xs font-black text-white"
+                              style={{
+                                backgroundColor: theme.badgeBgRgba,
+                                border: `1.5px solid ${theme.borderRgba}`,
+                              }}
+                            >
+                              {st.initials}
+                            </div>
+                          )}
+                          <div className="min-w-0 flex-1">
+                            <p className="truncate text-xs font-black text-white leading-tight">
+                              {st.name}
+                            </p>
+                            <p
+                              className="truncate text-[10px] font-bold uppercase tracking-wider"
+                              style={{
+                                color: isHighlighted
+                                  ? theme.secondary
+                                  : "#94A3B8",
+                              }}
+                            >
+                              {isHighlighted ? "● Highlighting" : st.role}
+                            </p>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })()}
 
           {/* ── BODY VARIANT 7B: BREAKING THE ICE & INTERACTIVE TECH GAMES ── */}
           {slide.kind === "icebreaker-games" && (

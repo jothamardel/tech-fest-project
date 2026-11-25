@@ -77,6 +77,6 @@ export const VIDEO_ANCHORS: {
   image: string | null;
 }[] = [
   { name: "Samuel Adebayo", role: "Event Anchor", initials: "SA", image: "images/ancor7.jpg" },
-  { name: "Tamimia Esther Nuhu", role: "Event Anchor", initials: "TN", image: null },
+  { name: "Tamimia Esther Nuhu", role: "Event Anchor", initials: "TN", image: "images/tamimia-nuhu.jpg" },
   { name: "Anna Agbolade", role: "Event Anchor", initials: "AA", image: "images/anna-agbolade.jpg" },
 ];

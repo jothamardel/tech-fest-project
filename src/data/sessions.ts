@@ -329,7 +329,7 @@ export const TECHFEST_ANCHORS: EventAnchor[] = [
     id: "tamimia-esther-nuhu",
     name: "Tamimia Esther Nuhu",
     role: "Event Anchor",
-    image: null,
+    image: "/images/tamimia-nuhu.jpg",
   },
   {
     id: "anna",

@@ -133,8 +133,9 @@ const agendaBlocks: AgendaBlock[] = [
       },
       {
         time: "11:30 AM",
-        title: "Startup Ecosystem Video Spotlight #01",
-        subtitle: "In-between session showcase of innovative startups & products",
+        title: "Startup Ecosystem Spotlight #01",
+        subtitle:
+          "Highlighting Devkings Technologies, AgriSync AI, Laskad, Bluehouse, Ajecars & Africa+",
         trackBadge: "Startup Spotlight",
         accent: "emerald",
       },
@@ -155,8 +156,9 @@ const agendaBlocks: AgendaBlock[] = [
     events: [
       {
         time: "01:00 PM",
-        title: "Midday Networking Break & Startup Video Showcase #02",
-        subtitle: "Exhibition tour, refreshments & featured startup product videos",
+        title: "Midday Networking Break & Startup Spotlight #02",
+        subtitle:
+          "Exhibition tour, refreshments & spotlight on Devkings, AgriSync AI, Laskad, Bluehouse, Ajecars & Africa+",
         trackBadge: "Startup Spotlight",
         accent: "indigo",
       },
@@ -177,8 +179,9 @@ const agendaBlocks: AgendaBlock[] = [
       },
       {
         time: "03:00 PM",
-        title: "Startup Ecosystem Video Spotlight #03",
-        subtitle: "Featured startup demos transitioning into Ecosystem & Policy",
+        title: "Startup Ecosystem Spotlight #03",
+        subtitle:
+          "Featured demos from Devkings, AgriSync AI, Laskad, Bluehouse, Ajecars & Africa+ into Ecosystem & Policy",
         trackBadge: "Startup Spotlight",
         accent: "amber",
       },
