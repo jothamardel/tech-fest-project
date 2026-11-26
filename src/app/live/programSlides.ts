@@ -370,7 +370,8 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
       image: a.image,
       initials: getPersonInitials(a.name),
     })),
-    stageNote: "Project when introducing Samuel Adebayo, Tamimia Esther Nuhu, and Anna Agbolade together on stage.",
+    stageNote:
+      "Project when introducing Samuel Adebayo, Tamimia Esther Nuhu, Anna Agbolade, and Salihu Malone together on stage.",
   });
 
   TECHFEST_ANCHORS.forEach((anchor) => {
@@ -594,7 +595,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
         badgeLabel: "LIVE STAGE · STARTUP FOUNDERS FIRESIDE CHAT",
         title: "Startup Founders Fireside Chat",
         subtitle:
-          "Featuring David Yildum, Donald Ebuga & Mbiplang Ardel on building products, traction, and scaling startups",
+          "Featuring David Yildum, Donald Ebuga, Itunu Agbolade & Mbiplang Ardel on building products, traction, and scaling startups",
         accent: "amber",
         people: [
           {
@@ -614,6 +615,14 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
             initials: "DE",
           },
           {
+            id: "fireside-itunu-agbolade",
+            name: "Itunu Agbolade",
+            role: "Startup Founder · Fireside Chat",
+            talkTitle: "Venture Building, Product Strategy & Market Expansion",
+            image: "/images/itunu-agbolade.jpg",
+            initials: "IA",
+          },
+          {
             id: "fireside-mbiplang-ardel",
             name: "Mbiplang Ardel",
             role: "Founder & Lead Convener · Fireside Chat",
@@ -623,7 +632,7 @@ function buildDefaultProgramSlides(): ProgramSlide[] {
           },
         ],
         stageNote:
-          "Cue for the Startup Founders Fireside Chat featuring David Yildum, Donald Ebuga, and Mbiplang Ardel.",
+          "Cue for the Startup Founders Fireside Chat featuring David Yildum, Donald Ebuga, Itunu Agbolade, and Mbiplang Ardel.",
       });
     }
 

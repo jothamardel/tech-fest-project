@@ -45,6 +45,7 @@ export const SESSION_MODERATOR_BRIEFINGS: SessionModeratorBriefing[] = [
           "Engr. Christie Dasaro",
           "Dr. Adamu Usman",
           "Prof. Goselle Obed Nanjul",
+          "Gupar Hosea",
         ],
       },
       {
@@ -54,7 +55,11 @@ export const SESSION_MODERATOR_BRIEFINGS: SessionModeratorBriefing[] = [
         prompt:
           "Many educators worry about AI eroding academic integrity, while others see it as a personal teaching assistant. What does a realistic, AI-enabled classroom look like in Plateau State today—especially given real-world constraints like bandwidth and power?",
         suggestedTiming: "Targeted Discussion · 3–4 mins",
-        defaultSpeakerNames: ["Dr. Adamu Usman", "Prof. Goselle Obed Nanjul"],
+        defaultSpeakerNames: [
+          "Dr. Adamu Usman",
+          "Prof. Goselle Obed Nanjul",
+          "Gupar Hosea",
+        ],
       },
       {
         id: "ai-education-q3",
@@ -66,6 +71,7 @@ export const SESSION_MODERATOR_BRIEFINGS: SessionModeratorBriefing[] = [
         defaultSpeakerNames: [
           "Engr. Christie Dasaro",
           "Prof. Goselle Obed Nanjul",
+          "Gupar Hosea",
         ],
       },
       {
@@ -75,7 +81,11 @@ export const SESSION_MODERATOR_BRIEFINGS: SessionModeratorBriefing[] = [
         prompt:
           "How do we ensure AI becomes an equalizer for students in public and rural institutions rather than widening the divide between those who can afford paid AI tools and those who cannot?",
         suggestedTiming: "Closing Takeaway · 3–4 mins",
-        defaultSpeakerNames: ["Engr. Christie Dasaro", "Dr. Adamu Usman"],
+        defaultSpeakerNames: [
+          "Engr. Christie Dasaro",
+          "Dr. Adamu Usman",
+          "Gupar Hosea",
+        ],
       },
     ],
   },
@@ -101,6 +111,7 @@ export const SESSION_MODERATOR_BRIEFINGS: SessionModeratorBriefing[] = [
           "Mr. Ibrahim Jimoh",
           "Moses Amama",
           "Jennifer Turay",
+          "Emmanuel Odanye",
         ],
       },
       {
@@ -110,7 +121,7 @@ export const SESSION_MODERATOR_BRIEFINGS: SessionModeratorBriefing[] = [
         prompt:
           "Nigerian customers value personal relationships and trust, especially when money or orders are involved. Where do you draw the line between AI automation (like WhatsApp bots) and human intervention?",
         suggestedTiming: "Targeted Discussion · 3–4 mins",
-        defaultSpeakerNames: ["Jennifer Turay", "Moses Amama"],
+        defaultSpeakerNames: ["Jennifer Turay", "Moses Amama", "Emmanuel Odanye"],
       },
       {
         id: "ai-business-q3",
@@ -119,7 +130,7 @@ export const SESSION_MODERATOR_BRIEFINGS: SessionModeratorBriefing[] = [
         prompt:
           "AI is only as smart as the business data behind it, yet many local businesses still run on scattered spreadsheets, paper receipts, or informal voice notes. How does a business clean up its operations enough to actually benefit from AI?",
         suggestedTiming: "Targeted Discussion · 3–4 mins",
-        defaultSpeakerNames: ["Mr. Ibrahim Jimoh", "Mr. Nnamdi Ibe"],
+        defaultSpeakerNames: ["Mr. Ibrahim Jimoh", "Mr. Nnamdi Ibe", "Emmanuel Odanye"],
       },
       {
         id: "ai-business-q4",
@@ -128,7 +139,7 @@ export const SESSION_MODERATOR_BRIEFINGS: SessionModeratorBriefing[] = [
         prompt:
           "With affordable APIs and off-the-shelf SaaS tools everywhere, when should a growing Nigerian company simply subscribe to existing AI tools versus investing in custom-built internal systems?",
         suggestedTiming: "Closing Takeaway · 3–4 mins",
-        defaultSpeakerNames: ["Mr. Nnamdi Ibe", "Moses Amama"],
+        defaultSpeakerNames: ["Mr. Nnamdi Ibe", "Moses Amama", "Emmanuel Odanye"],
       },
     ],
   },

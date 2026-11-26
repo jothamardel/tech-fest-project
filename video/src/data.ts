@@ -24,6 +24,7 @@ export const VIDEO_SESSIONS: FrameSession[] = [
       { name: "Engr. Christie Dasaro", initials: "CD", image: "images/Chriatie.jpg" },
       { name: "Dr. Adamu Usman", initials: "AU", image: "images/jtf-36.jpg" },
       { name: "Prof. Goselle Obed Nanjul", initials: "GN", image: "images/Gosale.jpg" },
+      { name: "Gupar Hosea", initials: "GH", image: "images/gupar-hosea.jpg" },
     ],
   },
   {
@@ -38,6 +39,7 @@ export const VIDEO_SESSIONS: FrameSession[] = [
       { name: "Mr. Ibrahim Jimoh", initials: "IJ", image: "images/ibrahim-jimoh.jpg" },
       { name: "Moses Amama", initials: "MA", image: "images/Mo.jpg" },
       { name: "Jennifer Turay", initials: "JT", image: "images/jennifer-turay.jpg" },
+      { name: "Emmanuel Odanye", initials: "EO", image: "images/emmanuel-odanye.jpg" },
     ],
   },
   {
@@ -79,4 +81,5 @@ export const VIDEO_ANCHORS: {
   { name: "Samuel Adebayo", role: "Event Anchor", initials: "SA", image: "images/ancor7.jpg" },
   { name: "Tamimia Esther Nuhu", role: "Event Anchor", initials: "TN", image: "images/tamimia-nuhu.jpg" },
   { name: "Anna Agbolade", role: "Event Anchor", initials: "AA", image: "images/anna-agbolade.jpg" },
+  { name: "Salihu Malone", role: "Event Anchor", initials: "SM", image: "images/salihu-malone.jpg" },
 ];

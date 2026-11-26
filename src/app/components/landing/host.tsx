@@ -143,8 +143,8 @@ export default function Host() {
           </p>
         </motion.div>
 
-        {/* Single row — Samuel Adebayo, Tamimia Esther Nuhu, and Anna Agbolade */}
-        <div className="flex flex-col items-center gap-8 md:flex-row md:justify-center">
+        {/* Single row — Samuel Adebayo, Tamimia Esther Nuhu, Anna Agbolade, and Salihu Malone */}
+        <div className="flex flex-col items-center gap-8 md:flex-row md:flex-wrap md:justify-center">
           {TECHFEST_ANCHORS.map((host, idx) => (
             <HostCard
               key={host.id}

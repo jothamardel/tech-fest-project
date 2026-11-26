@@ -91,6 +91,15 @@ export const TECHFEST_SESSIONS: EventSession[] = [
         sessionId: "ai-education",
         sessionLabel: "AI x Education",
       },
+      {
+        id: "gupar-hosea",
+        name: "Gupar Hosea",
+        role: "Speaker · AI x Education",
+        talkTitle: "Practical AI Literacy, Digital Skills & Student Empowerment",
+        image: "/images/gupar-hosea.jpg",
+        sessionId: "ai-education",
+        sessionLabel: "AI x Education",
+      },
     ],
   },
   {
@@ -144,6 +153,15 @@ export const TECHFEST_SESSIONS: EventSession[] = [
         role: "Speaker · AI x Business",
         talkTitle: "Customer Intelligence & Market Expansion in the AI Era",
         image: "/images/jennifer-turay.jpg",
+        sessionId: "ai-business",
+        sessionLabel: "AI x Business",
+      },
+      {
+        id: "emmanuel-odanye",
+        name: "Emmanuel Odanye",
+        role: "Speaker · AI x Business",
+        talkTitle: "Enterprise AI Adoption, FinTech Innovation & Strategic Growth",
+        image: "/images/emmanuel-odanye.jpg",
         sessionId: "ai-business",
         sessionLabel: "AI x Business",
       },
@@ -336,5 +354,11 @@ export const TECHFEST_ANCHORS: EventAnchor[] = [
     name: "Anna Agbolade",
     role: "Event Anchor",
     image: "/images/anna-agbolade.jpg",
+  },
+  {
+    id: "salihu-malone",
+    name: "Salihu Malone",
+    role: "Event Anchor",
+    image: "/images/salihu-malone.jpg",
   },
 ];

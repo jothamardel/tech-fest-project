@@ -49,7 +49,8 @@ const agendaBlocks: AgendaBlock[] = [
       {
         time: "09:20 AM",
         title: "Official Welcome by Stage Anchors",
-        subtitle: "Hosted by Samuel Adebayo, Tamimia Esther Nuhu & Anna Agbolade",
+        subtitle:
+          "Hosted by Samuel Adebayo, Tamimia Esther Nuhu, Anna Agbolade & Salihu Malone",
       },
       {
         time: "09:35 AM",
@@ -166,7 +167,7 @@ const agendaBlocks: AgendaBlock[] = [
         time: "01:25 PM",
         title: "Startup Founders Fireside Chat",
         subtitle:
-          "Featuring David Yildum, Donald Ebuga & Mbiplang Ardel on building, traction & scaling startups",
+          "Featuring David Yildum, Donald Ebuga, Itunu Agbolade & Mbiplang Ardel on building, traction & scaling startups",
         trackBadge: "Fireside Chat",
         accent: "amber",
         speakers: [
@@ -185,6 +186,15 @@ const agendaBlocks: AgendaBlock[] = [
             role: "Startup Founder",
             talkTitle: "Fireside Chat",
             image: "/images/donald-ebuga.jpg",
+            sessionId: "startup-ecosystem-policy",
+            sessionLabel: "Fireside Chat",
+          },
+          {
+            id: "fireside-itunu-agbolade",
+            name: "Itunu Agbolade",
+            role: "Startup Founder",
+            talkTitle: "Fireside Chat",
+            image: "/images/itunu-agbolade.jpg",
             sessionId: "startup-ecosystem-policy",
             sessionLabel: "Fireside Chat",
           },

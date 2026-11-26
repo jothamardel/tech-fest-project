@@ -424,7 +424,9 @@ export const SlideStageRenderer: React.FC<{
 
                 {slide.people && (
                   <div
-                    className="md:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-3"
+                    className={`md:col-span-7 grid grid-cols-2 ${
+                      slide.people.length === 5 ? "sm:grid-cols-5" : "sm:grid-cols-4"
+                    } gap-3`}
                   >
                     {slide.people.map((person, idx) => (
                       <motion.div
@@ -525,6 +527,8 @@ export const SlideStageRenderer: React.FC<{
                       ? "grid-cols-1 sm:grid-cols-2 max-w-3xl mx-auto w-full"
                       : slide.people.length === 3
                       ? "grid-cols-1 sm:grid-cols-3"
+                      : slide.people.length === 5
+                      ? "grid-cols-2 sm:grid-cols-5"
                       : "grid-cols-2 sm:grid-cols-4"
                   }`}
                 >
